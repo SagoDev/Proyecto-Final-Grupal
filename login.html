@@ -11,16 +11,35 @@
   <link href="css/styles.css" rel="stylesheet">
   <style>
     body {
-      background-color: rgb(248, 249, 250);
+      background-color: rgb(255, 255, 255);
     }
   </style>
 </head>
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container text-center">
+      <br> <br> <br> <br>
+      <img src="img/login.png" alt="login" id="img-login">
+      <br> <br>
+      <h1>Log in</h1><br>
+      <div class="divLogin">
+        <div class= "form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="Email">
+        <label for="floatingInput">Email</label>
+        </div>
+        <div class= "form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label> <br>
+        </div>
+        <div>
+        <input type="checkbox" class="form-check-input" id="recordarme">
+        <label for="recordarme" class="form-check-label">Recuérdame</label> <br> <br>
+        </div>
+        <div>
+        <button class="btn btn-primary" type="button" id="login">Log In</button>
+        </div>
+        </div>
       </div>
     </div>
   </main>
