@@ -189,6 +189,61 @@ a.custom-card:hover {
   color: orange;
 }
 
+
+/* Estilos titulo listado de autos */
+
+.titulo {
+  font-family: raleway;
+}
+
+/* Fin Estilos titulo listado de autos */
+
+/* Estilos listado de autos */
+
+.contenedor-producto {
+  font-family: raleway;
+  color: rgba(0, 0, 0, 0.658);
+  display: flex;
+  padding: 1em;
+  border: 1px solid grey;
+
+}
+
+.contenedor-producto h3 {
+  color: black;
+}
+
+.contenedor-imagen {
+  width: 40%;
+}
+
+.imagen-producto {
+  max-width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  transition: transform 0.2s;
+
+}
+
+.imagen-producto:hover {
+  transform: scale(1.03);
+}
+
+
+.contenedor-producto:hover {
+  background-color: aliceblue;
+}
+
+.info-producto {
+  padding: 0 0 0 1.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+/* Fin estilo listado de autos */
+
 #img-login {
   height: 200px;
 }
