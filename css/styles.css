@@ -189,6 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
+
 /* Estilos titulo listado de autos */
 
 .titulo {
@@ -242,3 +243,20 @@ a.custom-card:hover {
 }
 
 /* Fin estilo listado de autos */
+
+#img-login {
+  height: 200px;
+}
+
+.divLogin {
+  padding: 0px 500px;
+}
+
+#login {
+  width: 294px;
+}
+
+#salir {
+  margin-top: 7%;
+  margin-right: -50%;
+}
