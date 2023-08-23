@@ -14,25 +14,26 @@ const contenedorLista = document.getElementById("lista-productos");
 function getProducts() {
   fetch(apiProducts)
     .then((response) => response.json())
-    .then((data) => showProducts(data.products));
+    .then((data) => showProducts(data));
 }
 
 // Iteramos el array que tiene la info de cada producto, por cada objeto del array creamos un elemento html y los vamos adjuntando a un elemento padre del html
 
 function showProducts(datos) {
-  for (let i = 0; i < datos.length; i++) {
+  document.getElementById('nombreCategoria').innerText = datos.catName;
+  for (let i = 0; i < datos.products.length; i++) {
     let contenedor = document.createElement("div");
     contenedor.classList.add("contenedor-producto");
     contenedor.innerHTML = `
             <div class="contenedor-imagen">
-                <img class="imagen-producto" src=${datos[i].image}>
+                <img class="imagen-producto" src=${datos.products[i].image}>
             </div>
     <div class="info-producto">
         <div>
-            <h3 class="datos">${datos[i].name} - ${datos[i].currency} ${datos[i].cost}</h3>
-            <p class="desc">${datos[i].description} </p> 
+            <h3 class="datos">${datos.products[i].name} - ${datos.products[i].currency} ${datos.products[i].cost}</h3>
+            <p class="desc">${datos.products[i].description} </p> 
         </div>
-        <p class="vendidos">${datos[i].soldCount} vendidos</p>
+        <p class="vendidos">${datos.products[i].soldCount} vendidos</p>
     </div>
     `;
 
