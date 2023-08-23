@@ -44,9 +44,18 @@ document.addEventListener("DOMContentLoaded", function() {
   
   let usuario = localStorage.getItem('user');
 
+  let usuarioParse = JSON.parse(usuario);
+
   if (usuario=="" || usuario==null) {
     this.location.href="login.html";
   }else{
+    document.getElementById('user').innerHTML=usuarioParse.mail;
   }
+
+  document.getElementById('salir').addEventListener('click', function() {
+    localStorage.removeItem('user');
+
+    location.href="login.html";
+  })
   
 });
