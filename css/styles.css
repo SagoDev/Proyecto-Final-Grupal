@@ -260,3 +260,7 @@ a.custom-card:hover {
   margin-top: 7%;
   margin-right: -50%;
 }
+
+.filtrar{
+  display:none;
+}

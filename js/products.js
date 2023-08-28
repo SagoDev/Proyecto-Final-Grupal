@@ -41,6 +41,15 @@ function showProducts(datos) {
   }
 }
 
+let buscador=document.getElementById("buscar");
+ buscador.addEventListener("keyup",(e)=>{
+    document.querySelectorAll(".contenedor-producto").forEach(el=>{
+      el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+      ?el.classList.remove("filtrar")
+      :el.classList.add("filtrar")
+    })
+ })
+
 // Una vez se carga el html, corremos el script
 
 document.addEventListener("DOMContentLoaded", () => {
