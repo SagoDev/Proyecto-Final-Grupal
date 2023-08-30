@@ -31,6 +31,10 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="my-profile.html" id="user"></a>
+          </li>
+          <li class="nav-item">
+            <button id="salir">Log out</button>
           </li>
         </ul>
       </div>
@@ -38,19 +42,30 @@
   </nav>
   <main class="pb-5 container">
     <div class="text-center p-5">
-      <h1 >Productos</h1>
-      <h4>Verás aquí todos los productos de la categoría <b>Autos</b></h3>
+      <h1>Productos</h1>
+      <h4>Verás aquí todos los productos de la categoría <b id="nombreCategoria">Autos</b></h4>
+
+      <div class="filtros btn-group">
+        <input class="btn-check" type="radio" name="opciones" id="precio" checked>
+        <label class="btn btn-light" for="precio"><i id="sortPrecio" class="fas fa-sort-numeric-down mr-1"></i></label>
+
+        <input class="btn-check" type="radio" name="opciones" id="relevancia" checked>
+        <label class="btn btn-light" for="relevancia"><i id="sortRelevancia" class="fas fa-sort-amount-down mr-1"></i></label>
+      </div>
+
+      <input type="search" placeholder="Buscar..." id="buscar" name="búsqueda" class="products-filter">
     </div>
-        <div id="lista-productos"></div>
+    <div id="lista-productos"></div>
     </div>
-    
+
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
