@@ -95,13 +95,14 @@ function showProducts(datos) {
 // Inicio Buscador.
 
 let buscador = document.getElementById("buscar");
+
 buscador.addEventListener("keyup", (e) => {
-  let arrayProducts= Array.from(document.getElementsByClassName("contenedor-producto"));
+  let arrayProducts = Array.from(document.getElementsByClassName("contenedor-producto"));
   arrayProducts.forEach((el) => {
     
-      if (!el.textContent.toLowerCase().includes(buscador.value.toLowerCase())){
-        el.classList.add("buscando");
-      }
+        !el.textContent.toLowerCase().includes(buscador.value.toLowerCase())
+        ?el.classList.add("buscando")
+        :el.classList.remove("buscando")
   });
 });
 
