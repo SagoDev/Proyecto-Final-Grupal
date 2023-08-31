@@ -139,7 +139,9 @@ function showProductsByPriceRange() {
 // Inicio Buscador.
 
 let buscador = document.getElementById("buscar");
+
 buscador.addEventListener("keyup", (e) => {
+
   let arrayProducts = Array.from(
     document.getElementsByClassName("contenedor-producto")
   );
