@@ -88,14 +88,16 @@ function showProducts(datos) {
   }
 }
 
-// Inicio Buscador
+// Inicio Buscador.
 
 let buscador = document.getElementById("buscar");
 buscador.addEventListener("keyup", (e) => {
-  document.querySelectorAll(".contenedor-producto").forEach((el) => {
-    el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-      ? el.classList.remove("filtrar")
-      : el.classList.add("filtrar");
+  let arrayProducts= Array.from(document.getElementsByClassName("contenedor-producto"));
+  arrayProducts.forEach((el) => {
+    
+      if (!el.textContent.toLowerCase().includes(buscador.value.toLowerCase())){
+        el.classList.add("buscando");
+      }
   });
 });
 
