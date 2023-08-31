@@ -2,8 +2,9 @@
 
 const api = "https://japceibal.github.io/emercado-api/cats_products/";
 
-let catId = localStorage.getItem('catID');
-let apiProducts = api + catId + '.json'
+let catId = localStorage.getItem("catID");
+let apiProducts = api + catId + ".json";
+
 // Guardamos en una constante el elemento con id lista-productos
 // A este elemento le vamos a agregar los elementos con la información de cada producto como hijo
 
@@ -15,14 +16,64 @@ function getProducts() {
   fetch(apiProducts)
     .then((response) => response.json())
     .then((data) => showProducts(data));
+
+}
+
+// Variable para definir si esta activo el boton de filtro por precio
+let booleanPrecio = false;
+let booleanRelevancia = false;
+
+function filtrarPrecio() {
+  while (contenedorLista.firstChild) {
+    contenedorLista.removeChild(contenedorLista.firstChild);
+  }
+  if (booleanPrecio) {
+    fetch(apiProducts)
+      .then((response) => response.json())
+      .then((data) => {
+        data.products.sort((a, b) => b.cost - a.cost);
+        showProducts(data);
+      });
+  } else {
+    fetch(apiProducts)
+      .then((response) => response.json())
+      .then((data) => {
+        data.products.sort((a, b) => a.cost - b.cost);
+        showProducts(data);
+      });
+  }
+}
+
+function filtrarRelevancia() {
+  while (contenedorLista.firstChild) {
+    contenedorLista.removeChild(contenedorLista.firstChild);
+  }
+  if (booleanRelevancia) {
+    fetch(apiProducts)
+      .then((response) => response.json())
+      .then((data) => {
+        data.products.sort((a, b) => b.soldCount - a.soldCount);
+        showProducts(data);
+      });
+  } else {
+    fetch(apiProducts)
+      .then((response) => response.json())
+      .then((data) => {
+        data.products.sort((a, b) => a.soldCount - b.soldCount);
+        showProducts(data);
+      });
+  }
 }
 
 // Iteramos el array que tiene la info de cada producto, por cada objeto del array creamos un elemento html y los vamos adjuntando a un elemento padre del html
 
 function showProducts(datos) {
-  document.getElementById('nombreCategoria').innerText = datos.catName;
+
+  document.getElementById("nombreCategoria").innerText = datos.catName;
+
   for (let i = 0; i < datos.products.length; i++) {
     let contenedor = document.createElement("div");
+    contenedor.id = "soyContenedor";
     contenedor.classList.add("contenedor-producto");
     contenedor.innerHTML = `
             <div class="contenedor-imagen">
@@ -41,17 +92,50 @@ function showProducts(datos) {
   }
 }
 
-let buscador=document.getElementById("buscar");
- buscador.addEventListener("keyup",(e)=>{
-    document.querySelectorAll(".contenedor-producto").forEach(el=>{
-      el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-      ?el.classList.remove("filtrar")
-      :el.classList.add("filtrar")
-    })
- })
+// Inicio Buscador.
+
+let buscador = document.getElementById("buscar");
+buscador.addEventListener("keyup", (e) => {
+  let arrayProducts= Array.from(document.getElementsByClassName("contenedor-producto"));
+  arrayProducts.forEach((el) => {
+    
+      if (!el.textContent.toLowerCase().includes(buscador.value.toLowerCase())){
+        el.classList.add("buscando");
+      }
+  });
+});
+
+// Fin Buscador
 
 // Una vez se carga el html, corremos el script
 
 document.addEventListener("DOMContentLoaded", () => {
+  let sortCost = document.getElementById("precio");
+  let sortRelevancia = document.getElementById('relevancia');
+
   getProducts();
+  sortCost.addEventListener("click", () => {
+  booleanPrecio = !booleanPrecio
+  if(booleanPrecio){
+    document.getElementById('sortPrecio').classList.remove('fa-sort-numeric-down')
+    document.getElementById('sortPrecio').classList.add('fa-sort-numeric-up')
+  }else{
+    document.getElementById('sortPrecio').classList.remove('fa-sort-numeric-up')
+    document.getElementById('sortPrecio').classList.add('fa-sort-numeric-down')
+  }
+  filtrarPrecio();
+  });
+
+  sortRelevancia.addEventListener("click", () => {
+    booleanRelevancia = !booleanRelevancia
+    if(booleanRelevancia){
+      document.getElementById('sortRelevancia').classList.remove('fa-sort-amount-down')
+      document.getElementById('sortRelevancia').classList.add('fa-sort-amount-up')
+    }else{
+      document.getElementById('sortRelevancia').classList.remove('fa-sort-amount-up')
+      document.getElementById('sortRelevancia').classList.add('fa-sort-amount-down')
+    }
+    filtrarRelevancia();
+    });
+
 });

@@ -261,6 +261,10 @@ a.custom-card:hover {
   margin-right: -50%;
 }
 
+
+/* buscador*/
+.buscando{
+  display: none;
+=======
 .filtrar{
   display:none;
-}
