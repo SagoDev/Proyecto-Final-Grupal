@@ -5,6 +5,8 @@ const api = "https://japceibal.github.io/emercado-api/cats_products/";
 let catId = localStorage.getItem("catID");
 let apiProducts = api + catId + ".json";
 let currentProducts = [];
+let minCount = document.getElementById("rangeFilterCountMin");
+let maxCount = document.getElementById("rangeFilterCountMax");
 
 // Guardamos en una constante el elemento con id lista-productos
 // A este elemento le vamos a agregar los elementos con la información de cada producto como hijo
@@ -97,38 +99,41 @@ function showProductsByPriceRange() {
   fetch(apiProducts)
     .then((response) => response.json())
     .then((data) => {
-      function showProducts(datos) {
+      function showProductsInRange(datos) {
         contenedorLista.innerHTML = "";
         document.getElementById("nombreCategoria").innerText = datos.catName;
-        for (let i = 0; i < datos.products.length; i++) {
-          if (
-            data.products[i].cost >=
-              document.getElementById("rangeFilterCountMin").value &&
-            data.products[i].cost <=
-              document.getElementById("rangeFilterCountMax").value
-          ) {
-            {
-              let contenedor = document.createElement("div");
-              contenedor.id = "soyContenedor";
-              contenedor.classList.add("contenedor-producto");
-              contenedor.innerHTML = `
+
+        if (minCount.value && maxCount.value) {
+          for (let i = 0; i < datos.products.length; i++) {
+            if (
+              data.products[i].cost >= minCount.value &&
+              data.products[i].cost <= maxCount.value
+            ) {
+              {
+                let contenedor = document.createElement("div");
+                contenedor.id = "soyContenedor";
+                contenedor.classList.add("contenedor-producto");
+                contenedor.innerHTML = `
                 <div class="contenedor-imagen">
                     <img class="imagen-producto" src=${datos.products[i].image}>
                 </div>
         <div class="info-producto">
             <div>
-                <h3 class="datos">${datos.products[i].name} - ${datos.products[i].currency} <span class="price"> ${datos.products[i].cost} </span></h3>
+                <h3 class="datos">${datos.products[i].name} - ${datos.products[i].currency} ${datos.products[i].cost}</h3>
                 <p class="desc">${datos.products[i].description} </p> 
             </div>
             <p class="vendidos">${datos.products[i].soldCount} vendidos</p>
         </div>
         `;
-              contenedorLista.appendChild(contenedor);
+                contenedorLista.appendChild(contenedor);
+              }
             }
           }
+        } else {
+          showProducts(data);
         }
       }
-      showProducts(data);
+      showProductsInRange(data);
     });
 }
 // Inicio Buscador.
@@ -192,6 +197,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("rangeFilterCount").addEventListener("click", () => {
+    showProductsByPriceRange();
+  });
+
+  document.getElementById("clearRangeFilter").addEventListener("click", () => {
+    minCount.value = "";
+    maxCount.value = "";
     showProductsByPriceRange();
   });
 });
