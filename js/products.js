@@ -4,6 +4,7 @@ const api = "https://japceibal.github.io/emercado-api/cats_products/";
 
 let catId = localStorage.getItem("catID");
 let apiProducts = api + catId + ".json";
+
 // Guardamos en una constante el elemento con id lista-productos
 // A este elemento le vamos a agregar los elementos con la información de cada producto como hijo
 
@@ -15,6 +16,7 @@ function getProducts() {
   fetch(apiProducts)
     .then((response) => response.json())
     .then((data) => showProducts(data));
+
 }
 
 // Variable para definir si esta activo el boton de filtro por precio
@@ -66,7 +68,9 @@ function filtrarRelevancia() {
 // Iteramos el array que tiene la info de cada producto, por cada objeto del array creamos un elemento html y los vamos adjuntando a un elemento padre del html
 
 function showProducts(datos) {
+
   document.getElementById("nombreCategoria").innerText = datos.catName;
+
   for (let i = 0; i < datos.products.length; i++) {
     let contenedor = document.createElement("div");
     contenedor.id = "soyContenedor";
