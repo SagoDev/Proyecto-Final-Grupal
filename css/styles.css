@@ -259,7 +259,28 @@ a.custom-card:hover {
 #salir {
   margin-top: 7%;
   margin-right: -50%;
+  background-color: orange;
+  font-weight: bold;
 }
+
+#user {
+  color: rgb(253, 182, 50);
+}
+
+#grupo-botones-1 {
+  margin-right: -71.9%;
+}
+
+#grupo-botones-2 {
+  margin-top: 1%;
+  margin-right: -1.65%;
+}
+
+#buscar:focus {
+  outline: none;
+}
+
+
 
 
 /* buscador*/
