@@ -238,8 +238,8 @@ a.custom-card:hover {
   padding: 0 0 0 1.3rem;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-
+  place-content: space-between;
+  text-align: start;
 }
 
 /* Fin estilo listado de autos */
@@ -265,6 +265,8 @@ a.custom-card:hover {
 /* buscador*/
 .buscando{
   display: none;
-=======
+}
+
 .filtrar{
   display:none;
+}
