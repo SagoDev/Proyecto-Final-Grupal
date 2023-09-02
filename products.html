@@ -46,7 +46,7 @@
               <a class="nav-link" href="my-profile.html" id="user"></a>
             </li>
             <li class="nav-item">
-              <button id="salir">Log out</button>
+              <button class="rounded" id="salir">Log out</button>
             </li>
           </ul>
         </div>
@@ -61,13 +61,13 @@
         </h4>
         <br />
 
-        <div class="btn-group">
+        <div class="btn-group d-flex flex-row-reverse" id="grupo-botones-1">
           <input
             type="search"
             placeholder="Buscar..."
             id="buscar"
             name="búsqueda"
-            class="products-filter m-1 border-dark border"
+            class="products-filter m-1 border border-dark rounded"
           />
           <div class="m-1">
             <input
@@ -97,34 +97,41 @@
             ></label>
           </div>
         </div>
-        <div class="col">
-          <input
-            class="form-control"
-            type="number"
-            placeholder="min."
-            id="rangeFilterCountMin"
-          />
+        <br>
+    <div class="container" id="min-max">
+      <div class="row d-flex flex-row-reverse" id="grupo-botones-2">
+        <div class="col-2">
+            <button class="btn border border-dark" id="rangeFilterCount">
+              Filtrar
+            </button>
+            <button class="btn border border-dark" id="clearRangeFilter">
+              Limpiar
+            </button>
         </div>
-        <div class="col">
+        <div class="col-1">
           <input
-            class="form-control"
+            class="form-control border border-dark"
             type="number"
             placeholder="máx."
             id="rangeFilterCountMax"
           />
         </div>
-        <div class="col-3 p-0">
-          <div class="btn-group" role="group">
-            <button class="btn btn-light btn-block" id="rangeFilterCount">
-              Filtrar
-            </button>
-            <button class="btn btn-link btn-sm" id="clearRangeFilter">
-              Limpiar
-            </button>
-          </div>
+        <div class="col-1">
+          <input
+            class="form-control border border-dark"
+            type="number"
+            placeholder="min."
+            id="rangeFilterCountMin"
+          />
         </div>
-        <div id="lista-productos"></div>
+        <div class="col-1">
+          <label class="fs-4 p-1">Precio:</label>
+        </div>
       </div>
+        <br>
+        <div id="lista-productos"></div>
+        </div>
+    </div>
     </main>
     <footer class="text-muted">
       <div class="container">
