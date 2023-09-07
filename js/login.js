@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("login").addEventListener("click", () => {
         // Aquí se agrega un "escuchador" de eventos al botón con el ID "login". Cuando se hace clic en este botón, se ejecutará la función proporcionada.
 
-        const mail = document.getElementById("floatingInput").value;
-        const pass = document.getElementById("floatingPassword").value;
+        const mail = document.getElementById("mail").value;
+        const pass = document.getElementById("pass").value;
         // Aquí se obtienen los valores de los campos de entrada de correo electrónico y contraseña. "floatingInput" y "floatingPassword" son los IDs de los elementos de entrada en el HTML.
 
         if (mail.length >= 10 && pass.length >= 6) {
