@@ -31,7 +31,10 @@ function mostrarInfo(info){
         <div>
             <p> <b> Cantidad de vendidos: </b> <br> ${info.soldCount}</p>
         </div>
-
+        <div>
+            <p> <b>Imagenes ilustrativas</b></p>
+        </div>
+            
         
     `
     for(let image of info.images){
