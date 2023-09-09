@@ -28,29 +28,29 @@ function isValid(input){
 
 document.addEventListener("DOMContentLoaded", ()=>{
     let inputForm = document.getElementById('logIn');
-    
+    let email = document.getElementById('email');
+    let password = document.getElementById('pass');
+    let btnLogin = document.getElementById('login');
+
     inputForm.addEventListener('keyup',(e)=>{
         let input = e.target;
         if(input.classList.contains('form-control')){
             isValid(input);
         }
     });
-    inputForm.addEventListener('click',(e)=>{
-    
-        let emailValue = document.getElementById('email');
-        let passwordValue = document.getElementById('pass');
+    btnLogin.addEventListener('click',(e)=>{
+        
+        if(email.value === "" || password.value === ""){
+            e.preventDefault();
+            e.stopPropagation(); 
+            Swal.fire({
+                icon: 'error',
+                title: 'Debes introducir tus datos!'});            
 
-        if(e.target.classList.contains('logIn')){
-            if (!inputForm.checkValidity()) {
-                e.preventDefault();
-                e.stopPropagation();
-                logIn.classList.add('was-validated')                
-            }
-            else{
-                isValid(emailValue);
-                isValid(passwordValue)
-                setDataStorage(emailValue,passwordValue);
-            };                               
-        }
+            isValid(email);
+            isValid(password);
+        } else {
+            setDataStorage(email,password);
+        }        
     });        
 });
