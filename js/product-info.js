@@ -14,15 +14,30 @@ function traerInfo(){
 function mostrarInfo(info){
     let contenedor = document.getElementById('contenedor-producto');
     contenedor.innerHTML = `
-        <h1>${info.name}</h1>
-        <p>Precio: ${info.currency} ${info.cost}</p>
-        <p>Descripcion: ${info.description}</>
-        <p>Categoria: ${info.category}</p>
-        <p>Cantidad de vendidos: ${info.soldCount}</p>
+        <div>
+            <h1>${info.name}</h1>
+        </div>
+        <div>
+            <p>Precio: ${info.currency} ${info.cost}</p>
+        </div>
+        <div>
+            <p>Descripcion: ${info.description}</p>
+        </div>
+        <div>
+            <p>Categoria: ${info.category}</p>
+        </div>
+        <div>
+            <p>Cantidad de vendidos: ${info.soldCount}</p>
+        </div>
+
+        
     `
     for(let image of info.images){
         contenedor.innerHTML += `
-        <img src=${image}>
+        <div>
+            <img src=${image}>
+        </div>
+        
         `
     }
 }
