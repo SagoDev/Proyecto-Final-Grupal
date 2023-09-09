@@ -32,7 +32,7 @@ function mostrarInfo(info){
             <p> <b> Cantidad de vendidos: </b> <br> ${info.soldCount}</p>
         </div>
         <div>
-            <p> <b>Imagenes ilustrativas</b></p>
+            <p> <b>Imagenes ilustrativas: </b></p>
         </div>
             
         
