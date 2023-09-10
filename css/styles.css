@@ -232,6 +232,7 @@ a.custom-card:hover {
 
 .contenedor-producto:hover {
   background-color: aliceblue;
+  cursor: pointer;
 }
 
 .info-producto {
@@ -324,7 +325,6 @@ a.custom-card:hover {
   margin: 5px;
   transition: 0.3s;
   border-radius: 10%;
-
 }
 
 .contenedor-imagen-info:hover{
