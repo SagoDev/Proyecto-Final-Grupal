@@ -263,7 +263,7 @@ a.custom-card:hover {
     border: 0;
     background-image: linear-gradient(
         150deg,
-        #1f1f2079,
+        #35353679,
         orange,
         rgb(90,90,90)
     );
@@ -276,7 +276,7 @@ a.custom-card:hover {
     transition: .3s;
 }
 #salir span {
-    background-color: #00000079;
+    background-color: #00000023;
     padding: 8px 12px;
     border-radius: 12px;
     transition: .5s;
