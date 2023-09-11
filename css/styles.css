@@ -307,3 +307,14 @@ a.custom-card:hover {
 .buscando{
   display: none;
 }
+
+.img-thumbnail:hover {
+  transform: scale(1.03);
+}
+
+.img-thumbnail {
+  max-width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
