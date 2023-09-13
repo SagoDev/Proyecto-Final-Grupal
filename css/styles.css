@@ -292,7 +292,16 @@ a.custom-card:hover {
   display: none;
 }
 
-/* Estilos products-info */
+.img-thumbnail:hover {
+  transform: scale(1.03);
+}
+
+.img-thumbnail {
+  max-width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
 
 #contenedor-producto{
   font-family: raleway;
@@ -316,5 +325,3 @@ a.custom-card:hover {
   cursor: crosshair;
   filter: contrast(120%);
 }
-
-/* Fin estilos products-info */
