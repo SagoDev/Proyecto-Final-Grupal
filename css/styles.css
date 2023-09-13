@@ -5,6 +5,10 @@
   font-family: 'Verdana', serif !important;
 }
 
+#divLogin, #contInfoProd {
+  background-color: #ffff;
+}
+
 body {
   
   background-image: url(img/fondo.png);

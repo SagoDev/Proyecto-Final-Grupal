@@ -16,7 +16,7 @@ function mostrarInfo(info){
     let contenedorImagenes = document.getElementById('contenedor-imagenes')
     contenedor.innerHTML = `
         <div class='mt-5'>
-            <h1>${info.name}</h1>
+            <h1 class='pt-2'>${info.name}</h1>
             <hr>
         </div>
         <div>
