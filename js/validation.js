@@ -16,7 +16,8 @@ function validData(email,password,e){
         e.stopPropagation();
         Swal.fire({
             icon: 'error',
-            title: 'Debes introducir datos válidos'});                
+            title: 'Debes introducir datos válidos',
+            confirmButtonColor: '#0d6efd'});                
     } else {            
         setDataStorage(email,password);
     }
