@@ -232,6 +232,7 @@ a.custom-card:hover {
 
 .contenedor-producto:hover {
   background-color: aliceblue;
+  cursor: pointer;
 }
 
 .info-producto {
@@ -307,3 +308,30 @@ a.custom-card:hover {
 .buscando{
   display: none;
 }
+
+/* Estilos products-info */
+
+#contenedor-producto{
+  font-family: raleway;
+}
+
+.imagen-info{
+  border-radius: 10%;
+  width: 100%;
+}
+
+.contenedor-imagen-info{
+  border: 1px solid gray;
+  margin: 5px;
+  transition: 0.3s;
+  border-radius: 10%;
+}
+
+.contenedor-imagen-info:hover{
+  transform: scale(1.2);
+  border-radius: 10%;
+  cursor: crosshair;
+  filter: contrast(120%);
+}
+
+/* Fin estilos products-info */

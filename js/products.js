@@ -61,9 +61,9 @@ function displayProducts(arr) {
   for (let i = 0; i < arr.length; i++) {
     // Desestructuración del objeto actual para que sea más fácil acceder a cada una de sus propiedades.
     // Sería como guardar las propiedades del objeto en variables
-    let { soldCount, name, currency, cost, description, image } = arr[i];
+    let { soldCount, name, currency, cost, description, image, id} = arr[i];
     divContent += `
-    <div class="contenedor-producto">
+    <div onclick="setProductID(${id})" class="contenedor-producto">
     <div class="contenedor-imagen">
                 <img class="imagen-producto" src=${image}>
             </div>
@@ -113,6 +113,11 @@ function changeButtonImage(bool, element, className) {
     element.classList.remove(`${className}-up`);
     element.classList.add(`${className}-down`);
   }
+}
+
+function setProductID(id) {
+  localStorage.setItem("ProductID", id);
+  window.location = "product-info.html";
 }
 
 // Cuando carga el DOM se corre se declaran constantes y variables con elementos
