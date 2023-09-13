@@ -41,14 +41,16 @@ nav a {
 }
 
 #cover {
-  box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74);
   width: 35%;
+}
+
+.sombra {
+  box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74);  
   border-radius: 10px;
 }
 
-#contenedorIndex {
-  box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74);  
-  border-radius: 10px;
+.contenedor-producto {
+  background-color: rgb(248, 249, 250);
 }
 
 .jumbotron {
