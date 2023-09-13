@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (usuario=="" || usuario==null) {
     this.location.href="login.html";
   }else{
-    document.getElementById('user').innerHTML=usuarioParse.mail;
+    document.getElementById('user').innerHTML=usuarioParse.email;
   }
 
   document.getElementById('salir').addEventListener('click', function() {

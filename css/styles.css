@@ -4,7 +4,6 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
-
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -232,6 +231,7 @@ a.custom-card:hover {
 
 .contenedor-producto:hover {
   background-color: aliceblue;
+  cursor: pointer;
 }
 
 .info-producto {
@@ -242,28 +242,12 @@ a.custom-card:hover {
   text-align: start;
 }
 
-/* Fin estilo listado de autos */
-
-#img-login {
-  height: 200px;
-}
-
-.divLogin {
-  padding: 0px 500px;
-}
-
-#login {
-  width: 294px;
-}
-
-
-
 #salir {
     font-weight: bold;
     border: 0;
     background-image: linear-gradient(
         150deg,
-        #1f1f2079,
+        #35353679,
         orange,
         rgb(90,90,90)
     );
@@ -276,7 +260,7 @@ a.custom-card:hover {
     transition: .3s;
 }
 #salir span {
-    background-color: #00000079;
+    background-color: #00000023;
     padding: 8px 12px;
     border-radius: 12px;
     transition: .5s;
@@ -317,4 +301,27 @@ a.custom-card:hover {
   border: 1px solid grey;
   border-radius: 10px;
   transition: transform 0.2s;
+}
+
+#contenedor-producto{
+  font-family: raleway;
+}
+
+.imagen-info{
+  border-radius: 10%;
+  width: 100%;
+}
+
+.contenedor-imagen-info{
+  border: 1px solid gray;
+  margin: 5px;
+  transition: 0.3s;
+  border-radius: 10%;
+}
+
+.contenedor-imagen-info:hover{
+  transform: scale(1.2);
+  border-radius: 10%;
+  cursor: crosshair;
+  filter: contrast(120%);
 }
