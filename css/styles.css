@@ -4,7 +4,6 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
-
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -242,22 +241,6 @@ a.custom-card:hover {
   place-content: space-between;
   text-align: start;
 }
-
-/* Fin estilo listado de autos */
-
-#img-login {
-  height: 200px;
-}
-
-.divLogin {
-  padding: 0px 500px;
-}
-
-#login {
-  width: 294px;
-}
-
-
 
 #salir {
     font-weight: bold;

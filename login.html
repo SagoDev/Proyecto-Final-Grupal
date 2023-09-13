@@ -2,56 +2,45 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link rel="shortcut icon" href="img/ico.ico">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>eMercado - Todo lo que busques está aquí</title>
+<link rel="shortcut icon" href="img/ico.ico">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<style>
     body {
-      background-color: rgb(255, 255, 255);
-    }
-  </style>
+    background-color: rgb(255, 255, 255);    }
+</style>
 </head>
 
 <body>
-  <main class="mt-5">
-    <div class="container text-center">
-      <br> <br> <br> <br>
-      <img src="img/login.png" alt="login" id="img-login">
-      <br> <br>
-      <h1>Log in</h1><br>
-      <div class="divLogin">
-        <div class= "form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Email">
-        <label for="floatingInput">Email</label>
+    <div class="container p-3">                  
+        <div class="row align-items-center vh-100 text-center">            
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6  mx-auto">
+                <img src="img/login.png" class="img-fluid" alt="login" id="img-login">
+                <h1>Log in</h1>                
+            <form class="needs-validation" id="logIn" novalidate>
+                <div class="mb-3"> 
+                    <input type="email" class="form-control mx-auto w-50" id="email" placeholder="Email" required>
+                    <div class="invalid-feedback">Ingrese un Email válido</div>
+                </div>            
+                <div class= "mb-3">
+                    <input type="password" class="form-control mx-auto w-50" id="pass" placeholder="Password" required>
+                    <div class="invalid-feedback">Ingrese una contraseña válida</div>
+                </div>                
+                <div class="mb-3">
+                    <button class="btn btn-primary logIn w-25" type="button" id="login">Log In</button>
+                </div>                
+            </form>                       
+            <div class="container pt-5">       
+                <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+                </div>                       
+            </div>  
         </div>
-        <div class= "form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label> <br>
-        </div>
-        <div>
-        <input type="checkbox" class="form-check-input" id="recordarme">
-        <label for="recordarme" class="form-check-label">Recuérdame</label> <br> <br>
-        </div>
-        <div>
-        <button class="btn btn-primary" type="button" id="login">Log In</button>
-        </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <script src="js/login.js"></script>
+    </div>  
+<script src="js/validation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
 </html>
