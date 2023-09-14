@@ -63,7 +63,46 @@ function mostrarComments(comentarios) {
   }
 }
 
+function traerValorEstrellas() {
+  let estrellas = document.getElementsByName("estrellas");
+  for (let i = 0; i < estrellas.length; i++) {
+    if (estrellas[i].checked) {
+      console.log(estrellas[i].value);
+      return estrellas[i].value;
+    }
+  }
+}
+
+function generarComment() {
+  let contenedorComentarios = document.getElementById("commentList");
+  let usuario = JSON.parse(localStorage.getItem("user")).email;
+  let descripcion = document.getElementById("textarea");
+  let puntuacion = traerValorEstrellas();
+  let comentario = {
+    texto: descripcion.value,
+    puntos: puntuacion,
+    usuario: usuario,
+    fecha: () => {
+      date = new Date().toJSON();
+      return date.replace("T", " ").slice(0, 19);
+    },
+  };
+  contenedorComentarios.innerHTML += `
+            <div class = "border rounded mb-2 p-2 col">
+            <p><b>${
+              comentario.usuario
+            }</b> - ${comentario.fecha()}</p>            
+            <p>${comentario.texto}</p>
+            </div>
+        `;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  const enviarComment = document.getElementById("enviar-comment");
+  enviarComment.addEventListener("click", () => {
+    generarComment();
+  });
+
   traerInfo(apiProducts, mostrarInfo);
   traerInfo(apiComments, mostrarComments);
 });

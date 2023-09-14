@@ -381,4 +381,6 @@ a.custom-card:hover {
   opacity: 1;
 }
 
-
+.no-resize {
+  resize: none;
+}
