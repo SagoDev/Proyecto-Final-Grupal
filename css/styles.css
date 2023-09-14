@@ -346,7 +346,7 @@ a.custom-card:hover {
 .contenedor-imagen-info:hover{
   transform: scale(1.2);
   border-radius: 10%;
-  cursor: crosshair;
+  cursor: pointer;
   filter: contrast(120%);
 }
 
