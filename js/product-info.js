@@ -1,20 +1,21 @@
-const api = 'https://japceibal.github.io/emercado-api/products/'
-let id = localStorage.getItem('ProductID');
-let apiProduct = api + id + '.json'
+const apiProducts = "https://japceibal.github.io/emercado-api/products/";
+const apiComments =
+  "https://japceibal.github.io/emercado-api/products_comments/";
+let id = localStorage.getItem("ProductID");
 
-function traerInfo(){
-    fetch(apiProduct)
-        .then(Response => Response.json())
-        .then(data => {
-            mostrarInfo(data)
-        })
+function traerInfo(api, funcion) {
+  fetch(api + id + ".json")
+    .then((Response) => Response.json())
+    .then((data) => {
+      funcion(data);
+    });
 }
 
+function mostrarInfo(info) {
+  let contenedor = document.getElementById("contenedor-producto");
+  let contenedorImagenes = document.getElementById("contenedor-imagenes");
 
-function mostrarInfo(info){
-    let contenedor = document.getElementById('contenedor-producto');
-    let contenedorImagenes = document.getElementById('contenedor-imagenes')
-    contenedor.innerHTML = `
+  contenedor.innerHTML = `
         <div class='mt-5'>
             <h1 class='pt-2'>${info.name}</h1>
             <hr>
@@ -36,9 +37,9 @@ function mostrarInfo(info){
         </div>
             
         
-    `
-    for(let image of info.images){
-        contenedorImagenes.innerHTML += `
+    `;
+  for (let image of info.images) {
+    contenedorImagenes.innerHTML += `
         <div class='col-3 align-item-center'>
             <div class='contenedor-imagen-info'>
                 <img class='imagen-info' src=${image}>
@@ -46,17 +47,27 @@ function mostrarInfo(info){
                 
         </div>
         
-        `
-    }
+        `;
+  }
 }
 
+function mostrarComments(comentarios) {
+  let contenedorComentarios = document.getElementById("contenedor-comentarios");
+  for (let comment of comentarios) {
+    contenedorComentarios.innerHTML += `
+        <div class='container align-item-center'>
+            <div class='col'>
+                <div class='contenedor-comment'>
+                    <p> ${comment.description}</p>
+                </div>
+            </div>
+        </div>
+        
+        `;
+  }
+}
 
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () =>{
-    traerInfo();
-})
+document.addEventListener("DOMContentLoaded", () => {
+  traerInfo(apiProducts, mostrarInfo);
+  traerInfo(apiComments, mostrarComments);
+});
