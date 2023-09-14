@@ -349,3 +349,36 @@ a.custom-card:hover {
   cursor: crosshair;
   filter: contrast(120%);
 }
+
+.estrellas{
+  display: flex;
+  margin-top: -10px;
+  flex-direction:row-reverse;
+  float: left;
+}
+.estrellas>input{
+  display:none;
+}
+
+.estrellas>label{
+  position: relative;
+  width: 19px;
+  font-size: 25px;
+  color:rgb(236, 167, 17);
+  cursor: pointer;
+}
+
+.estrellas>label::before{
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.estrellas>label:hover:before,
+.estrellas>label:hover~label:before {
+  opacity: 1 !important;
+}
+.estrellas>input:checked~label:before {
+  opacity: 1;
+}
+
+
