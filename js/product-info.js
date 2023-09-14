@@ -52,17 +52,13 @@ function mostrarInfo(info) {
 }
 
 function mostrarComments(comentarios) {
-  let contenedorComentarios = document.getElementById("contenedor-comentarios");
+  let contenedorComentarios = document.getElementById("commentList");
   for (let comment of comentarios) {
     contenedorComentarios.innerHTML += `
-        <div class='container align-item-center'>
-            <div class='col'>
-                <div class='contenedor-comment'>
-                    <p> ${comment.description}</p>
-                </div>
+            <div class = "border rounded mb-2 p-2 col">
+            <p><b>${comment.user}</b> - ${comment.dateTime}</p>            
+            <p>${comment.description}</p>
             </div>
-        </div>
-        
         `;
   }
 }
