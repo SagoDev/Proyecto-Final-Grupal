@@ -57,7 +57,7 @@ function mostrarComments(comentarios) {
     contenedorComentarios.innerHTML += `
             <div class = "border rounded mb-2 p-2 col">
             <p><b>${comment.user}</b> - ${comment.dateTime}</p>            
-            <p>${comment.description}</p>
+            <p class = "m-0">${comment.description}</p>
             </div>
         `;
   }
