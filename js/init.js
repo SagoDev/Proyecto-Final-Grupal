@@ -7,14 +7,16 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+
+// Funcionalidad del carrusel de imágenes 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
-
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+// Función general para obtener datos JSON
 let getJSONData = function(url){
     let result = {};
     showSpinner();
@@ -40,6 +42,9 @@ let getJSONData = function(url){
     });
 }
 
+// Busca la información del usuario en Local storage
+//   Si encuentra la información, pone el nombre de usuario en el navbar
+//   Si no encuentra la información, te redirige a la página de Login
 document.addEventListener("DOMContentLoaded", function() {
   
   let usuario = localStorage.getItem('user');
@@ -51,7 +56,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }else{
     document.getElementById('user').innerHTML=usuarioParse.email;
   }
-
+  
+  // Funcionalidad para Logout con el botón salir
+  //   Elimina los datos del usuario del Local storage
+  //   Redirige a la página de Login
   document.getElementById('salir').addEventListener('click', function() {
     localStorage.removeItem('user');
 
