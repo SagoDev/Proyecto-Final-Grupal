@@ -46,10 +46,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let usuarioParse = JSON.parse(usuario);
 
+  let nombreDeUsuario = usuarioParse.email
+
   if (usuario=="" || usuario==null) {
     this.location.href="login.html";
   }else{
-    document.getElementById('user').innerHTML=usuarioParse.email;
+    document.getElementById('user').innerHTML= nombreDeUsuario.substring(0, nombreDeUsuario.indexOf('@'));
   }
 
   document.getElementById('salir').addEventListener('click', function() {
