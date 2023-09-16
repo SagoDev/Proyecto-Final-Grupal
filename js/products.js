@@ -54,7 +54,7 @@ function displayProducts(arr) {
   for (let i = 0; i < arr.length; i++) {
     let { soldCount, name, currency, cost, description, image, id} = arr[i];
     divContent += `
-    <div onclick="setProductID(${id})" class="contenedor-producto">
+    <div onclick="setProductID(${id})" class="contenedor-producto"> 
     <div class="contenedor-imagen">
                 <img class="imagen-producto" src=${image}>
             </div>

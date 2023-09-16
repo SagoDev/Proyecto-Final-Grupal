@@ -1,6 +1,6 @@
 const apiProducts = "https://japceibal.github.io/emercado-api/products/";
-const apiComments =
-  "https://japceibal.github.io/emercado-api/products_comments/";
+const apiComments = "https://japceibal.github.io/emercado-api/products_comments/";
+
 let id = localStorage.getItem("ProductID");
 
 function traerInfo(api, funcion) {
@@ -42,13 +42,11 @@ function mostrarInfo(info) {
         <div class='col-3 align-item-center'>
             <div class='contenedor-imagen-info'>
                 <img class='imagen-info' src=${image}>
-            </div>
-                
-        </div>
-        
+            </div>                
+        </div>        
         `;
   }
-}
+};
 
 let puntajeEstrellas = '';
 //Función que guarda estrellas en un string según el puntaje, el cual se pasa como parámetro para reutilizar la función
@@ -102,9 +100,7 @@ function generarComment() {
   creandoEstrellas(comentario.puntos);
   contenedorComentarios.innerHTML += `
             <div class = "border rounded mb-2 p-2 col">
-            <p><b>${
-              comentario.usuario
-            }</b> - ${comentario.fecha()} ${puntajeEstrellas}</p>            
+            <p><b>${comentario.usuario}</b> - ${comentario.fecha()} ${puntajeEstrellas}</p>            
             <p>${comentario.texto}</p>
             </div>
         `;
@@ -115,8 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
   enviarComment.addEventListener("click", () => {
     generarComment();
   });
-
-
   traerInfo(apiProducts, mostrarInfo);
   traerInfo(apiComments, mostrarComments);
 });
