@@ -1,21 +1,3 @@
-const apiProducts = "https://japceibal.github.io/emercado-api/products/";
-const apiComments =
-  "https://japceibal.github.io/emercado-api/products_comments/";
-let id = localStorage.getItem("ProductID");
-
-function traerInfo(api, funcion) {
-  fetch(api + id + ".json")
-    .then((Response) => Response.json())
-    .then((data) => {
-      funcion(data);
-    });
-}
-
-function mostrarInfo(info) {
-  let contenedor = document.getElementById("contenedor-producto");
-  let contenedorImagenes = document.getElementById("contenedor-imagenes");
-
-  contenedor.innerHTML = `
         <div class='mt-5'>
             <h1 class='pt-2'>${info.name}</h1>
             <hr>
@@ -37,9 +19,11 @@ function mostrarInfo(info) {
         </div>
             
         
+
     `;
   for (let image of info.images) {
     contenedorImagenes.innerHTML += `
+
         <div class='col-3 align-item-center'>
             <div class='contenedor-imagen-info'>
                 <img class='imagen-info' src=${image}>
@@ -116,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   enviarComment.addEventListener("click", () => {
     generarComment();
   });
+
 
   traerInfo(apiProducts, mostrarInfo);
   traerInfo(apiComments, mostrarComments);
