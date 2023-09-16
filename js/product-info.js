@@ -1,3 +1,21 @@
+const apiProducts = "https://japceibal.github.io/emercado-api/products/";
+const apiComments =
+  "https://japceibal.github.io/emercado-api/products_comments/";
+let id = localStorage.getItem("ProductID");
+
+function traerInfo(api, funcion) {
+  fetch(api + id + ".json")
+    .then((Response) => Response.json())
+    .then((data) => {
+      funcion(data);
+    });
+}
+
+function mostrarInfo(info) {
+  let contenedor = document.getElementById("contenedor-producto");
+  let contenedorImagenes = document.getElementById("contenedor-imagenes");
+
+  contenedor.innerHTML = `
         <div class='mt-5'>
             <h1 class='pt-2'>${info.name}</h1>
             <hr>
@@ -16,10 +34,7 @@
         </div>
         <div>
             <p> <b>Imagenes ilustrativas: </b></p>
-        </div>
-            
-        
-
+        </div> 
     `;
   for (let image of info.images) {
     contenedorImagenes.innerHTML += `
