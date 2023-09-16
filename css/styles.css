@@ -351,36 +351,34 @@ a.custom-card:hover {
 }
 
 .estrellas{
-  display: flex;
+  display: flex; /*para alinear de forma horizontal las estrellas*/
   margin-top: -10px;
-  flex-direction:row-reverse;
+  flex-direction:row-reverse;/*invierte el orden en que se ven las estrellas, quedan de derecha a izquierda*/
   float: left;
+  font-size: 20px;
+  gap: 5px;
 }
 .estrellas>input{
-  display:none;
+  display:none; /*con esto escondo los inputs de tipo radio de las estrellas*/
 }
 
 .estrellas>label{
-  position: relative;
   width: 19px;
-  font-size: 25px;
-  color:rgb(236, 167, 17);
   cursor: pointer;
+  color:rgb(243, 162, 11);
 }
-
-.estrellas>label::before{
-  content: "\2605";
-  position: absolute;
-  opacity: 0;
+/* El simbolo ~ es un selector de hermanos generales, sirve para cambiar el estilo de todos los elementos hermanos del que le indique*/
+label:hover .bi-star::before,/* cuando se hace hover sobre una label, con el .bi-star::before se cambia el icono de la estrella y esto afecta a todas las estrellas de las labels hermanas de la que le hago hover*/
+label:hover ~ label .bi-star::before {
+  content: "\f586"; /* Cambio el contenido del icono por una estrella llena*/
 }
-.estrellas>label:hover:before,
-.estrellas>label:hover~label:before {
-  opacity: 1 !important;
+input:checked ~ label  .bi-star::before { 
+  content: "\f586"; /* con esto me aseguro que al hacer check en una estrella, cambie el contenido de todos los iconos que vienen despues del que está checkeado */
 }
-.estrellas>input:checked~label:before {
-  opacity: 1;
+i{
+  color:rgb(243, 162, 11);
 }
-
 .no-resize {
   resize: none;
 }
+

@@ -51,13 +51,26 @@ function mostrarInfo(info) {
   }
 }
 
+let puntajeEstrellas = '';
+//Función que guarda estrellas en un string según el puntaje, el cual se pasa como parámetro para reutilizar la función
+function creandoEstrellas(puntajeUser){
+  let allStars="";
+  for (let i = 0; i < 5; i++) {
+    if(i< puntajeUser){ // si i es menor que el puntaje de estrellas,le agrega una estrella llena
+      allStars += '<i class="bi bi-star-fill"></i>';
+    }else{allStars += '<i class="bi bi-star"></i>';} //cuando ya no se cumple la condicion del if le agrega estrellas vacías al string
+  } 
+  puntajeEstrellas=allStars;
+}
 function mostrarComments(comentarios) {
   let contenedorComentarios = document.getElementById("commentList");
   for (let comment of comentarios) {
+    creandoEstrellas(comment.score);
+    
     contenedorComentarios.innerHTML += `
             <div class = "border rounded mb-2 p-2 col">
-            <p><b>${comment.user}</b> - ${comment.dateTime}</p>            
-            <p class = "m-0">${comment.description}</p>
+            <p><b>${comment.user}</b> - ${comment.dateTime} ${puntajeEstrellas} </p>            
+            <p>${comment.description}</p>
             </div>
         `;
   }
@@ -87,11 +100,12 @@ function generarComment() {
       return date.replace("T", " ").slice(0, 19);
     },
   };
+  creandoEstrellas(comentario.puntos);
   contenedorComentarios.innerHTML += `
             <div class = "border rounded mb-2 p-2 col">
             <p><b>${
               comentario.usuario
-            }</b> - ${comentario.fecha()}</p>            
+            }</b> - ${comentario.fecha()} ${puntajeEstrellas}</p>            
             <p>${comentario.texto}</p>
             </div>
         `;
