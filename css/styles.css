@@ -346,6 +346,39 @@ a.custom-card:hover {
 .contenedor-imagen-info:hover{
   transform: scale(1.2);
   border-radius: 10%;
-  cursor: crosshair;
+  cursor: pointer;
   filter: contrast(120%);
 }
+
+.estrellas{
+  display: flex; /*para alinear de forma horizontal las estrellas*/
+  margin-top: -10px;
+  flex-direction:row-reverse;/*invierte el orden en que se ven las estrellas, quedan de derecha a izquierda*/
+  float: left;
+  font-size: 20px;
+  gap: 5px;
+}
+.estrellas>input{
+  display:none; /*con esto escondo los inputs de tipo radio de las estrellas*/
+}
+
+.estrellas>label{
+  width: 19px;
+  cursor: pointer;
+  color:rgb(243, 162, 11);
+}
+/* El simbolo ~ es un selector de hermanos generales, sirve para cambiar el estilo de todos los elementos hermanos del que le indique*/
+label:hover .bi-star::before,/* cuando se hace hover sobre una label, con el .bi-star::before se cambia el icono de la estrella y esto afecta a todas las estrellas de las labels hermanas de la que le hago hover*/
+label:hover ~ label .bi-star::before {
+  content: "\f586"; /* Cambio el contenido del icono por una estrella llena*/
+}
+input:checked ~ label  .bi-star::before { 
+  content: "\f586"; /* con esto me aseguro que al hacer check en una estrella, cambie el contenido de todos los iconos que vienen despues del que está checkeado */
+}
+i{
+  color:rgb(243, 162, 11);
+}
+.no-resize {
+  resize: none;
+}
+

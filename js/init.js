@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
   if (usuario=="" || usuario==null) {
     this.location.href="login.html";
   }else{
-    document.getElementById('user').innerHTML=usuarioParse.email;
+    let nombreDeUsuario = usuarioParse.email;
+    document.getElementById('user').innerHTML= nombreDeUsuario.substring(0, nombreDeUsuario.indexOf('@'));
   }
   
   // Funcionalidad para Logout con el botón salir
