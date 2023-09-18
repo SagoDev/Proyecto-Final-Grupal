@@ -67,4 +67,11 @@ document.addEventListener("DOMContentLoaded", function() {
     location.href="login.html";
   })
   
+  // Escucha el evento 'click' en el elemento con el ID 'dark-mode'.
+  // Obtiene una referencia al elemento 'body' del documento HTML.
+  // Alterna la clase 'dark-mode' en el elemento 'body'.
+  document.getElementById('dark-mode').addEventListener('click', function() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+  })
 });

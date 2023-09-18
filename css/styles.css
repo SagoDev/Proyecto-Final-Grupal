@@ -18,7 +18,7 @@ body {
   background-size: 400px;
   
   background-color: rgb(248, 249, 250);
-  
+  transition: all 1.5s ease;
 }
 .jumbotron .display-4 {
   font-weight: bold;
@@ -382,3 +382,16 @@ i{
   resize: none;
 }
 
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #090717f2;
+  transition: all 1.5s ease;
+}
+#dark-mode{
+  display: none
+}
+#dark-label{
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
