@@ -385,9 +385,10 @@ i{
 /* Estilos para el modo oscuro */
 body.dark-mode {
   background-color: #090717f2;
+  color: #fff;
   transition: all 1.5s ease;
 }
-#dark-mode{
+#modoOscuroToggle{
   display: none
 }
 #dark-label{
@@ -395,3 +396,4 @@ body.dark-mode {
   font-size: 1.5em;
   cursor: pointer;
 }
+/* Fin de Estilos para el modo oscuro */

@@ -67,11 +67,37 @@ document.addEventListener("DOMContentLoaded", function() {
     location.href="login.html";
   })
   
-  // Escucha el evento 'click' en el elemento con el ID 'dark-mode'.
-  // Obtiene una referencia al elemento 'body' del documento HTML.
-  // Alterna la clase 'dark-mode' en el elemento 'body'.
-  document.getElementById('dark-mode').addEventListener('click', function() {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-  })
+  // Función para cambiar entre el modo claro y oscuro
+function toggleModoOscuro() {
+  // Obtener una referencia al elemento 'body' del documento
+  const body = document.body;
+  // Alternar la clase 'dark-mode' en el elemento 'body'
+  body.classList.toggle('dark-mode');
+
+ // Comprobar si la clase 'dark-mode' está presente en 'body' y guardar el estado en localStorage
+  if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('modoOscuro', 'activado');
+  } else {
+      localStorage.setItem('modoOscuro', 'desactivado');
+  }
+}
+
+// Evento que se ejecuta cuando la página se ha cargado completamente
+window.addEventListener('load', () => {
+  // Obtener el estado del modo oscuro guardado en localStorage
+  const modoOscuroGuardado = localStorage.getItem('modoOscuro');
+  // Obtener una referencia al elemento 'body'
+  const body = document.body;
+
+  // Si el modo oscuro está guardado como 'activado', activarlo y marcar la casilla de verificación
+  if (modoOscuroGuardado === 'activado') {
+      body.classList.add('dark-mode'); // Activar el modo oscuro si está guardado
+      document.getElementById('modoOscuroToggle').checked = true; // Marcar la casilla de verificación
+  }
+});
+
+// Agregar un evento de cambio a la casilla de verificación
+const modoOscuroCheckbox = document.getElementById('modoOscuroToggle');
+modoOscuroCheckbox.addEventListener('change', toggleModoOscuro);
+
 });
