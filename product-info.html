@@ -44,11 +44,19 @@
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="my-profile.html" id="user"></a>
+              <div class="dropdown">
+                <a class="btn dropdown-toggle" href="my-profile.html" role="button" id="user" data-bs-toggle="dropdown" aria-expanded="false">   
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="user">
+                  <li><a class="dropdown-item" href="cart.html">Mi Carrito <i class="bi bi-cart3"></i></a></li>
+                  <li><a class="dropdown-item" href="my-profile.html">Mi perfil <i class="bi bi-person-square"></i></a></li>
+                  <li><a class="dropdown-item" id="bye" href="">Cerrar Sesión <i class="bi bi-box-arrow-left"></i></a></li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item"></li>
             <li class="nav-item">
-              <button id="salir">
+              <button  id="salir">
                 <span>Log out</span>
               </button>
             </li>

@@ -66,5 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     location.href="login.html";
   })
-  
+  //Repito la función para que se cierre sesión al hacer click en Cerrar Sesión
+  document.getElementById("bye").addEventListener('click', function() {
+    localStorage.removeItem('user');
+
+    location.href="login.html";
+  })
 });

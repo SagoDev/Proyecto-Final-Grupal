@@ -382,3 +382,16 @@ i{
   resize: none;
 }
 
+.dropdown-item{
+  transition: .5s, color .8s;
+      -webkit-transition: .5s, color .8s;
+      -moz-transition: .5s, color .8s;
+      
+}
+.dropdown-item:hover{
+  transform: translatex(20px);
+      -webkit-transform: translatex(20px);
+      -moz-transform: translatex(20px);
+      font-size: large;
+}
+            
