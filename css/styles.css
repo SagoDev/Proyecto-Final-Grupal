@@ -396,4 +396,7 @@ body.dark-mode {
   font-size: 1.5em;
   cursor: pointer;
 }
+#contenedorIndex {
+  color: #000000;
+}
 /* Fin de Estilos para el modo oscuro */
