@@ -389,8 +389,15 @@ body.dark-mode {
   transition: all 1.5s ease;
 }
 .dark-mode-button-active {
-  background: #fff;
-  color: #000000;
+  background: #ffffff;
+  color: #090717f2;
+  transition: .9s ease;
+}
+.dark-mode-button-active:hover {
+  box-shadow: 0 0 10px #ffffff,
+              0 0 30px #ffffff,
+              0 0 70px #ffffff,
+              0 0 130px #ffffff;
 }
 #modoOscuroToggle{
   display: none
