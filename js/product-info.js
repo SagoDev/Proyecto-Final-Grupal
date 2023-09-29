@@ -14,7 +14,6 @@ function traerInfo(api, funcion) {
 
 function mostrarInfo(info) {
   let contenedor = document.getElementById("contenedor-producto");
-  let contenedorImagenes = document.getElementById("contenedor-imagenes");
   let contenedorCarrusel = document.getElementById("carousel-inner");
   let titulo = document.getElementById("contenedorTitulo")
 
@@ -134,6 +133,30 @@ function setProductID(id) {
   window.location = "product-info.html";
 }
 
+function imageZoom(){
+  let contImgActive = Array.from(document.getElementsByClassName('active'));
+  let img = contImgActive[0].childNodes[1].src;
+  console.log(contImgActive)
+  console.log(img)
+  let body = document.getElementsByTagName('body')[0]
+
+  let divTransparente = document.createElement('div');
+  divTransparente.style = "background-color: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; z-index: 5000; position: fixed; top: 0px; left: 0; display: flex; justify-content: center; align-items: center;" 
+
+  let contImg = document.createElement('div');
+  contImg.style = "background-color: aliceblue; box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74); border-radius: 10px;" 
+
+  contImg.innerHTML = `<img src="${img}" style="height: auto;">`
+
+  body.appendChild(divTransparente)
+  divTransparente.appendChild(contImg)
+
+  divTransparente.addEventListener('click', () => {
+    divTransparente.removeChild(contImg);
+    body.removeChild(divTransparente);
+  })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const enviarComment = document.getElementById("enviar-comment");
   enviarComment.addEventListener("click", () => {
@@ -142,4 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
   traerInfo(apiProducts, mostrarInfo);
   traerInfo(apiComments, mostrarComments);
   traerInfo(apiProducts, mostrarRelacionados);
+
+  let imgCarousel = document.getElementById('carousel-inner');
+  imgCarousel.addEventListener('click', imageZoom);
 });
