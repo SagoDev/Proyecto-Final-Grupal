@@ -69,16 +69,24 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Función para cambiar entre el modo claro y oscuro
 function toggleModoOscuro() {
-  // Obtener una referencia al elemento 'body' del documento
+  // Obtener una referencia al elemento 'body' del documento y los botones
   const body = document.body;
+  const btnFilrar = document.getElementById('rangeFilterCount');
+  const btnLimpiar = document.getElementById('clearRangeFilter');
   // Alternar la clase 'dark-mode' en el elemento 'body'
   body.classList.toggle('dark-mode');
 
  // Comprobar si la clase 'dark-mode' está presente en 'body' y guardar el estado en localStorage
   if (body.classList.contains('dark-mode')) {
       localStorage.setItem('modoOscuro', 'activado');
+      // Agregar una clase específica para el modo oscuro a los botones
+      btnFilrar.classList.add('dark-mode-button-active');
+      btnLimpiar.classList.add('dark-mode-button-active');
   } else {
       localStorage.setItem('modoOscuro', 'desactivado');
+      // Remover la clase específica para el modo oscuro de los botones
+      btnFilrar.classList.remove('dark-mode-button-active');
+      btnLimpiar.classList.remove('dark-mode-button-active');
   }
 }
 
@@ -93,6 +101,9 @@ window.addEventListener('load', () => {
   if (modoOscuroGuardado === 'activado') {
       body.classList.add('dark-mode'); // Activar el modo oscuro si está guardado
       document.getElementById('modoOscuroToggle').checked = true; // Marcar la casilla de verificación
+      // Agregar la clase específica para el modo oscuro a los botones
+      document.getElementById('rangeFilterCount').classList.add('dark-mode-button-active');
+      document.getElementById('clearRangeFilter').classList.add('dark-mode-button-active');
   }
 });
 

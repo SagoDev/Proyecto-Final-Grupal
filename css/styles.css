@@ -388,6 +388,10 @@ body.dark-mode {
   color: #fff;
   transition: all 1.5s ease;
 }
+.dark-mode-button-active {
+  background: #fff;
+  color: #000000;
+}
 #modoOscuroToggle{
   display: none
 }
@@ -398,5 +402,8 @@ body.dark-mode {
 }
 #contenedorIndex {
   color: #000000;
+}
+#contInfoProd {
+  color: #000;
 }
 /* Fin de Estilos para el modo oscuro */
