@@ -57,21 +57,47 @@ let puntajeEstrellas = '';
 function creandoEstrellas(puntajeUser) {
   let allStars = "";
   for (let i = 0; i < 5; i++) {
-    if (i < puntajeUser) { // si i es menor que el puntaje de estrellas,le agrega una estrella llena
-      allStars += '<i class="bi bi-star-fill"></i>';
-    } else { allStars += '<i class="bi bi-star"></i>'; } //cuando ya no se cumple la condicion del if le agrega estrellas vacías al string
-  }
-  puntajeEstrellas = allStars;
+
+    if(i< puntajeUser){ // si i es menor que el puntaje de estrellas,le agrega una estrella llena
+      allStars += '<i class="bi bi-star-fill estrellita"></i>';
+    }else{allStars += '<i class="bi bi-star estrellita"></i>';} //cuando ya no se cumple la condicion del if le agrega estrellas vacías al string
+  } 
+  puntajeEstrellas=allStars;
+=======
+
+
+}
+function generarColorAleatorio() {
+  var componente = Math.floor(Math.random() * 256).toString(16);
+    // Asegurarse de que el componente tenga siempre dos dígitos
+    return ('0' + componente).slice(-2);
+}
+
+function generarColorCSSAleatorio() {
+  // Generar tres componentes de color aleatorios para RGB
+  var rojo = generarColorAleatorio();
+  var verde = generarColorAleatorio();
+  var azul = generarColorAleatorio();
+  var colorRGB = rojo + verde + azul;
+    return colorRGB; 
 }
 function mostrarComments(comentarios) {
   let contenedorComentarios = document.getElementById("commentList");
   for (let comment of comentarios) {
     creandoEstrellas(comment.score);
 
+    let colorRandom=generarColorCSSAleatorio();
+   let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.user}&backgroundColor=${colorRandom}`;
+=======
+
+
     contenedorComentarios.innerHTML += `
             <div class = "border rounded mb-2 p-2 col">
+            <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
+            <div class="texto">
             <p><b>${comment.user}</b> - ${comment.dateTime} ${puntajeEstrellas} </p>            
             <p>${comment.description}</p>
+            </div>
             </div>
         `;
   }
@@ -101,11 +127,16 @@ function generarComment() {
       return date.replace("T", " ").slice(0, 19);
     },
   };
+  let colorRandom=generarColorCSSAleatorio();
+  let avatar=`https://api.dicebear.com/7.x/avataaars/svg?seed=${comentario.usuario}&backgroundColor=${colorRandom}`;
   creandoEstrellas(comentario.puntos);
   contenedorComentarios.innerHTML += `
             <div class = "border rounded mb-2 p-2 col">
+            <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
+            <div class="texto">
             <p><b>${comentario.usuario}</b> - ${comentario.fecha()} ${puntajeEstrellas}</p>            
             <p>${comentario.texto}</p>
+            </div>
             </div>
         `;
 }
