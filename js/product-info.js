@@ -39,11 +39,11 @@ function mostrarInfo(info) {
 
   contenedorCarrusel.innerHTML += `
     <div class="carousel-item active">
-      <img src="${info.images[3]}" class="d-block w-100">
+      <img src="${info.images[0]}" class="d-block w-100">
     </div>       
   `;
 
-  for (let i = 0; i < info.images.length -1; i++) {
+  for (let i = 1; i < info.images.length ; i++) {
     contenedorCarrusel.innerHTML += `
         <div class="carousel-item">
           <img src="${info.images[i]}" class="d-block w-100">
