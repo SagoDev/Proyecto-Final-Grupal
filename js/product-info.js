@@ -152,10 +152,7 @@ function mostrarRelacionados(info) {
           <h5 class="d-flex justify-content-center">${i.name}</h5>
           </div>
         </div>
-    </div>
-        
-     
-    `;
+    </div>`;
   }
 }
 
