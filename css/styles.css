@@ -413,10 +413,9 @@ body.dark-mode {
 #modoOscuroToggle{
   display: none
 }
-#dark-label{
-  color: #fff;
-  font-size: 1.5em;
+#dark-label:hover{
   cursor: pointer;
+  color: #000000;
 }
 #contenedorIndex {
   color: #000000;

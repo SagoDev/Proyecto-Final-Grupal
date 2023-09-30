@@ -56,17 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }else{
     let nombreDeUsuario = usuarioParse.email;
     document.getElementById('user').innerHTML= nombreDeUsuario.substring(0, nombreDeUsuario.indexOf('@'));
-  }
-  
-  // Funcionalidad para Logout con el botón salir
-  //   Elimina los datos del usuario del Local storage
-  //   Redirige a la página de Login
-  document.getElementById('salir').addEventListener('click', function() {
-    localStorage.removeItem('user');
-
-    location.href="login.html";
-  })
-  
+  } 
   // Función para cambiar entre el modo claro y oscuro
 function toggleModoOscuro() {
   // Obtener una referencia al elemento 'body' del documento y los botones
