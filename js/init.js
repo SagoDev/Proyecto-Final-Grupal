@@ -111,4 +111,10 @@ window.addEventListener('load', () => {
 const modoOscuroCheckbox = document.getElementById('modoOscuroToggle');
 modoOscuroCheckbox.addEventListener('change', toggleModoOscuro);
 
+
+  //Repito la función para que se cierre sesión al hacer click en Cerrar Sesión
+  document.getElementById("bye").addEventListener('click', function() {
+    localStorage.removeItem('user');
+    location.href="login.html";
+  })
 });

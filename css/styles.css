@@ -27,6 +27,14 @@ body {
 nav a {
   text-decoration: none;
 }
+.navbar {
+  background-color: #000000;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 4990;
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -48,8 +56,8 @@ nav a {
 }
 
 .sombra {
-  box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74);  
-  border-radius: 10px;
+  box-shadow:  0px 0px 70px rgba(0, 0, 0, 0.74);  
+  border-radius: 5px;
 }
 
 .contenedor-producto {
@@ -82,7 +90,7 @@ nav a {
 .jumbotron .container {
   max-width: 40rem;
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
+  border-radius: 5px;
   text-shadow: 1px 1px 2px grey;
 }
 
@@ -243,7 +251,7 @@ a.custom-card:hover {
 .imagen-producto {
   max-width: 100%;
   border: 1px solid grey;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: transform 0.2s;
 
 }
@@ -323,7 +331,7 @@ a.custom-card:hover {
 .img-thumbnail {
   max-width: 100%;
   border: 1px solid grey;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: transform 0.2s;
 }
 
@@ -350,12 +358,15 @@ a.custom-card:hover {
   filter: contrast(120%);
 }
 
+#contenedor-relacionados{
+  font-family: raleway;
+}
+
 .estrellas{
   display: flex; /*para alinear de forma horizontal las estrellas*/
-  margin-top: -10px;
+  margin-top: -5px;
   flex-direction:row-reverse;/*invierte el orden en que se ven las estrellas, quedan de derecha a izquierda*/
   float: left;
-  font-size: 20px;
   gap: 5px;
 }
 .estrellas>input{
@@ -375,7 +386,7 @@ label:hover ~ label .bi-star::before {
 input:checked ~ label  .bi-star::before { 
   content: "\f586"; /* con esto me aseguro que al hacer check en una estrella, cambie el contenido de todos los iconos que vienen despues del que está checkeado */
 }
-i{
+.estrellita{
   color:rgb(243, 162, 11);
 }
 .no-resize {
@@ -414,3 +425,32 @@ body.dark-mode {
   color: #000;
 }
 /* Fin de Estilos para el modo oscuro */
+
+/*Estilo menú desplegable*/
+.dropdown-menu {
+  background-color: #000000;
+  overflow: hidden; 
+}
+.dropdown-item{
+  color: orange;
+  transition: .5s, color .8s;
+      -webkit-transition: .5s, color .8s;
+      -moz-transition: .5s, color .8s;    
+}
+.dropdown-item:hover{
+  transform: translatex(5px);
+      -webkit-transform: translatex(5px);
+      -moz-transform: translatex(5px);
+      font-size: large;
+}
+
+/*Estilo avatar*/    
+.avatar{
+  width: 70px;
+  height: 70px;
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+  margin-right: 12px; 
+}
