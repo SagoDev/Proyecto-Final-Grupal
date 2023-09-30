@@ -18,7 +18,7 @@ body {
   background-size: 400px;
   
   background-color: rgb(248, 249, 250);
-  
+  transition: all 1.5s ease;
 }
 .jumbotron .display-4 {
   font-weight: bold;
@@ -392,6 +392,40 @@ input:checked ~ label  .bi-star::before {
 .no-resize {
   resize: none;
 }
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #090717f2;
+  color: #fff;
+  transition: all 1.5s ease;
+}
+.dark-mode-button-active {
+  background: #ffffff;
+  color: #090717f2;
+  transition: .9s ease;
+}
+.dark-mode-button-active:hover {
+  box-shadow: 0 0 10px #ffffff,
+              0 0 30px #ffffff,
+              0 0 70px #ffffff,
+              0 0 130px #ffffff;
+}
+#modoOscuroToggle{
+  display: none
+}
+#dark-label{
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+#contenedorIndex {
+  color: #000000;
+}
+#contInfoProd {
+  color: #000;
+}
+/* Fin de Estilos para el modo oscuro */
+
 /*Estilo menú desplegable*/
 .dropdown-menu {
   background-color: #000000;
