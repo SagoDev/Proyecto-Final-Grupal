@@ -63,7 +63,6 @@ function creandoEstrellas(puntajeUser) {
     }else{allStars += '<i class="bi bi-star estrellita"></i>';} //cuando ya no se cumple la condicion del if le agrega estrellas vacías al string
   } 
   puntajeEstrellas=allStars;
-=======
 
 
 }
@@ -88,7 +87,6 @@ function mostrarComments(comentarios) {
 
     let colorRandom=generarColorCSSAleatorio();
    let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.user}&backgroundColor=${colorRandom}`;
-=======
 
 
     contenedorComentarios.innerHTML += `
