@@ -350,6 +350,10 @@ a.custom-card:hover {
   filter: contrast(120%);
 }
 
+#contenedor-relacionados{
+  font-family: raleway;
+}
+
 .estrellas{
   display: flex; /*para alinear de forma horizontal las estrellas*/
   margin-top: -10px;
