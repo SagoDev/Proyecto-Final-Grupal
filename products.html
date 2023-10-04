@@ -66,86 +66,82 @@
         </div>
       </div>
     </nav>
-    <main class="pb-5 container">
-      <div class="text-center p-5">
-        <h1>Productos</h1>
-        <h4>
-          Verás aquí todos los productos de la categoría
-          <b id="nombreCategoria">Autos</b>
-        </h4>
-        <br />
-
-        <div class="btn-group d-flex flex-row-reverse" id="grupo-botones-1">
-          <input
+    <main>
+      <div class="container p-5">
+        <div class="productsTitle text-center">
+          <h1>Productos</h1>
+          <h4>Verás aquí todos los productos de la categoría <b id="nombreCategoria">Autos</b></h4>          
+        </div>
+        <div class="btnInterface row">
+          <div class="searchBar " id="grupo-botones-1">
+            <input
             type="search"
             placeholder="Buscar..."
             id="buscar"
             name="búsqueda"
-            class="products-filter m-1 border border-dark rounded"
-          />
-          <div class="m-1">
+            class="products-filter border border-dark rounded"
+            />
+            <div class="orderBtns">
             <input
-              class="btn-check"
-              type="radio"
-              name="opciones"
-              id="precio"
-              checked
+                class="btn-check"
+                type="radio"
+                name="opciones"
+                id="precio"
+                checked
             />
             <label
-              class="btn btn-light border border-1 border-dark"
-              for="precio"
-              ><i id="sortPrecio" class="fas fa-sort-numeric-down mr-1"></i
+                class="btn btn-light border border-1 border-dark"
+                for="precio"
+                ><i id="sortPrecio" class="fas fa-sort-numeric-down mr-1"></i
             ></label>
-
-            <input
-              class="btn-check"
-              type="radio"
-              name="opciones"
-              id="relevancia"
-              checked
+              <input
+                class="btn-check"
+                type="radio"
+                name="opciones"
+                id="relevancia"
+                checked
             />
             <label
-              class="btn btn-light border border-1 border-dark"
-              for="relevancia"
-              ><i id="sortRelevancia" class="fas fa-sort-amount-down mr-1"></i
-            ></label>
+                class="btn btn-light border border-1 border-dark"
+                for="relevancia"
+                ><i id="sortRelevancia" class="fas fa-sort-amount-down mr-1"></i
+            ></label>          
+            </div>               
+            </div>
+          <div class="filter" id="grupo-botones-2">          
+            <div class="filterBoxes">
+              <div class="filterBoxMin">
+              <input
+                class="form-control border border-dark"
+                type="number"
+                placeholder="min."
+                id="rangeFilterCountMin"
+              />
+              </div> 
+              <div class="filterBoxMax">
+                <input
+                class="form-control border border-dark"
+                type="number"
+                placeholder="máx."
+                id="rangeFilterCountMax"
+                />
+              </div>
+            </div>
+            <div class="filterBtns">
+              <button class="btn btn-primary me-1" id="rangeFilterCount">
+              Filtrar
+              </button>
+              <button class="btn btn-primary me-1" id="clearRangeFilter">
+              Limpiar
+              </button>
+            </div>     
           </div>
         </div>
-        <br>
-    <div class="container" id="min-max">
-      <div class="row d-flex flex-row-reverse" id="grupo-botones-2">
-        <div class="col-2">
-            <button class="btn border border-dark" id="rangeFilterCount">
-              Filtrar
-            </button>
-            <button class="btn border border-dark" id="clearRangeFilter">
-              Limpiar
-            </button>
-        </div>
-        <div class="col-2">
-          <input
-            class="form-control border border-dark"
-            type="number"
-            placeholder="máx."
-            id="rangeFilterCountMax"
-          />
-        </div>
-        <div class="col-2">
-          <input
-            class="form-control border border-dark"
-            type="number"
-            placeholder="min."
-            id="rangeFilterCountMin"
-          />
-        </div>
-        <div class="col-1">
-          <label class="fs-4 p-1">Precio:</label>
+        <div class="listProducts col-sm-12" id="min-max">      
+          <div class="sombra" id="lista-productos">            
+          </div>
         </div>
       </div>
-        <br>
-        <div class="sombra" id="lista-productos"></div>
-        </div>
-    </div>
     </main>
     <footer class="text-muted">
       <div class="container">
