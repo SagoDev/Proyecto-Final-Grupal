@@ -1,3 +1,4 @@
+// Corre el programa
 document.addEventListener("DOMContentLoaded", async () => {
   let data = await getData(25801);
   console.log(data);
@@ -42,6 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // </div>
 // </div>`;
 
+// Hace fetch a la api y retorna los datos.
 const getData = async (userId) => {
   let response = await fetch(
     `https://japceibal.github.io/emercado-api/user_cart/${userId}.json`
@@ -50,10 +52,13 @@ const getData = async (userId) => {
   return data;
 };
 
+// Esta función itera el array con los productos y los muestra en pantalla
 const displayData = (products) => {
   const container = document.getElementById("container");
 
   let content = "";
+  // articles es la propiedad del objeto que retorna el fetch.
+  // Es un array con todos los productos
   for (let product of products.articles) {
     content = `
       
