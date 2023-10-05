@@ -60,10 +60,6 @@ nav a {
   border-radius: 5px;
 }
 
-.contenedor-producto {
-  background-color: rgb(248, 249, 250);
-}
-
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -251,18 +247,8 @@ a.custom-card:hover {
   transform: scale(1.03);
 }
 
-
-.contenedor-producto:hover {
-  background-color: aliceblue;
+.contenedor-producto{
   cursor: pointer;
-}
-
-.info-producto {
-  padding: 0 0 0 1.3rem;
-  width: 100%;
-  display: flex;
-  place-content: space-between;
-  text-align: start;
 }
 
 #salir {
