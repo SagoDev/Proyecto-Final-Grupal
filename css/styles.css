@@ -240,16 +240,7 @@ a.custom-card:hover {
 
 }
 
-.contenedor-producto h3 {
-  color: black;
-}
-
-.contenedor-imagen {
-  width: 40%;
-}
-
 .imagen-producto {
-  max-width: 100%;
   border: 1px solid grey;
   border-radius: 5px;
   transition: transform 0.2s;
@@ -306,14 +297,6 @@ a.custom-card:hover {
 
 #user {
   color: rgb(253, 182, 50);
-}
-
-#grupo-botones-1 {
-  margin-right: 0.5%;
-}
-
-#grupo-botones-2 {
-  margin-right: -1.65%;
 }
 
 #buscar:focus {

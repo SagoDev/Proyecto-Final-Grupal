@@ -54,17 +54,26 @@ function displayProducts(arr) {
   for (let i = 0; i < arr.length; i++) {
     let { soldCount, name, currency, cost, description, image, id} = arr[i];
     divContent += `
-    <div onclick="setProductID(${id})" class="contenedor-producto"> 
-    <div class="contenedor-imagen">
-                <img class="imagen-producto" src=${image}>
-            </div>
-    <div class="info-producto">
-        <div>
-            <h3 class="datos">${name} - ${currency} ${cost}</h3>
-            <p class="desc">${description} </p> 
+    <div onclick="setProductID(${id})" class="contenedor-producto text-dark row"> 
+        <div class="imagen-producto mb-3 col-sm-12 col-md-4 col-lg-4">
+            <img class="datos img-fluid" src=${image}>
         </div>
-        <p class="vendidos">${soldCount} vendidos</p>
-    </div>
+        <div class="row col-sm-12 col-md-8 col-lg-8 text-center text-md-start text-lg-start text-xg-start">            
+            <div class="col-md-12 col-lg-10">
+                <div class="mb-3">
+                    <h3 class="datos">${name}</h3>
+                </div>
+                <div class="mb-3">
+                    <h3 class="datos">${currency} ${cost}</h3>
+                </div>            
+                <div class="">
+                    <p class="datos">${description} </p> 
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-2 text-center text-md-start text-lg-end text-xg-end">
+                <p class="datos">${soldCount} vendidos</p>
+            </div>
+        </div>
     </div>
     `;
   }
