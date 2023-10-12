@@ -93,7 +93,7 @@ function mostrarComments(comentarios) {
             <div class = "border rounded mb-2 p-2 col">
             <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
             <div class="texto">
-            <p><b>${comment.user}</b> - ${comment.dateTime} ${puntajeEstrellas} </p>            
+            <p><b>${comment.user}</b> -</p> ${comment.dateTime} ${puntajeEstrellas} </p>            
             <p>${comment.description}</p>
             </div>
             </div>
