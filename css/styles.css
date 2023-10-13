@@ -60,10 +60,6 @@ nav a {
   border-radius: 5px;
 }
 
-.contenedor-producto {
-  background-color: rgb(248, 249, 250);
-}
-
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -240,16 +236,7 @@ a.custom-card:hover {
 
 }
 
-.contenedor-producto h3 {
-  color: black;
-}
-
-.contenedor-imagen {
-  width: 40%;
-}
-
 .imagen-producto {
-  max-width: 100%;
   border: 1px solid grey;
   border-radius: 5px;
   transition: transform 0.2s;
@@ -260,18 +247,8 @@ a.custom-card:hover {
   transform: scale(1.03);
 }
 
-
-.contenedor-producto:hover {
-  background-color: aliceblue;
+.contenedor-producto{
   cursor: pointer;
-}
-
-.info-producto {
-  padding: 0 0 0 1.3rem;
-  width: 100%;
-  display: flex;
-  place-content: space-between;
-  text-align: start;
 }
 
 #salir {
@@ -306,14 +283,6 @@ a.custom-card:hover {
 
 #user {
   color: rgb(253, 182, 50);
-}
-
-#grupo-botones-1 {
-  margin-right: 0.5%;
-}
-
-#grupo-botones-2 {
-  margin-right: -1.65%;
 }
 
 #buscar:focus {
@@ -451,10 +420,6 @@ body.dark-mode {
   overflow: hidden;
   border-radius: 50%;
   float: left;
-  margin-right: 12px; 
-}
-
-.contenedorDatos {
-  font-family: raleway;
-  font-size: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px; 
 }
