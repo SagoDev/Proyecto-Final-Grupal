@@ -90,14 +90,18 @@ function mostrarComments(comentarios) {
     let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.user}&backgroundColor=${colorRandom}`;
 
     contenedorComentarios.innerHTML += `
-            <div class = "border rounded mb-2 p-2 col">
-            <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
-            <div class="texto">
-            <p><b>${comment.user}</b> - ${comment.dateTime} ${puntajeEstrellas} </p>            
-            <p>${comment.description}</p>
+            <div class = "border rounded mb-2 p-2">
+              <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
+              <div class="texto">
+                <div class="row row-cols-auto">
+                  <div class="col p-0"><b>${comment.user}</b></div> <div class="col p-0 px-md-2">${comment.dateTime}</div> <div class="col p-0 px-md-3">${puntajeEstrellas}</div>
+                </div> 
+                 <div class="ml-5">           
+                  <p>${comment.description}</p>
+                </div>  
+              </div>
             </div>
-            </div>
-        `;
+           `;
   }
 }
 
@@ -129,16 +133,18 @@ function generarComment() {
   let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comentario.usuario}&backgroundColor=${colorRandom}`;
   creandoEstrellas(comentario.puntos);
   contenedorComentarios.innerHTML += `
-            <div class = "border rounded mb-2 p-2 col">
-            <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
-            <div class="texto">
-            <p><b>${
-              comentario.usuario
-            }</b> - ${comentario.fecha()} ${puntajeEstrellas}</p>            
-            <p>${comentario.texto}</p>
+            <div class = "border rounded mb-2 p-2">
+              <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
+              <div class="texto">
+                <div class="row row-cols-auto">
+                  <div class="col p-0"><b>${comentario.usuario}</b></div> <div class="col p-0 px-md-2">${comentario.fecha()}</div> <div class="col p-0 px-md-3">${puntajeEstrellas}</div>
+                </div> 
+                 <div class="ml-5">           
+                  <p>${comentario.texto}</p>
+                </div>  
+              </div>
             </div>
-            </div>
-        `;
+           `;
 }
 
 function mostrarRelacionados(info) {
