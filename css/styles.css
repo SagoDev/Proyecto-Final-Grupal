@@ -417,11 +417,10 @@ body.dark-mode {
   cursor: pointer;
   color: #000000;
 }
-#contenedorIndex {
+
+/* Id juntas para ahorrar código */
+#contenedorIndex, #contInfoProd, #carrito {
   color: #000000;
-}
-#contInfoProd {
-  color: #000;
 }
 /* Fin de Estilos para el modo oscuro */
 
@@ -452,9 +451,4 @@ body.dark-mode {
   border-radius: 50%;
   float: left;
   margin-right: 12px; 
-}
-
-.contenedorDatos {
-  font-family: raleway;
-  font-size: 20px;
 }
