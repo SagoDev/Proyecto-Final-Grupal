@@ -417,10 +417,11 @@ body.dark-mode {
   cursor: pointer;
   color: #000000;
 }
-
-/* Id juntas para ahorrar código */
-#contenedorIndex, #contInfoProd, #carrito {
+#contenedorIndex {
   color: #000000;
+}
+#contInfoProd {
+  color: #000;
 }
 /* Fin de Estilos para el modo oscuro */
 
