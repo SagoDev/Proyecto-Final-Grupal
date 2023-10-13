@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Es un array con todos los productos
     for (let product of products.articles) {
       content = `
-        <div class="col-md-2 col-lg-2 col-xl-2">
+        <div class="col-md-2 col-lg-2 col-xl-3">
           <img src=${product.image} class="rounded-3 mx-auto d-block w-50" alt="imagen del producto">
         </div>
-        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-3">
+        <div class="d-flex justify-content-center text-center align-content-center col-md-2 col-lg-2 col-xl-2">
           <p>${product.name}</p>
         </div>
         <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
