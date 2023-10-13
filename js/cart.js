@@ -1,17 +1,3 @@
-// Corre el programa
-document.addEventListener("DOMContentLoaded", async () => {
-  let data = await getData(25801);
-  console.log(data);
-  enviarLocalStorage(data);
-  let productsCart = JSON.parse(localStorage.getItem("productos"));
-  displayData(productsCart);
-  // Pauta 3
-  addEventListenerAInputs('pauta3Inputs', productsCart);
-  addEventListenerABtn('btnAumentar', productsCart)
-  addEventListenerABtn('btnRestar', productsCart)
-  // Pauta 3 
-});
-
 // Hace fetch a la api y retorna los datos.
 const getData = async (userId) => {
   let response = await fetch(
@@ -22,6 +8,7 @@ const getData = async (userId) => {
 };
 //Variable para guardar los productos existentes del localstorage si hay,sino queda un array vacio
 let productosCarrito = JSON.parse(localStorage.getItem("productos")) || [];
+
 //Funcion para enviar el producto del carrito de la api al localstorage
 function enviarLocalStorage(datos) {
   let producto = {
@@ -116,3 +103,17 @@ function actualizarCart(input, data, index) {
   // })
 
 }
+
+// Corre el programa
+document.addEventListener("DOMContentLoaded", async () => {
+  let data = await getData(25801);
+  console.log(data);
+  enviarLocalStorage(data);
+  let productsCart = JSON.parse(localStorage.getItem("productos"));
+  displayData(productsCart);
+  // Pauta 3
+  addEventListenerAInputs('pauta3Inputs', productsCart);
+  addEventListenerABtn('btnAumentar', productsCart)
+  addEventListenerABtn('btnRestar', productsCart)
+  // Pauta 3 
+});
