@@ -66,6 +66,13 @@ function displayData(arrayProductos) {
 };
 
 // Pauta 3
+function actualizarCart(input, data, index) {
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
+  console.log(arrayPrecios)
+
+
+  arrayPrecios[index].innerHTML = data[index].moneda + " " + (data[index].precioUnidad * input)
+}
 
 function addEventListenerAInputs(clase, data) {     //Data directamente de la variable data en linea 3 || Clases agregadas al input y al h5 del precio
   let inputs = Array.from(document.getElementsByClassName(clase));
@@ -89,19 +96,6 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
       actualizarCart(inputs[index].value, data, index)
     })
   })
-}
-
-function actualizarCart(input, data, index) {
-  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
-  console.log(arrayPrecios)
-
-
-  arrayPrecios[index].innerHTML = data[index].moneda + " " + (data[index].precioUnidad * input)
-
-  // arrayPrecios.forEach((Element, index) => {
-  //   Element.innerHTML = data[index].moneda + " " + (data[index].precioUnidad * input)
-  // })
-
 }
 
 // Corre el programa
