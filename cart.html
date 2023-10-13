@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>eMercado - Todo lo que busques está aquí</title>
-    <link rel="shortcut icon" href="img/ico.ico" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-  </head>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="shortcut icon" href="img/ico.ico">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark p-1">
@@ -41,15 +36,10 @@
               <button class="btn dropdown-toggle" type="button" id="user" data-bs-toggle="dropdown"
                 aria-expanded="false"></button>
               <ul class="dropdown-menu" aria-labelledby="user">
+                <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person-square iconoMenu"></i> Mi
+                    perfil</a></li>
                 <li>
-                  <a class="dropdown-item" href="my-profile.html"><i class="bi bi-person-square iconoMenu"></i> Mi
-                    perfil</a>
-                </li>
-                <li></li>
-                <li>
-                  <a class="dropdown-item" href="cart.html"><i class="bi bi-cart3 iconoMenu"></i> Mi carrito
-                  </a>
-                </li>
+                <li><a class="dropdown-item" href="cart.html"><i class="bi bi-cart3 iconoMenu"></i> Mi carrito </a></li>
                 <li>
                   <a class="dropdown-item">
                     <label class="" for="modoOscuroToggle" id="dark-label"><svg xmlns="http://www.w3.org/2000/svg"
@@ -57,13 +47,11 @@
                         <path
                           d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
                       </svg>Mago oscuro</label>
-                    <input type="checkbox" id="modoOscuroToggle" />
+                    <input type="checkbox" id="modoOscuroToggle">
                   </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" id="bye" href=""><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
-                    sesión</a>
-                </li>
+                <li><a class="dropdown-item" id="bye" href=""><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
+                    sesión</a></li>
               </ul>
             </div>
           </li>
@@ -84,27 +72,69 @@
               <div class="row d-flex align-items-center">
                 <div class="col-md-2 col-lg-2 col-xl-3">
                 </div>
-                <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
-                  <p class="fw-bolder">Nombre</p>
+                    <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
+                      <p class="fw-bolder">Nombre</p>
+                    </div>
+                    <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
+                      <p class="fw-bolder">Costo</p>
+                    </div>
+                    <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
+                      <p class="fw-bolder">Cantidad</p>
+                    </div>
+                    <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
+                      <p class="fw-bolder">Subtotal</p>
+                    </div>
+                    <hr class="d-none d-md-block d-lg-block d-xl-block" style="height: 2px; background: #000000">
+                  </div>
+                  <div class="row d-flex align-items-center contenedorDatos" id="container">
+                    <!-- Pauta 1 -->
+                  </div>
                 </div>
-                <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
-                  <p class="fw-bolder">Costo</p>
-                </div>
-                <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
-                  <p class="fw-bolder">Cantidad</p>
-                </div>
-                <div class="d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center text-center col-md-2 col-lg-2 col-xl-2">
-                  <p class="fw-bolder">Subtotal</p>
-                </div>
-                <hr class="d-none d-md-block d-lg-block d-xl-block" style="height: 2px; background: #000000">
               </div>
-              <div class="row d-flex align-items-center contenedorDatos" id="container">
-                <!-- Pauta 1 -->
-              </div>
-              <hr>
             </div>
-          </div>
+            <div class="pb-3">
+              <h5>Tipo de envío</h5>
+              <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                  <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
+                    required="">
+                  <label class="custom-control-label" for="goldradio">Premium 2 a 5 días (15%)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                  <label class="custom-control-label" for="premiumradio">Express 5 a 8 días (7%)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="standardradio" name="publicationType" type="radio" class="custom-control-input"
+                    required="">
+                  <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
+                </div>
+              </div>
+              <div class="pb-3">
+                <h5>Dirección de envío</h5>
+                <div class="container">
+                  <div class="row row-cols-2 grid gap-5">
+                    <div class="row col-6 p-2 g-col-6 d-grid">
+                      <label class="flex-row" for="calleEnvio">Calle</label>
+                      <input class="border border-secondary rounded-2 ms-2" type="text">
+                    </div>
+                    <div class="row col-4 p-2 g-col-6d-grid">
+                      <label class="flex-row" for="numeroEnvio">Número</label>
+                      <input class="border border-secondary rounded-2 ms-2" type="text">
+                    </div>
+                  </div>
+                  <div class="row row-cols-2 grid gap-5">
+                    <div class="row col-6 p-2 g-col-6 d-grid">
+                      <label class="flex-row" for="esquinaEnvio">Esquina</label>
+                      <input class="border border-secondary rounded-2 ms-2" type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
         </div>
+       </div>  
       </div>
   </main>
   <footer class="text-muted">
@@ -112,9 +142,7 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>
-        Este sitio forma parte de
-        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
       </p>
     </div>
   </footer>
@@ -130,4 +158,5 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
+
 </html>

@@ -20,6 +20,9 @@ function mostrarInfo(info) {
 
   titulo.innerHTML = `
   <h1 class='pt-2'>${info.name}</h1>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href=""><button class="btn btn-primary" type="button" id="comprar">Comprar</button></a>
+</div>
   <hr>
   `;
 
@@ -51,6 +54,34 @@ function mostrarInfo(info) {
         </div>       
         `;
   }
+   // Variable para acceder al botón y otra para el array de productos del carrito
+   let comprarBtn = document.getElementById("comprar");
+   let productosDelCarrito = [];
+
+// Verifico si tengo productos en el localStorage,si los tengo,los convierto en un objeto js y los agrego a una variable
+if (localStorage.getItem("productos")) {
+  productosDelCarrito = JSON.parse(localStorage.getItem("productos"));
+}
+//Función que al hacer click en comprar guardamos la info del producto en un objeto y lo enviamos al array y luego al local storage
+comprarBtn.addEventListener("click", function() {
+  let tituloProduct = info.name;
+  let monedaProducto= info.currency ;
+  let precioUn=info.cost;
+  let imagenSrc = info.images[0];
+  let cantidad=1;
+  // Creamos un objeto con la información que quiero usar del producto
+  let producto = {
+    titulo: tituloProduct,
+    imagenSrc: imagenSrc,
+    moneda: monedaProducto,
+    precioUnidad:precioUn,
+    cantidad:cantidad
+  };
+  // Añadimos el nuevo producto al array
+  productosDelCarrito.push(producto);
+  // Guardamos el array de productos en el localStorage 
+  localStorage.setItem("productos", JSON.stringify(productosDelCarrito));
+});
 }
 
 let puntajeEstrellas = "";
@@ -90,18 +121,14 @@ function mostrarComments(comentarios) {
     let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.user}&backgroundColor=${colorRandom}`;
 
     contenedorComentarios.innerHTML += `
-            <div class = "border rounded mb-2 p-2">
-              <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
-              <div class="texto">
-                <div class="row row-cols-auto">
-                  <div class="col p-0"><b>${comment.user}</b></div> <div class="col p-0 px-md-2">${comment.dateTime}</div> <div class="col p-0 px-md-3">${puntajeEstrellas}</div>
-                </div> 
-                 <div class="ml-5">           
-                  <p>${comment.description}</p>
-                </div>  
-              </div>
+            <div class = "border rounded mb-2 p-2 col">
+            <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
+            <div class="texto">
+            <p><b>${comment.user}</b> - ${comment.dateTime} ${puntajeEstrellas} </p>            
+            <p>${comment.description}</p>
             </div>
-           `;
+            </div>
+        `;
   }
 }
 
@@ -133,18 +160,16 @@ function generarComment() {
   let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comentario.usuario}&backgroundColor=${colorRandom}`;
   creandoEstrellas(comentario.puntos);
   contenedorComentarios.innerHTML += `
-            <div class = "border rounded mb-2 p-2">
-              <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
-              <div class="texto">
-                <div class="row row-cols-auto">
-                  <div class="col p-0"><b>${comentario.usuario}</b></div> <div class="col p-0 px-md-2">${comentario.fecha()}</div> <div class="col p-0 px-md-3">${puntajeEstrellas}</div>
-                </div> 
-                 <div class="ml-5">           
-                  <p>${comentario.texto}</p>
-                </div>  
-              </div>
+            <div class = "border rounded mb-2 p-2 col">
+            <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
+            <div class="texto">
+            <p><b>${
+              comentario.usuario
+            }</b> - ${comentario.fecha()} ${puntajeEstrellas}</p>            
+            <p>${comentario.texto}</p>
             </div>
-           `;
+            </div>
+        `;
 }
 
 function mostrarRelacionados(info) {
