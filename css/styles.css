@@ -452,3 +452,8 @@ body.dark-mode {
   float: left;
   margin-right: 12px; 
 }
+
+.contenedorDatos {
+  font-family: raleway;
+  font-size: 20px;
+}
