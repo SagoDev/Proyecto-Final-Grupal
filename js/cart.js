@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     arrayProductos.forEach(product => {
       container.innerHTML+= `
       <div class="col-md-2 col-lg-2 col-xl-2">
-        <img src=${product.imagenSrc} class="rounded-3 mx-auto d-block w-50" alt="imagen del producto">
+        <img src=${product.imagenSrc} class="rounded-3 pb-2 mx-auto d-block w-50" alt="imagen del producto">
       </div>
       <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-3">
         <p>${product.titulo}</p>
@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-1 text-end">
         <a href="#!" style="color: orange;"><i class="bi bi-trash"></i></a>
       </div>
-      <hr>
-  `;
+      <hr>`;
     });
   };
