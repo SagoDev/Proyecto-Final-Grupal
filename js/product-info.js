@@ -22,7 +22,7 @@ function mostrarInfo(info) {
   <h1 class='pt-2'>${info.name}</h1>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <a href=""><button class="btn btn-primary" type="button" id="comprar">Comprar</button></a>
-</div>
+  </div>
   <hr>
   `;
 
@@ -168,12 +168,12 @@ function generarComment() {
                 <div class="row row-cols-auto">
                   <div class="col p-0"><b>${comentario.usuario}</b></div> <div class="col p-0 px-md-2">${comentario.fecha()}</div> <div class="col p-0 px-md-3">${puntajeEstrellas}</div>
                 </div> 
-                 <div class="ml-5">           
+                <div class="ml-5">           
                   <p>${comentario.texto}</p>
                 </div>  
               </div>
             </div>`
-           ;
+          ;
 }
 
 function mostrarRelacionados(info) {
