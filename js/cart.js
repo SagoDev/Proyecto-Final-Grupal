@@ -46,7 +46,7 @@ function displayData(arrayProductos) {
       </div>
       <div class="col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
         <button class="btn btn-link px-2 btnRestar" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-         <i class="fas fa-minus" style="color: orange";"></i>
+        <i class="fas fa-minus" style="color: orange";"></i>
         </button>
         <input id="form1" min="1" name="quantity" value=${product.cantidad} type="number"
           class="form-control form-control-sm pauta3Inputs"/>
