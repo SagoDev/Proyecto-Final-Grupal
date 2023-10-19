@@ -32,6 +32,7 @@ function enviarLocalStorage(datos) {
 // Esta función itera el array con los productos y los muestra en pantalla
 function displayData(arrayProductos) {
   const container = document.getElementById("container");
+  const container2 = document.getElementById("container2")
   // Es un array con todos los productos del local storage
   arrayProductos.forEach(product => {
     container.innerHTML += `
@@ -62,7 +63,9 @@ function displayData(arrayProductos) {
       </div>
       <hr>
   `;
+  container2.innerHTML += `<p id="prueba"> </p>`;
   });
+  
 };
 
 // Pauta 3
@@ -81,6 +84,7 @@ function addEventListenerAInputs(clase, data) {     //Data directamente de la va
     Element.addEventListener('input', (event) => {
       console.log(event.target.value)
       actualizarCart(event.target.value, data, index)
+      actualizarSubtotal(event.target.value, data, index) // Agregado, no se sabe si funciona
     })
   })
 }
@@ -94,6 +98,7 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 
     Element.addEventListener('click', () => {
       actualizarCart(inputs[index].value, data, index)
+      actualizarSubtotal(inputs[index].value, data, index) // Agregado, no se sabe si funciona
     })
   })
 }
@@ -111,3 +116,65 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
 });
+
+
+
+//E6P1
+
+
+//Funcion que suma cada precio de producto
+function actualizarSubtotal(input, data, index) {
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
+  console.log(arrayPrecios)
+
+  let subtotal = 0;
+//////////////////////////////////////
+  if (data[index].moneda === "UYU") {
+    subtotal = subtotal + (data[index].precioUnidad * input) / 40;
+  } else {
+    subtotal = subtotal + (data[index].precioUnidad * input)
+  }
+////////////////////////////////////////
+  
+  //calcula costo de envío
+  let premium = document.getElementById("premiumradio").value;
+  let express = document.getElementById("expressradio").value;
+  let standard = document.getElementById("standardradio").value;
+  
+  
+  let costoEnvio = 0;
+
+  if(standard) {
+    costoEnvio = subtotal*0.05
+  } else if (express) {
+    costoEnvio = subtotal*0.07
+  } else if(premium) {
+    costoEnvio = subtotal*0.15
+  };
+
+  //Calculo Total a Pagar
+  let totalAPagar = costoEnvio + subtotal
+
+  //tirar a html
+  let dondeVa = document.getElementById("prueba")
+  dondeVa.innerHTML = "costo de envio " + costoEnvio + " despues, el subtotal " + subtotal + " el total a pagar " + totalAPagar 
+}
+
+
+
+
+//let premium = getElementById("premiumradio").value;
+//let express = getElementById("expressradio").value;
+//let standard = getElementById("standardradio").value;
+
+//if(standard) {
+//  calculo standard = subtotal*0.05
+//} else if (express) {
+//  calculo express = subtotal*0.07
+//} else if(premium) {
+//  calculo premium = subtotal*0.15
+//}
+
+//total = (subtotal*envio) + precioTotal USD
+
+//E6P1 
