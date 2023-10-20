@@ -63,9 +63,11 @@ function displayData(arrayProductos) {
       </div>
       <hr>
   `;
-  container2.innerHTML += `<p id="prueba"> </p>`;
+    container2.innerHTML += `
+      <p id="prueba"> </p>
+  `;
   });
-  
+
 };
 
 // Pauta 3
@@ -115,28 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnAumentar', productsCart)
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
-  
-  /// PRUEBAS RANDOOM ///
-  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));
 
-  let suma = 0;
-
-  arrayPrecios.forEach(function(precio) {
-    let numer = precio.innerHTML.substring(4, );
-    suma = suma + parseInt(numer);
-
-  });
-  console.log(suma);
- 
-
-  
-  let num = "USD 1540";
-  let numCompleto = num.substring(4, );
-  parseInt(numCompleto);
-  console.log(numCompleto);
-
-
-  
 });
 
 
@@ -146,36 +127,52 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 //Funcion que suma cada precio de producto
 function actualizarSubtotal(input, data, index) {
-  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
+
+
+
+
+  //////////////////Suma de los productos////////////////////
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));
+
   
-  
-
-
-
-  //////////////////////////////////////
   let subtotal = 0;
 
-  if (data[index].moneda === "UYU") {
-    subtotal = subtotal + (data[index].precioUnidad * input) / 40;
-  } else {
-    subtotal = subtotal + (data[index].precioUnidad * input)
-  }
-////////////////////////////////////////
+ // arrayPrecios.forEach(function (precio) {          suma de los valores sin el cambio de moneda funciona
+ //   let numer = precio.innerHTML.substring(4,);     falta implementear el if para cambiar de pesos a dolares.
+ //   suma = suma + parseInt(numer);
+
+ // });
+
+
   
+
+  ///////////////// Juan Corvo /////////////////////
+
+  arrayPrecios.forEach(function (precio) {
+    if (precio.innerHTML.includes("UYU")) {
+      subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)) / 40);
+    } else {
+      subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)));
+    }   
+  });
+  console.log(subtotal);
+
+  ////////////////////////////////////////
+
   //calcula costo de envío -- ahora funciona //////
   let premium = document.getElementById("premiumradio");
   let express = document.getElementById("expressradio");
   let standard = document.getElementById("standardradio");
-  
-  
+
+
   let costoEnvio = 0;
 
-  if(standard.checked) {
-    costoEnvio = subtotal*0.05;
+  if (standard.checked) {
+    costoEnvio = subtotal * 0.05;
   } else if (express.checked) {
-    costoEnvio = subtotal*0.07;
-  } else if(premium.checked) {
-    costoEnvio = subtotal*0.15;
+    costoEnvio = subtotal * 0.07;
+  } else if (premium.checked) {
+    costoEnvio = subtotal * 0.15;
   }
   //fin calculo costo de envio //////
 
@@ -184,26 +181,6 @@ function actualizarSubtotal(input, data, index) {
 
   //tirar a html
   let dondeVa = document.getElementById("prueba")
-  dondeVa.innerHTML = "costo de envio " + costoEnvio + " despues, el subtotal " + subtotal + " el total a pagar " + totalAPagar 
+  dondeVa.innerHTML = "costo de envio " + costoEnvio + " despues, el subtotal " + subtotal + " el total a pagar " + totalAPagar
 }
 
-
-
-
-//let premium = document.getElementById("premiumradio");
-//let express = document.getElementById("expressradio");
-//let standard = document.getElementById("standardradio");
-
-//let costoEnvio = 0;
-
-//function calcularCostoEnvio() {
-//  if (premium.checked) {
-//    costoEnvio = subtotal * 0.15;
-//  } else if (express.checked) {
-//    costoEnvio = subtotal * 0.07;
-//  } else if (standard.checked) {
-//    costoEnvio = subtotal * 0.05;
-//  }
-//}
-
-//E6P1 
