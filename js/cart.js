@@ -115,6 +115,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnAumentar', productsCart)
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
+  
+  /// PRUEBAS RANDOOM ///
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));
+
+  let suma = 0;
+
+  arrayPrecios.forEach(function(precio) {
+    let numer = precio.innerHTML.substring(4, );
+    suma = suma + parseInt(numer);
+
+  });
+  console.log(suma);
+ 
+
+  
+  let num = "USD 1540";
+  let numCompleto = num.substring(4, );
+  parseInt(numCompleto);
+  console.log(numCompleto);
+
+
+  
 });
 
 
@@ -125,10 +147,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 //Funcion que suma cada precio de producto
 function actualizarSubtotal(input, data, index) {
   let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
-  console.log(arrayPrecios)
+  
+  
 
+
+
+  //////////////////////////////////////
   let subtotal = 0;
-//////////////////////////////////////
+
   if (data[index].moneda === "UYU") {
     subtotal = subtotal + (data[index].precioUnidad * input) / 40;
   } else {
@@ -136,21 +162,22 @@ function actualizarSubtotal(input, data, index) {
   }
 ////////////////////////////////////////
   
-  //calcula costo de envío
-  let premium = document.getElementById("premiumradio").value;
-  let express = document.getElementById("expressradio").value;
-  let standard = document.getElementById("standardradio").value;
+  //calcula costo de envío -- ahora funciona //////
+  let premium = document.getElementById("premiumradio");
+  let express = document.getElementById("expressradio");
+  let standard = document.getElementById("standardradio");
   
   
   let costoEnvio = 0;
 
-  if(standard) {
-    costoEnvio = subtotal*0.05
-  } else if (express) {
-    costoEnvio = subtotal*0.07
-  } else if(premium) {
-    costoEnvio = subtotal*0.15
-  };
+  if(standard.checked) {
+    costoEnvio = subtotal*0.05;
+  } else if (express.checked) {
+    costoEnvio = subtotal*0.07;
+  } else if(premium.checked) {
+    costoEnvio = subtotal*0.15;
+  }
+  //fin calculo costo de envio //////
 
   //Calculo Total a Pagar
   let totalAPagar = costoEnvio + subtotal
@@ -163,18 +190,20 @@ function actualizarSubtotal(input, data, index) {
 
 
 
-//let premium = getElementById("premiumradio").value;
-//let express = getElementById("expressradio").value;
-//let standard = getElementById("standardradio").value;
+//let premium = document.getElementById("premiumradio");
+//let express = document.getElementById("expressradio");
+//let standard = document.getElementById("standardradio");
 
-//if(standard) {
-//  calculo standard = subtotal*0.05
-//} else if (express) {
-//  calculo express = subtotal*0.07
-//} else if(premium) {
-//  calculo premium = subtotal*0.15
+//let costoEnvio = 0;
+
+//function calcularCostoEnvio() {
+//  if (premium.checked) {
+//    costoEnvio = subtotal * 0.15;
+//  } else if (express.checked) {
+//    costoEnvio = subtotal * 0.07;
+//  } else if (standard.checked) {
+//    costoEnvio = subtotal * 0.05;
+//  }
 //}
-
-//total = (subtotal*envio) + precioTotal USD
 
 //E6P1 
