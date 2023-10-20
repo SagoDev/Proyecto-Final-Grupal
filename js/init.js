@@ -107,4 +107,16 @@ modoOscuroCheckbox.addEventListener('change', toggleModoOscuro);
     localStorage.removeItem('user');
     location.href="login.html";
   })
+
+  const wrapper = document.getElementById('wrapper');
+  const seleccionar = document.getElementById('btn-seleccionar');
+  const close = document.getElementById('close');
+  
+  seleccionar.addEventListener('click', ()=> {
+      wrapper.classList.add('active');
+  });
+  
+  close.addEventListener('click', ()=> {
+      wrapper.classList.remove('active');
+  });
 });
