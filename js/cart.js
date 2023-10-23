@@ -32,7 +32,6 @@ function enviarLocalStorage(datos) {
 // Esta función itera el array con los productos y los muestra en pantalla
 function displayData(arrayProductos) {
   const container = document.getElementById("container");
-  const container2 = document.getElementById("container2")
   // Es un array con todos los productos del local storage
   arrayProductos.forEach(product => {
     container.innerHTML += `
@@ -62,9 +61,6 @@ function displayData(arrayProductos) {
         <a href="#!" style="color: orange;"><i class="bi bi-trash"></i></a>
       </div>
       <hr>
-  `;
-    container2.innerHTML += `
-      <p id="prueba"> </p>
   `;
   });
 
@@ -180,7 +176,14 @@ function actualizarSubtotal(input, data, index) {
   let totalAPagar = costoEnvio + subtotal
 
   //tirar a html
-  let dondeVa = document.getElementById("prueba")
-  dondeVa.innerHTML = "costo de envio " + costoEnvio + " despues, el subtotal " + subtotal + " el total a pagar " + totalAPagar
+  let cPrecioSuma = document.getElementById('contenedorSuma');
+  let cEnvio = document.getElementById('contenedorEnvio');
+  let cTotal = document.getElementById('contenedorTotal');
+
+
+  cPrecioSuma.innerHTML = "USD " + subtotal;
+  cEnvio.innerHTML = "USD " + costoEnvio;
+  cTotal.innerHTML = "USD " + totalAPagar;
+
 }
 
