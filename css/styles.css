@@ -5,7 +5,7 @@
   font-family: 'Verdana', serif !important;
 }
 
-#divLogin, #contInfoProd {
+#contInfoProd {
   background-color: #ffff;
 }
 
@@ -422,17 +422,6 @@ body.dark-mode {
 }
 
 /*Estilo Login*/
-.right-box{
-  background-color: #000000;  
-}
-
-.left-box .imgLeftBox img{
-  width: 250px;
-}
-
-.left-box{
-}
-
 .box-area{
-  width: 930px;
+  width: 750px;
 }
