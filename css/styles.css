@@ -420,3 +420,19 @@ body.dark-mode {
   margin-right: 20px; 
   margin-bottom: 10px;
 }
+
+/*Estilo Login*/
+.right-box{
+  background-color: #000000;  
+}
+
+.left-box .imgLeftBox img{
+  width: 250px;
+}
+
+.left-box{
+}
+
+.box-area{
+  width: 930px;
+}
