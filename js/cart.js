@@ -82,7 +82,7 @@ function addEventListenerAInputs(clase, data) {     //Data directamente de la va
     Element.addEventListener('input', (event) => {
       console.log(event.target.value)
       actualizarCart(event.target.value, data, index)
-      actualizarSubtotal(event.target.value, data, index) // Agregado, no se sabe si funciona
+      actualizarSubtotal() // Agregado, no se sabe si funciona
     })
   })
 }
@@ -96,7 +96,7 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 
     Element.addEventListener('click', () => {
       actualizarCart(inputs[index].value, data, index)
-      actualizarSubtotal(inputs[index].value, data, index) // Agregado, no se sabe si funciona
+      actualizarSubtotal() // Agregado, no se sabe si funciona
     })
   })
 }
@@ -113,7 +113,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnAumentar', productsCart)
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
-
+  // Entrega 6 Pauta 1
+  actualizarSubtotal();
+  listenerRadio();
 });
 
 
@@ -122,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 //Funcion que suma cada precio de producto
-function actualizarSubtotal(input, data, index) {
+function actualizarSubtotal() {
 
 
 
@@ -181,9 +183,18 @@ function actualizarSubtotal(input, data, index) {
   let cTotal = document.getElementById('contenedorTotal');
 
 
-  cPrecioSuma.innerHTML = "USD " + subtotal;
-  cEnvio.innerHTML = "USD " + costoEnvio;
-  cTotal.innerHTML = "USD " + totalAPagar;
+  cPrecioSuma.innerHTML = "USD " + subtotal.toFixed(2);
+  cEnvio.innerHTML = "USD " + costoEnvio.toFixed(2);
+  cTotal.innerHTML = "USD " + totalAPagar.toFixed(2);
 
 }
 
+function listenerRadio(){
+  let standard = document.getElementById('standardradio');
+  let express = document.getElementById('expressradio');
+  let premium = document.getElementById('premiumradio');
+
+  standard.addEventListener("click", actualizarSubtotal);
+  express.addEventListener("click", actualizarSubtotal);
+  premium.addEventListener("click", actualizarSubtotal);
+};
