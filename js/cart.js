@@ -97,29 +97,36 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
     })
   })
 }
-//entrega6 pauta 3,probando funcion validar
-function addInvalidClass(){  
-  let input1=document.getElementById("calle");
-  let input2=document.getElementById("numero");
-  let input3=document.getElementById("esquina");  
 
-  if(input1.value === ""){
-  input1.classList.add('is-invalid');
-  input1.classList.remove("border-secondary");
-  input1.classList.add("border-danger")
-  }else{
-  input1.classList.remove('is-invalid');
-  input1.classList.remove("border-danger");
-  input1.classList.add("border-secondary")}
-  
-  input2.value ===""
-  ?input2.classList.add('is-invalid')
-  :input2.classList.remove('is-invalid');
-  
-  input3.value===""
-  ?input3.classList.add('is-invalid')
-  :input3.classList.remove('is-invalid');
-  
+
+//entrega6 pauta 3,probando funcion validar
+
+function addInvalidClass() {
+  const inputIds = ["calle", "numero", "esquina"];
+
+  inputIds.forEach((id) => {
+    const input = document.getElementById(id);
+
+    if (input.value === "") {
+      input.classList.add("is-invalid");
+      input.classList.remove("border-secondary");
+      input.classList.add("border-danger");
+    } else {
+      input.classList.remove("is-invalid");
+      input.classList.remove("border-danger");
+      input.classList.add("border-secondary");
+    }
+
+    if (id === "numero") {
+      // Expresión regular específica para el campo "numero".
+      const numeroRegex = /^\d+$/;
+      if (!numeroRegex.test(input.value)) {
+        input.classList.add("is-invalid");
+        input.classList.remove("border-secondary");
+        input.classList.add("border-danger");
+      }
+    }
+  });
 }
 
 // Corre el programa
