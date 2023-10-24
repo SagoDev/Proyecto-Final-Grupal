@@ -97,6 +97,30 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
     })
   })
 }
+//entrega6 pauta 3,probando funcion validar
+function addInvalidClass(){  
+  let input1=document.getElementById("calle");
+  let input2=document.getElementById("numero");
+  let input3=document.getElementById("esquina");  
+
+  if(input1.value === ""){
+  input1.classList.add('is-invalid');
+  input1.classList.remove("border-secondary");
+  input1.classList.add("border-danger")
+  }else{
+  input1.classList.remove('is-invalid');
+  input1.classList.remove("border-danger");
+  input1.classList.add("border-secondary")}
+  
+  input2.value ===""
+  ?input2.classList.add('is-invalid')
+  :input2.classList.remove('is-invalid');
+  
+  input3.value===""
+  ?input3.classList.add('is-invalid')
+  :input3.classList.remove('is-invalid');
+  
+}
 
 // Corre el programa
 document.addEventListener("DOMContentLoaded", async () => {
@@ -110,4 +134,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnAumentar', productsCart)
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
+ 
+  let btnFinalizarCompra= document.getElementById("finalizar-compra");
+  btnFinalizarCompra.addEventListener("click",()=>{
+    addInvalidClass();
+  })
+
 });

@@ -420,3 +420,6 @@ body.dark-mode {
   margin-right: 20px; 
   margin-bottom: 10px;
 }
+.rounded-2{
+  border-color: #1f1e1e;
+}

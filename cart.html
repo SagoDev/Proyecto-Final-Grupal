@@ -11,6 +11,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -94,7 +95,7 @@
             </div>
             <div class="pb-3">
               <h5>Tipo de envío</h5>
-              <div class="d-block my-3">
+              <div class="d-block my-3" >
                 <div class="custom-control custom-radio">
                   <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
                     required="">
@@ -109,6 +110,7 @@
                     required="">
                   <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
                 </div>
+                <div class="invalid-feedback">Selecciona una de las opciones de envío</div>
               </div>
               <div class="pb-3">
                 <h5>Dirección de envío</h5>
@@ -116,20 +118,26 @@
                   <div class="row row-cols-2 grid gap-5">
                     <div class="row col-6 p-2 g-col-6 d-grid">
                       <label class="flex-row" for="calleEnvio">Calle</label>
-                      <input class="border border-secondary rounded-2 ms-2" type="text">
+                      <input class=" border-secondary rounded-2 ms-2 form-control" type="text" id="calle" required>
+                      <div class="invalid-feedback">Ingresa una calle</div>
                     </div>
                     <div class="row col-4 p-2 g-col-6d-grid">
                       <label class="flex-row" for="numeroEnvio">Número</label>
-                      <input class="border border-secondary rounded-2 ms-2" type="text">
+                      <input class=" border-secondary rounded-2 ms-2 form-control" type="text" id="numero" required>
+                      <div class="invalid-feedback">Ingresa un número</div>
                     </div>
                   </div>
                   <div class="row row-cols-2 grid gap-5">
                     <div class="row col-6 p-2 g-col-6 d-grid">
                       <label class="flex-row" for="esquinaEnvio">Esquina</label>
-                      <input class="border border-secondary rounded-2 ms-2" type="text">
+                      <input class=" border-secondary rounded-2 ms-2 form-control" type="text" id="esquina" required>
+                      <div class="invalid-feedback">Ingresa una esquina</div>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="btn-here d-grid gap-2 col-10 mx-auto">
+                <button type="button" class="btn btn-primary " id="finalizar-compra">Finalizar compra</button>
               </div>
             </div>
           </div>          
