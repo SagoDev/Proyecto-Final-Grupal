@@ -135,32 +135,39 @@
             <hr>
             <h2 class="h2-pago">Formas de pago</h2>
             <br>
-            <p class="p-pago">No ha seleccionado <button id="btn-seleccionar">Seleccionar</button></p>
-            <div class="div-pago">
-              <div class="wrapper" id="wrapper">
-                <div class="wrapper-box pago">
-                    <h2><b>Forma de Pago</b></h2>
-                    <hr>
-                    <form action="#">
-                        <div class="input-box">
-                            <label><input type="radio" name="forma-de-pago" value="Tarjeta-de-credito">Tarjeta de crédito</label>
-                        </div>
-                        <hr>
-                        <div class="input-box">
-                            <label for="">Número de tarjeta<input type="number"></label>
-                            <label for="">Código de seguridad<input type="number"></label>
-                            <label for="">Vencimiento (MM/AA)<input type="month"></label>
-                            <label><input type="radio" name="forma-de-pago" value="Transferencia-bancaria">Transferencia bancaria</label>
-                        </div>
-                        <hr>
-                        <div class="input-box">
-                            <label>Número de cuenta<input type="number"></label>
-                        </div>
-                    </form>
-                    <hr>
-                      <button class="btn btn-primary" id="close">Cerrar</button>
-                </div>
+            <div class="row">
+            <p class="p-pago mt-3">No ha seleccionado <a class="link-offset-3" data-bs-toggle="modal" data-bs-target="#ModalFormaDePago">Seleccionar</a></p>
             </div>
+            <div class="modal fade" id="ModalFormaDePago" tabindex="-1" aria-labelledby="ModalFormaDePago" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ModalFormaDePago">Forma de pago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                      <div class="input-box tarjeta" id="tarjeta">
+                          <label><input type="radio" id="Tarjeta-de-credito" name="forma-de-pago" value="Tarjeta-de-credito"> Tarjeta de crédito</label>
+                          <hr>
+                          <div class="row">
+                          <label class="form-label col-sm-6" for="">Número de tarjeta<input class="form-control" type="number" disabled></label>
+                          <label class="form-label col-sm-4" for="">Código de seg.<input class="form-control" type="number" disabled></label>
+                          <label class="form-label col-sm-6" for="">Vencimiento (MM/AA)<input class="form-control mt-1" type="month" disabled></label>
+                          </div>
+                      </div>
+                      <div class="input-box bancaria mt-2" id="bancaria">
+                          <label><input type="radio" id="Transferencia-bancaria" name="forma-de-pago" value="Transferencia-bancaria"> Transferencia bancaria</label>
+                          <hr>
+                          <div class="row">
+                          <label class="form-label col-sm-6" for="">Número de cuenta<input class="form-control" type="number" disabled id="inputBank"></label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>          
         </div>
