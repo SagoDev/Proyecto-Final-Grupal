@@ -115,6 +115,7 @@ let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
 let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
 let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
 let inputBank = document.getElementById("inputBank")
+let fDM = document.getElementById("fDM")
 
 btnRadioCredito.addEventListener("click", () => {
   inputBank.disabled = true;
@@ -122,6 +123,7 @@ btnRadioCredito.addEventListener("click", () => {
   for (input of inputsTar) {
     input.disabled = false;
   }
+  fDM.innerHTML = "Tarjeta de Crédito";
 
 })
 
@@ -131,6 +133,8 @@ btnRadioBancaria.addEventListener("click", () => {
     input.value = "";
   }
   inputBank.disabled = false;
+  fDM.innerHTML = "Transferencia Bancaria";
+  
 })
 
 });

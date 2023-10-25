@@ -136,7 +136,7 @@
             <h2 class="h2-pago">Formas de pago</h2>
             <br>
             <div class="row">
-            <p class="p-pago mt-3">No ha seleccionado <a class="link-offset-3" data-bs-toggle="modal" data-bs-target="#ModalFormaDePago">Seleccionar</a></p>
+            <p class="mt-3"><spam id="fDM">No ha seleccionado</spam><a class="link-offset-3 mx-3" data-bs-toggle="modal" data-bs-target="#ModalFormaDePago">Seleccionar</a></p>
             </div>
             <div class="modal fade" id="ModalFormaDePago" tabindex="-1" aria-labelledby="ModalFormaDePago" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -146,7 +146,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body px-4">
-                      <div class="input-box tarjeta" id="tarjeta">
+                      <div class="tarjeta" id="tarjeta">
                           <label><input type="radio" id="Tarjeta-de-credito" name="forma-de-pago" value="Tarjeta-de-credito"> Tarjeta de crédito</label>
                           <hr>
                           <div class="row">
@@ -155,11 +155,11 @@
                           <label class="form-label col-sm-6" for="">Vencimiento (MM/AA)<input class="form-control mt-1" type="month" disabled></label>
                           </div>
                       </div>
-                      <div class="input-box bancaria mt-2" id="bancaria">
+                      <div class="bancaria mt-2" id="bancaria">
                           <label><input type="radio" id="Transferencia-bancaria" name="forma-de-pago" value="Transferencia-bancaria"> Transferencia bancaria</label>
                           <hr>
                           <div class="row">
-                          <label class="form-label col-sm-6" for="">Número de cuenta<input class="form-control" type="number" disabled id="inputBank"></label>
+                          <label class="form-label col-sm-6" for="">Número de cuenta<input class="form-control" type="number" id="inputBank" disabled></label>
                           </div>
                       </div>
                   </div>
