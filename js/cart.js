@@ -108,6 +108,7 @@ function addInvalidClass() {
     const input = document.getElementById(id);
 
     if (input.value === "") {
+      input.classList.remove("is-valid");
       input.classList.add("is-invalid");
       input.classList.remove("border-secondary");
       input.classList.add("border-danger");
@@ -115,12 +116,14 @@ function addInvalidClass() {
       input.classList.remove("is-invalid");
       input.classList.remove("border-danger");
       input.classList.add("border-secondary");
+      input.classList.add("is-valid");
     }
 
     if (id === "numero") {
       // Expresión regular específica para el campo "numero".
       const numeroRegex = /^\d+$/;
       if (!numeroRegex.test(input.value)) {
+        input.classList.remove("is-valid");
         input.classList.add("is-invalid");
         input.classList.remove("border-secondary");
         input.classList.add("border-danger");
@@ -141,7 +144,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnAumentar', productsCart)
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
- 
+  //pauta2(entrega6)
+  let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
+  let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
+  let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
+  let inputBank = document.getElementById("inputBank")
+  let fDM = document.getElementById("fDM")
+btnRadioCredito.addEventListener("click", () => {
+  inputBank.disabled = true;
+  inputBank.value = "";
+  for (input of inputsTar) {
+    input.disabled = false;
+  }
+  fDM.innerHTML = "Tarjeta de Crédito";
+})
+btnRadioBancaria.addEventListener("click", () => {
+  for (input of inputsTar) {
+    input.disabled = true;
+    input.value = "";
+  }
+  inputBank.disabled = false;
+  fDM.innerHTML = "Transferencia Bancaria";
+})
+ //pauta3(entrega6) 
   let btnFinalizarCompra= document.getElementById("finalizar-compra");
   btnFinalizarCompra.addEventListener("click",()=>{
     addInvalidClass();
