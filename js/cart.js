@@ -125,26 +125,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 //Funcion que suma cada precio de producto
 function actualizarSubtotal() {
-
-
-
-
-  //////////////////Suma de los productos////////////////////
-  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));
-
-  
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));  
   let subtotal = 0;
-
- // arrayPrecios.forEach(function (precio) {          suma de los valores sin el cambio de moneda funciona
- //   let numer = precio.innerHTML.substring(4,);     falta implementear el if para cambiar de pesos a dolares.
- //   suma = suma + parseInt(numer);
-
- // });
-
-
-  
-
-  ///////////////// Juan Corvo /////////////////////
 
   arrayPrecios.forEach(function (precio) {
     if (precio.innerHTML.includes("UYU")) {
@@ -154,8 +136,6 @@ function actualizarSubtotal() {
     }   
   });
   console.log(subtotal);
-
-  ////////////////////////////////////////
 
   //calcula costo de envío -- ahora funciona //////
   let premium = document.getElementById("premiumradio");
