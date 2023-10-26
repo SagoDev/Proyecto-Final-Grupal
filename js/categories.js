@@ -6,6 +6,9 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+
+// Ordena un arreglo según el criterio que le pidas
+//    Criterios: Nombre ascendente / Nombre descendente / Cantidad de productos
 function sortCategories(criteria, array) {
   let result = [];
   if (criteria === ORDER_ASC_BY_NAME) {
@@ -46,11 +49,17 @@ function sortCategories(criteria, array) {
   return result;
 }
 
+//  Setea el id de una categoría en local storage
+//  Redirige a la página de la categoría seleccionada
 function setCatID(id) {
   localStorage.setItem("catID", id);
   window.location = "products.html";
 }
 
+
+// Muestra la lista de categorías
+//    Crea el array con la lista de categorías
+//    Lo agrega en el container en HTML
 function showCategoriesList() {
   let htmlContentToAppend = "";
   for (let i = 0; i < currentCategoriesArray.length; i++) {
@@ -86,6 +95,8 @@ function showCategoriesList() {
   }
 }
 
+
+//  Utiliza sortCategories y muestra las caterogías ordenadas con ShowCategories
 function sortAndShowCategories(sortCriteria, categoriesArray) {
   currentSortCriteria = sortCriteria;
 
@@ -98,22 +109,20 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
     currentCategoriesArray
   );
 
-  //Muestro las categorías ordenadas
   showCategoriesList();
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+// Cuando se carga la página
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CATEGORIES_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       currentCategoriesArray = resultObj.data;
       showCategoriesList();
-      //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+      //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);////////////////////////
     }
   });
 
+  //  Escucha los botones para reordenar el array de categorías
   document.getElementById("sortAsc").addEventListener("click", function () {
     sortAndShowCategories(ORDER_ASC_BY_NAME);
   });
@@ -126,6 +135,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     sortAndShowCategories(ORDER_BY_PROD_COUNT);
   });
 
+
+  //  Limpia los filtros de rango
   document
     .getElementById("clearRangeFilter")
     .addEventListener("click", function () {
@@ -138,11 +149,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
       showCategoriesList();
     });
 
+
+  //  Aplica filtro de rango usando los inputs en HTML   
   document
     .getElementById("rangeFilterCount")
     .addEventListener("click", function () {
-      //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-      //de productos por categoría.
+            
       minCount = document.getElementById("rangeFilterCountMin").value;
       maxCount = document.getElementById("rangeFilterCountMax").value;
 
@@ -161,3 +173,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       showCategoriesList();
     });
 });
+
+
+
+//  No se que es lo comentado en la linea 121

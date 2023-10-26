@@ -1,6 +1,5 @@
 const apiProducts = "https://japceibal.github.io/emercado-api/products/";
-const apiComments =
-  "https://japceibal.github.io/emercado-api/products_comments/";
+const apiComments ="https://japceibal.github.io/emercado-api/products_comments/";
 
 let id = localStorage.getItem("ProductID");
 
@@ -222,6 +221,7 @@ function imageZoom() {
   });
 }
 
+// Cuando se carga la página
 document.addEventListener("DOMContentLoaded", () => {
   const enviarComment = document.getElementById("enviar-comment");
   enviarComment.addEventListener("click", () => {
