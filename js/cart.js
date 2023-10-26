@@ -101,13 +101,13 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 
 //entrega6 pauta 3,probando funcion validar
 
-function addInvalidClass() {
+function validar(){
   const inputIds = ["calle", "numero", "esquina"];
 
   inputIds.forEach((id) => {
     const input = document.getElementById(id);
 
-    if (input.value === "") {
+    if (!input.checkValidity()) {
       input.classList.remove("is-valid");
       input.classList.add("is-invalid");
       input.classList.remove("border-secondary");
@@ -118,19 +118,9 @@ function addInvalidClass() {
       input.classList.add("border-secondary");
       input.classList.add("is-valid");
     }
-
-    if (id === "numero") {
-      // Expresión regular específica para el campo "numero".
-      const numeroRegex = /^\d+$/;
-      if (!numeroRegex.test(input.value)) {
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-        input.classList.remove("border-secondary");
-        input.classList.add("border-danger");
-      }
-    }
   });
-}
+} 
+
 
 // Corre el programa
 document.addEventListener("DOMContentLoaded", async () => {
@@ -169,7 +159,7 @@ btnRadioBancaria.addEventListener("click", () => {
  //pauta3(entrega6) 
   let btnFinalizarCompra= document.getElementById("finalizar-compra");
   btnFinalizarCompra.addEventListener("click",()=>{
-    addInvalidClass();
+    validar();
   })
 
 });
