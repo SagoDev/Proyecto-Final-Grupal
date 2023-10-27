@@ -101,7 +101,7 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 
 //entrega6 pauta 3,probando funcion validar
 
-function validar(){
+function validar(arrayinputs,inputB,radio1,radio2,parrafo){
   const inputIds = ["calle", "numero", "esquina"];
 
   inputIds.forEach((id) => {
@@ -119,7 +119,52 @@ function validar(){
       input.classList.add("is-valid");
     }
   });
+ let inputsCredit=Array.from(arrayinputs)
+ let errorMsg=document.getElementById("divInvalidFB");
+  if(radio1.checked){
+    inputsCredit.forEach((input)=>{
+     input.required = true;
+     if(!input.checkValidity()){
+      input.classList.add("is-invalid");
+      parrafo.classList.add("is-invalid");
+      errorMsg.innerHTML="Debe completar todos los campos";
+     }else{
+      input.classList.remove("is-invalid");
+      parrafo.classList.remove("is-invalid");
+     }
+    })
+  };
+  if(radio2.checked){
+    inputB.required = true;
+    if(!inputB.checkValidity()){
+      inputB.classList.add("is-invalid");
+      parrafo.classList.add("is-invalid");
+      errorMsg.innerHTML="Debe completar todos los campos";
+     }else{
+      inputB.classList.remove("is-invalid");
+      parrafo.classList.remove("is-invalid");
+     }
+  }else{
+    parrafo.classList.add("is-invalid");
+   }; 
 } 
+function displayMsg(radio1,radio2,parrafo){
+  let allInputs=Array.from(document.getElementsByClassName("form-control"));
+  /*Este condicional es necesario xq sin el,si no seleccionas una forma de pago
+   los campos no tienen el required entonces no los tiene en cuenta al verificar si es válido*/
+  if(radio1.checked || radio2.checked){
+     if((allInputs.every((campo)=> campo.checkValidity()))){
+    parrafo.classList.remove("is-invalid");
+    Swal.fire({
+      icon: 'success',
+      iconColor: '#1ea00c',
+      background: '#aef8a5',
+      title: 'Has comprado con éxito!',
+      width: '50%',
+    })
+    };
+  };
+}
 
 
 // Corre el programa
@@ -140,6 +185,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
   let inputBank = document.getElementById("inputBank")
   let fDM = document.getElementById("fDM")
+  let pInvalidOValid=document.getElementById("pOpcion");
+
 btnRadioCredito.addEventListener("click", () => {
   inputBank.disabled = true;
   inputBank.value = "";
@@ -147,6 +194,7 @@ btnRadioCredito.addEventListener("click", () => {
     input.disabled = false;
   }
   fDM.innerHTML = "Tarjeta de Crédito";
+  pInvalidOValid.classList.remove("is-invalid");
 })
 btnRadioBancaria.addEventListener("click", () => {
   for (input of inputsTar) {
@@ -155,11 +203,13 @@ btnRadioBancaria.addEventListener("click", () => {
   }
   inputBank.disabled = false;
   fDM.innerHTML = "Transferencia Bancaria";
+  pInvalidOValid.classList.remove("is-invalid");
 })
  //pauta3(entrega6) 
   let btnFinalizarCompra= document.getElementById("finalizar-compra");
   btnFinalizarCompra.addEventListener("click",()=>{
-    validar();
-  })
+    validar(inputsTar,inputBank,btnRadioCredito,btnRadioBancaria,pInvalidOValid);
+    displayMsg(btnRadioCredito,btnRadioBancaria,pInvalidOValid);
+    })
 
 });
