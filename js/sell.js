@@ -9,7 +9,7 @@ let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
-//Función que se utiliza para actualizar los costos de publicación
+//  Actualiza los costos de publicación
 function updateTotalCosts(){
     let unitProductCostHTML = document.getElementById("productCostText");
     let comissionCostHTML = document.getElementById("comissionText");
@@ -24,10 +24,10 @@ function updateTotalCosts(){
     totalCostHTML.innerHTML = totalCostToShow;
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+//  Cuando se carga la página
 document.addEventListener("DOMContentLoaded", function(e){
+
+    //  Escucha cambios en los input y actualiza el costo con updateTotalCosts
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
         updateTotalCosts();
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 
-    //Configuraciones para el elemento que sube archivos
+    //Configuraciones para el elemento que sube archivos//////////////// 
     let dzoptions = {
         url:"/",
         autoQueue: false
@@ -75,14 +75,13 @@ document.addEventListener("DOMContentLoaded", function(e){
     let myDropzone = new Dropzone("div#file-upload", dzoptions);    
 
 
-    //Se obtiene el formulario de publicación de producto
+    //  Se obtiene el formulario de publicación de producto
     let sellForm = document.getElementById("sell-info");
 
-    //Se agrega una escucha en el evento 'submit' que será
-    //lanzado por el formulario cuando se seleccione 'Vender'.
+    //  Escucha el evento 'submit' para realizar la venta
     sellForm.addEventListener("submit", function(e){
 
-        e.preventDefault(); 
+        e.preventDefault();
         e.preventDefault();
 
         let productNameInput = document.getElementById("productName");
@@ -90,28 +89,24 @@ document.addEventListener("DOMContentLoaded", function(e){
         let productCost = document.getElementById("productCostInput");
         let infoMissing = false;
 
-        //Quito las clases que marcan como inválidos
+        //  Quita las clases que marcan como inválidos
         productNameInput.classList.remove('is-invalid');
         productCategory.classList.remove('is-invalid');
         productCost.classList.remove('is-invalid');
 
-        //Se realizan los controles necesarios,
-        //En este caso se controla que se haya ingresado el nombre y categoría.
-        //Consulto por el nombre del producto
+        //  Revisa si tiene todos los datos requeridos
         if (productNameInput.value === "")
         {
             productNameInput.classList.add('is-invalid');
             infoMissing = true;
         }
         
-        //Consulto por la categoría del producto
         if (productCategory.value === "")
         {
             productCategory.classList.add('is-invalid');
             infoMissing = true;
         }
 
-        //Consulto por el costo
         if (productCost.value <=0)
         {
             productCost.classList.add('is-invalid');
@@ -120,16 +115,14 @@ document.addEventListener("DOMContentLoaded", function(e){
         
         if(!infoMissing)
         {
-            //Aquí ingresa si pasó los controles, irá a enviar
-            //la solicitud para crear la publicación.
-
+            //  Si tiene todos los datos, entra acá
+            //    Realiza la solicitud para crear la publicación
             getJSONData(PUBLISH_PRODUCT_URL).then(function(resultObj){
                 let msgToShowHTML = document.getElementById("resultSpan");
                 let msgToShow = "";
     
-                //Si la publicación fue exitosa, devolverá mensaje de éxito,
-                //de lo contrario, devolverá mensaje de error.
-                //FUNCIONALIDAD NO IMPLEMENTADA
+                // Muestra una alerta si la publicación fue exitosa o no lo fue
+                ///////////////    FUNCIONALIDAD NO IMPLEMENTADA    ////////////////
                 if (resultObj.status === 'ok')
                 {
                     msgToShow = MSG;
@@ -147,3 +140,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+
+//  No se que es lo de las lineas 70 a la 75

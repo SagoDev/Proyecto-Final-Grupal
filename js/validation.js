@@ -47,7 +47,8 @@ function addValidOrInvalidClass(input){
     }
 }
 
-// Lee y manipula los input
+// Cuando se carga la página
+//   Lee y manipula los input
 document.addEventListener("DOMContentLoaded", ()=>{
     let form = document.getElementById('logIn');
     let inputEmail = document.getElementById('email');

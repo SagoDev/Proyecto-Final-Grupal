@@ -1,4 +1,5 @@
-// Escucha el click en las categorías que se muestran
+// Cuando se carga la página
+//   Escucha el click en las categorías que se muestran
 //   Redirige a su categoría correspondiente
 //   Funcionalidad de los slides
 document.addEventListener("DOMContentLoaded", function(){

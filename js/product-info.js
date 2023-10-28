@@ -1,9 +1,10 @@
 const apiProducts = "https://japceibal.github.io/emercado-api/products/";
-const apiComments =
-  "https://japceibal.github.io/emercado-api/products_comments/";
+const apiComments = "https://japceibal.github.io/emercado-api/products_comments/";
 
 let id = localStorage.getItem("ProductID");
 
+
+//  Trae información de la API
 function traerInfo(api, funcion) {
   fetch(api + id + ".json")
     .then((Response) => Response.json())
@@ -13,11 +14,15 @@ function traerInfo(api, funcion) {
     });
 }
 
+
+//  Muestra la información del producto en la página
+//  Da funcionalidad al botón de comprar
 function mostrarInfo(info) {
   let contenedor = document.getElementById("contenedor-producto");
   let contenedorCarrusel = document.getElementById("carousel-inner");
   let titulo = document.getElementById("contenedorTitulo");
 
+  //  Texto del producto
   titulo.innerHTML = `
   <h1 class='pt-2'>${info.name}</h1>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -41,6 +46,7 @@ function mostrarInfo(info) {
         </div>
       `;
 
+  //  Fotos del producto    
   contenedorCarrusel.innerHTML += `
     <div class="carousel-item active">
       <img src="${info.images[0]}" class="d-block w-100">
@@ -54,63 +60,74 @@ function mostrarInfo(info) {
         </div>       
         `;
   }
-  // Variable para acceder al botón y otra para el array de productos del carrito
+  //  Funcionalidad del botón de compra
   let comprarBtn = document.getElementById("comprar");
   let productosDelCarrito = [];
 
-if (localStorage.getItem("productos")) {
-  productosDelCarrito = JSON.parse(localStorage.getItem("productos"));
-}
-//Función que al hacer click en comprar guardamos la info del producto en un objeto y lo enviamos al array y luego al local storage
-comprarBtn.addEventListener("click", function() {
-  let tituloProduct = info.name;
-  let monedaProducto= info.currency ;
-  let precioUn=info.cost;
-  let imagenSrc = info.images[0];
-  let cantidad=1;
-  // Creamos un objeto con la información que quiero usar del producto
-  let producto = {
-    titulo: tituloProduct,
-    imagenSrc: imagenSrc,
-    moneda: monedaProducto,
-    precioUnidad:precioUn,
-    cantidad:cantidad
-  };
-  // Añadimos el nuevo producto al array
-  productosDelCarrito.push(producto);
-  // Guardamos el array de productos en el localStorage 
-  localStorage.setItem("productos", JSON.stringify(productosDelCarrito));
-});
+  //  Si recibe un producto al local storage lo convierte en JSON
+  if (localStorage.getItem("productos")) {
+    productosDelCarrito = JSON.parse(localStorage.getItem("productos"));
+  }
+  //  Cuando escucha el click en el botón
+  //    Crea un objeto del producto y lo guarda en el local storage como string
+  //    interactua con la línea 68
+  comprarBtn.addEventListener("click", function () {
+    let tituloProduct = info.name;
+    let monedaProducto = info.currency;
+    let precioUn = info.cost;
+    let imagenSrc = info.images[0];
+    let cantidad = 1;
+
+    let producto = {
+      titulo: tituloProduct,
+      imagenSrc: imagenSrc,
+      moneda: monedaProducto,
+      precioUnidad: precioUn,
+      cantidad: cantidad
+    };
+
+    productosDelCarrito.push(producto);
+    localStorage.setItem("productos", JSON.stringify(productosDelCarrito));
+  });
 }
 
+
+//  Comentarios
+
+//  Guarda las estrellas fuera de la función creandoEstrellas
 let puntajeEstrellas = "";
-//Función que guarda estrellas en un string según el puntaje, el cual se pasa como parámetro para reutilizar la función
+
+//  Crea las estrellas de puntuación
 function creandoEstrellas(puntajeUser) {
   let allStars = "";
   for (let i = 0; i < 5; i++) {
     if (i < puntajeUser) {
-      // si i es menor que el puntaje de estrellas,le agrega una estrella llena
-      allStars += '<i class="bi bi-star-fill estrellita"></i>';
+      allStars += '<i class="bi bi-star-fill estrellita"></i>'; //  Estrellas pintadas
     } else {
-      allStars += '<i class="bi bi-star estrellita"></i>';
-    } //cuando ya no se cumple la condicion del if le agrega estrellas vacías al string
+      allStars += '<i class="bi bi-star estrellita"></i>'; //  Estrellas vacías
+    }
   }
   puntajeEstrellas = allStars;
 }
+
+
+//   Genera un numero aleatorio para usar en código RGB
 function generarColorAleatorio() {
   var componente = Math.floor(Math.random() * 256).toString(16);
   // Asegurarse de que el componente tenga siempre dos dígitos
   return ("0" + componente).slice(-2);
 }
 
+//  Genera el código de color RGB completo
 function generarColorCSSAleatorio() {
-  // Generar tres componentes de color aleatorios para RGB
   var rojo = generarColorAleatorio();
   var verde = generarColorAleatorio();
   var azul = generarColorAleatorio();
   var colorRGB = rojo + verde + azul;
   return colorRGB;
 }
+
+//  Muestra los comentarios en la página
 function mostrarComments(comentarios) {
   let contenedorComentarios = document.getElementById("commentList");
   for (let comment of comentarios) {
@@ -119,8 +136,8 @@ function mostrarComments(comentarios) {
     let colorRandom = generarColorCSSAleatorio();
     let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.user}&backgroundColor=${colorRandom}`;
 
-    contenedorComentarios.innerHTML += 
-            `<div class = "border rounded mb-2 p-2">
+    contenedorComentarios.innerHTML +=
+      `<div class = "border rounded mb-2 p-2">
               <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
               <div class="texto">
                 <div class="row row-cols-auto">
@@ -134,6 +151,7 @@ function mostrarComments(comentarios) {
   }
 }
 
+//  Reconoce la cantidad de estrellas seleccionadas cuando se hace un comentario nuevo
 function traerValorEstrellas() {
   let estrellas = document.getElementsByName("estrellas");
   for (let i = 0; i < estrellas.length; i++) {
@@ -144,6 +162,7 @@ function traerValorEstrellas() {
   }
 }
 
+//  Crea un comentario nuevo
 function generarComment() {
   let contenedorComentarios = document.getElementById("commentList");
   let usuario = JSON.parse(localStorage.getItem("user")).email;
@@ -161,8 +180,8 @@ function generarComment() {
   let colorRandom = generarColorCSSAleatorio();
   let avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${comentario.usuario}&backgroundColor=${colorRandom}`;
   creandoEstrellas(comentario.puntos);
-  contenedorComentarios.innerHTML += 
-            `<div class = "border rounded mb-2 p-2">
+  contenedorComentarios.innerHTML +=
+    `<div class = "border rounded mb-2 p-2">
               <div class="avatar"><img class="rounded-circle" src=${avatar}></div>
               <div class="texto">
                 <div class="row row-cols-auto">
@@ -173,9 +192,10 @@ function generarComment() {
                 </div>  
               </div>
             </div>`
-          ;
+    ;
 }
 
+// Muestra los productos relacionados en la página
 function mostrarRelacionados(info) {
   let contenedor = document.getElementById("contenedor-relacionados");
   for (let i of info.relatedProducts) {
@@ -191,11 +211,14 @@ function mostrarRelacionados(info) {
   }
 }
 
+// Redirige a la página de un producto relacionado
 function setProductID(id) {
   localStorage.setItem("ProductID", id);
   window.location = "product-info.html";
 }
 
+
+//  Amplía una imagen 
 function imageZoom() {
   let contImgActive = Array.from(document.getElementsByClassName("active"));
   let img = contImgActive[0].childNodes[1].src;
@@ -222,6 +245,10 @@ function imageZoom() {
   });
 }
 
+//  Cuando se carga la página
+//    Escucha un click para generar un comentario
+//    Muestra: *el producto *sus fotos *sus comentarios *sus productos relacionados
+//    Escucha un click para hacer zoom a la imágen
 document.addEventListener("DOMContentLoaded", () => {
   const enviarComment = document.getElementById("enviar-comment");
   enviarComment.addEventListener("click", () => {
