@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   productosEnLista.addEventListener('click', (e) => {
     if (e.target.classList.contains('btnBorrar')) {
       let id = e.target.id;
-      let array = borrarProducto(id);
+      borrarProducto(id);
     }
   })
 });
