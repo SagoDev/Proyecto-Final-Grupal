@@ -424,3 +424,8 @@ body.dark-mode {
   font-size: 10px;
   color: gray;
 }
+
+/*Estilo Login*/
+.box-area{
+  width: 750px;
+}
