@@ -417,8 +417,10 @@ body.dark-mode {
   overflow: hidden;
   border-radius: 50%;
   float: left;
-  margin-right: 20px; 
+  margin-right: 20px;
   margin-bottom: 10px;
 }
-
-
+.subTituloPago{
+  font-size: 10px;
+  color: gray;
+}

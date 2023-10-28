@@ -33,36 +33,58 @@ function enviarLocalStorage(datos) {
 function displayData(arrayProductos) {
   const container = document.getElementById("container");
   // Es un array con todos los productos del local storage
-  arrayProductos.forEach(product => {
+  arrayProductos.forEach((product, index) => {
     container.innerHTML += `
-      <div class="col-md-2 col-lg-2 col-xl-2">
-        <img src=${product.imagenSrc} class="rounded-3 pb-3 mx-auto d-block w-50" alt="imagen del producto">
+    <div class="row justify-content-center align-items-center productoABorrar">
+        <div class="col-md-2 col-lg-2 col-xl-2">
+          <img src=${product.imagenSrc} class="rounded-3 pb-3 mx-auto d-block w-50" alt="imagen del producto">
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-3">
+          <p>${product.titulo}</p>
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
+          <p>${product.moneda} ${product.precioUnidad}</p>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
+          <button class="btn btn-link px-2 btnRestar" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+          <i class="fas fa-minus" style="color: orange";"></i>
+          </button>
+          <input id="form1" min="1" name="quantity" value=${product.cantidad} type="number"
+            class="form-control form-control-sm pauta3Inputs"/>
+          <button class="btn btn-link px-2 btnAumentar" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+            <i class="fas fa-plus" style="color: orange;"></i>
+          </button>
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
+          <p class="fw-bolder pauta3Precio">${product.moneda} ${product.precioUnidad}</p>
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-1 text-end">
+          <a href="#!" style="color: orange;"><i id=${index} class="bi bi-trash btnBorrar"></i></a>
+        </div>
+        <hr>
       </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-3">
-        <p>${product.titulo}</p>
-      </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
-        <p>${product.moneda} ${product.precioUnidad}</p>
-      </div>
-      <div class="col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
-        <button class="btn btn-link px-2 btnRestar" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-        <i class="fas fa-minus" style="color: orange";"></i>
-        </button>
-        <input id="form1" min="1" name="quantity" value=${product.cantidad} type="number"
-          class="form-control form-control-sm pauta3Inputs"/>
-        <button class="btn btn-link px-2 btnAumentar" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-          <i class="fas fa-plus" style="color: orange;"></i>
-        </button>
-      </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
-        <p class="fw-bolder pauta3Precio">${product.moneda} ${product.precioUnidad}</p>
-      </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-1 text-end">
-        <a href="#!" style="color: orange;"><i class="bi bi-trash"></i></a>
-      </div>
-      <hr>
+     
   `;
   });
+
+}
+
+function borrarProducto(id){
+
+  let lista = Array.from(document.getElementsByClassName('productoABorrar'));
+  console.log(id)
+  let padre = document.getElementById('container')
+  let elementoABorrar = lista[id];
+  padre.removeChild(elementoABorrar)
+
+  actualizarSubtotal();
+  let array = JSON.parse(localStorage.getItem('productos'));
+  Array.from(array);
+  array.splice(id, 1)
+  localStorage.setItem('productos', JSON.stringify(array));
+  console.log(array)
+  return array;
+
 };
 
 // Pauta 3
@@ -81,6 +103,7 @@ function addEventListenerAInputs(clase, data) {     //Data directamente de la va
     Element.addEventListener('input', (event) => {
       console.log(event.target.value)
       actualizarCart(event.target.value, data, index)
+      actualizarSubtotal() // Agregado, no se sabe si funciona
     })
   })
 }
@@ -94,12 +117,13 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 
     Element.addEventListener('click', () => {
       actualizarCart(inputs[index].value, data, index)
+      actualizarSubtotal() // Agregado, no se sabe si funciona
     })
   })
 }
 
 
-//entrega6 pauta 3,probando funcion validar
+//entrega6 pauta 3
 
 function validar(arrayinputs,inputB,radio1,radio2,parrafo){
   const inputIds = ["calle", "numero", "esquina"];
@@ -132,8 +156,7 @@ function validar(arrayinputs,inputB,radio1,radio2,parrafo){
   };
 
 function displayMsg(radio1,radio2,parrafo){
-  let allInputs=Array.from(document.getElementsByClassName("form-control"));
-  /*Este condicional es necesario xq sin el,si no seleccionas una forma de pago los campos no tienen el required entonces no los tiene en cuenta al verificar si es válido*/
+  let allInputs=Array.from(document.getElementsByClassName("form-control"));  
   if(radio1.checked || radio2.checked){
      if((allInputs.every((campo)=> campo.checkValidity()))){
     parrafo.classList.remove("is-invalid");
@@ -163,6 +186,64 @@ function controlandoErrorMsg(parrafo){
   })
 }
 
+
+//Funcion que suma cada precio de producto
+function actualizarSubtotal() {
+
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));
+  let subtotal = 0;
+
+  arrayPrecios.forEach(function (precio) {
+    if (precio.innerHTML.includes("UYU")) {
+      subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)) / 40);
+    } else {
+      subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)));
+    }
+  });
+  console.log(subtotal);
+
+  //calcula costo de envío -- ahora funciona //////
+  let premium = document.getElementById("premiumradio");
+  let express = document.getElementById("expressradio");
+  let standard = document.getElementById("standardradio");
+
+
+  let costoEnvio = 0;
+
+  if (standard.checked) {
+    costoEnvio = subtotal * 0.05;
+  } else if (express.checked) {
+    costoEnvio = subtotal * 0.07;
+  } else if (premium.checked) {
+    costoEnvio = subtotal * 0.15;
+  }
+  //fin calculo costo de envio //////
+
+  //Calculo Total a Pagar
+  let totalAPagar = costoEnvio + subtotal
+
+  //tirar a html
+  let cPrecioSuma = document.getElementById('contenedorSuma');
+  let cEnvio = document.getElementById('contenedorEnvio');
+  let cTotal = document.getElementById('contenedorTotal');
+
+
+  cPrecioSuma.innerHTML = "USD " + subtotal.toFixed(2);
+  cEnvio.innerHTML = "USD " + costoEnvio.toFixed(2);
+  cTotal.innerHTML = "USD " + totalAPagar.toFixed(2);
+
+}
+
+function listenerRadio() {
+  let standard = document.getElementById('standardradio');
+  let express = document.getElementById('expressradio');
+  let premium = document.getElementById('premiumradio');
+
+  standard.addEventListener("click", actualizarSubtotal);
+  express.addEventListener("click", actualizarSubtotal);
+  premium.addEventListener("click", actualizarSubtotal);
+};
+
 // Corre el programa
 document.addEventListener("DOMContentLoaded", async () => {
   let data = await getData(25801);
@@ -181,6 +262,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
   let inputBank = document.getElementById("inputBank")
   let fDM = document.getElementById("fDM")
+
   let pInvalidOValid=document.getElementById("pOpcion");
 
 btnRadioCredito.addEventListener("click", () => {
@@ -213,4 +295,17 @@ btnRadioBancaria.addEventListener("click", () => {
     displayMsg(btnRadioCredito,btnRadioBancaria,pInvalidOValid);
     })
 
+  // Entrega 6 Pauta 1
+  actualizarSubtotal();
+  listenerRadio();
+
+  let productosEnLista = document.getElementById('container');
+  productosEnLista.addEventListener('click', (e) => {
+      if(e.target.classList.contains('btnBorrar')){
+          let id = e.target.id;
+          let array = borrarProducto(id);
+          document.getElementById('container').innerHTML = "";
+          displayData(array)
+      }
+    })
 });
