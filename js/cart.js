@@ -122,6 +122,71 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
   })
 }
 
+
+//entrega6 pauta 3
+
+function validar(arrayinputs,inputB,radio1,radio2,parrafo){
+  const inputIds = ["calle", "numero", "esquina"];
+  let inputsCredit=Array.from(arrayinputs)
+ let errorMsg=document.getElementById("divInvalidFB");
+  if(radio1.checked){
+    inputsCredit.forEach((input)=>{
+     input.required = true;
+     inputIds.push(input.id);
+    })
+  };
+  radio2.checked ?(inputB.required=true, inputIds.push(inputB.id)) : parrafo.classList.add("is-invalid"); 
+  inputIds.forEach((id) => {
+    const input = document.getElementById(id);
+
+    if (!input.checkValidity()) {
+      input.classList.remove("is-valid");
+      input.classList.add("is-invalid");
+      (input.id==="calle"||input.id==="numero"||input.id==="esquina")
+      ?(input.classList.remove("border-secondary"),input.classList.add("border-danger"))
+      :(parrafo.classList.add("is-invalid"),errorMsg.innerHTML="Debe completar todos los campos");
+    } else {
+      input.classList.remove("is-invalid");
+      input.classList.add("is-valid");
+       (input.id==="calle"||input.id==="numero"||input.id==="esquina")
+       ?(input.classList.remove("border-danger"),input.classList.add("border-secondary"))
+       : parrafo.classList.remove("is-invalid");
+      }
+    })
+  };
+
+function displayMsg(radio1,radio2,parrafo){
+  let allInputs=Array.from(document.getElementsByClassName("form-control"));  
+  if(radio1.checked || radio2.checked){
+     if((allInputs.every((campo)=> campo.checkValidity()))){
+    parrafo.classList.remove("is-invalid");
+    Swal.fire({
+      icon: 'success',
+      iconColor: '#1ea00c',
+      background: '#aef8a5',
+      title: 'Has comprado con éxito!',
+      width: '50%',
+    })
+    };
+  };
+}
+function controlandoErrorMsg(parrafo){
+  let inputsVerificar=Array.from(document.getElementsByClassName("form-control"));
+  inputsVerificar.forEach((input)=>{
+    input.addEventListener("change",()=>{
+      if(input.checkValidity()){ 
+      input.classList.remove("is-invalid")
+      input.classList.add("is-valid")
+      input.classList.remove("border-danger")
+      }
+      if((inputsVerificar.every((campo)=> campo.checkValidity()))){
+        parrafo.classList.remove("is-invalid"); 
+      }
+    });
+  })
+}
+
+
 //Funcion que suma cada precio de producto
 function actualizarSubtotal() {
 
@@ -192,32 +257,43 @@ document.addEventListener("DOMContentLoaded", async () => {
   addEventListenerABtn('btnRestar', productsCart)
   // Pauta 3 
 
-
   let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
   let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
   let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
   let inputBank = document.getElementById("inputBank")
   let fDM = document.getElementById("fDM")
 
-  btnRadioCredito.addEventListener("click", () => {
-    inputBank.disabled = true;
-    inputBank.value = "";
-    for (input of inputsTar) {
-      input.disabled = false;
-    }
-    fDM.innerHTML = "Tarjeta de Crédito";
+  let pInvalidOValid=document.getElementById("pOpcion");
 
-  })
-
-  btnRadioBancaria.addEventListener("click", () => {
-    for (input of inputsTar) {
-      input.disabled = true;
-      input.value = "";
-    }
-    inputBank.disabled = false;
-    fDM.innerHTML = "Transferencia Bancaria";
-
-  })
+btnRadioCredito.addEventListener("click", () => {
+  inputBank.disabled = true;
+  inputBank.value = "";
+  inputBank.classList.remove("is-invalid");
+  inputBank.classList.remove("is-valid");
+  for (input of inputsTar) {
+    input.disabled = false;
+  }
+  fDM.innerHTML = "Tarjeta de Crédito";
+  pInvalidOValid.classList.remove("is-invalid");
+})
+btnRadioBancaria.addEventListener("click", () => {
+  for (input of inputsTar) {
+    input.disabled = true;
+    input.value = "";
+    input.classList.remove("is-invalid");
+    input.classList.remove("is-valid");
+  }
+  inputBank.disabled = false;
+  fDM.innerHTML = "Transferencia Bancaria";
+  pInvalidOValid.classList.remove("is-invalid");
+})
+  
+  let btnFinalizarCompra= document.getElementById("finalizar-compra");
+  btnFinalizarCompra.addEventListener("click",()=>{
+    validar(inputsTar,inputBank,btnRadioCredito,btnRadioBancaria,pInvalidOValid);
+    controlandoErrorMsg(pInvalidOValid);
+    displayMsg(btnRadioCredito,btnRadioBancaria,pInvalidOValid);
+    })
 
   // Entrega 6 Pauta 1
   actualizarSubtotal();
