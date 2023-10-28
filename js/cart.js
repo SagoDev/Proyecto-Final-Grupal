@@ -252,8 +252,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Pauta 3
   addEventListenerAInputs('pauta3Inputs', productsCart);
   addEventListenerABtn('btnAumentar', productsCart)
-  addEventListenerABtn('btnRestar', productsCart)
-  // Pauta 3 
+ 
 
   let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
   let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
