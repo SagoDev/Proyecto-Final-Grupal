@@ -35,7 +35,7 @@ function displayData(arrayProductos) {
   // Es un array con todos los productos del local storage
   arrayProductos.forEach((product, index) => {
     container.innerHTML += `
-    <div class="row justify-content-center align-items-center productoABorrar">
+    <div data-index=${index} class="row justify-content-center align-items-center productoABorrar">
         <div class="col-md-2 col-lg-2 col-xl-2">
           <img src=${product.imagenSrc} class="rounded-3 pb-3 mx-auto d-block w-50" alt="imagen del producto">
         </div>
@@ -69,22 +69,21 @@ function displayData(arrayProductos) {
 
 }
 
-function borrarProducto(id){
+function borrarProducto(id) {
 
   let lista = Array.from(document.getElementsByClassName('productoABorrar'));
   console.log(id)
   let padre = document.getElementById('container')
-  let elementoABorrar = lista[id];
+  let indexElementoABorrar = lista.findIndex(producto => producto.dataset.index === id);
+  let elementoABorrar = lista[indexElementoABorrar]
   padre.removeChild(elementoABorrar)
 
   actualizarSubtotal();
   let array = JSON.parse(localStorage.getItem('productos'));
   Array.from(array);
-  array.splice(id, 1)
+  array.splice(indexElementoABorrar, 1)
   localStorage.setItem('productos', JSON.stringify(array));
   console.log(array)
-  return array;
-
 };
 
 // Pauta 3
@@ -125,67 +124,66 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 
 //entrega6 pauta 3
 
-function validar(arrayinputs,inputB,radio1,radio2,parrafo){
+function validar(arrayinputs, inputB, radio1, radio2, parrafo) {
   const inputIds = ["calle", "numero", "esquina"];
-  let inputsCredit=Array.from(arrayinputs)
- let errorMsg=document.getElementById("divInvalidFB");
-  if(radio1.checked){
-    inputsCredit.forEach((input)=>{
-     input.required = true;
-     inputIds.push(input.id);
+  let inputsCredit = Array.from(arrayinputs)
+  let errorMsg = document.getElementById("divInvalidFB");
+  if (radio1.checked) {
+    inputsCredit.forEach((input) => {
+      input.required = true;
+      inputIds.push(input.id);
     })
   };
-  radio2.checked ?(inputB.required=true, inputIds.push(inputB.id)) : parrafo.classList.add("is-invalid"); 
+  radio2.checked ? (inputB.required = true, inputIds.push(inputB.id)) : parrafo.classList.add("is-invalid");
   inputIds.forEach((id) => {
     const input = document.getElementById(id);
 
     if (!input.checkValidity()) {
       input.classList.remove("is-valid");
       input.classList.add("is-invalid");
-      (input.id==="calle"||input.id==="numero"||input.id==="esquina")
-      ?(input.classList.remove("border-secondary"),input.classList.add("border-danger"))
-      :(parrafo.classList.add("is-invalid"),errorMsg.innerHTML="Debe completar todos los campos");
+      (input.id === "calle" || input.id === "numero" || input.id === "esquina")
+        ? (input.classList.remove("border-secondary"), input.classList.add("border-danger"))
+        : (parrafo.classList.add("is-invalid"), errorMsg.innerHTML = "Debe completar todos los campos");
     } else {
       input.classList.remove("is-invalid");
       input.classList.add("is-valid");
-       (input.id==="calle"||input.id==="numero"||input.id==="esquina")
-       ?(input.classList.remove("border-danger"),input.classList.add("border-secondary"))
-       : parrafo.classList.remove("is-invalid");
-      }
-    })
-  };
+      (input.id === "calle" || input.id === "numero" || input.id === "esquina")
+        ? (input.classList.remove("border-danger"), input.classList.add("border-secondary"))
+        : parrafo.classList.remove("is-invalid");
+    }
+  })
+};
 
-function displayMsg(radio1,radio2,parrafo){
-  let allInputs=Array.from(document.getElementsByClassName("form-control"));  
-  if(radio1.checked || radio2.checked){
-     if((allInputs.every((campo)=> campo.checkValidity()))){
-    parrafo.classList.remove("is-invalid");
-    Swal.fire({
-      icon: 'success',
-      iconColor: '#1ea00c',
-      background: '#aef8a5',
-      title: 'Has comprado con éxito!',
-      width: '50%',
-    })
+function displayMsg(radio1, radio2, parrafo) {
+  let allInputs = Array.from(document.getElementsByClassName("form-control"));
+  if (radio1.checked || radio2.checked) {
+    if ((allInputs.every((campo) => campo.checkValidity()))) {
+      parrafo.classList.remove("is-invalid");
+      Swal.fire({
+        icon: 'success',
+        iconColor: '#1ea00c',
+        background: '#aef8a5',
+        title: 'Has comprado con éxito!',
+        width: '50%',
+      })
     };
   };
 }
-function controlandoErrorMsg(parrafo){
-  let inputsVerificar=Array.from(document.getElementsByClassName("form-control"));
-  inputsVerificar.forEach((input)=>{
-    input.addEventListener("change",()=>{
-      if(input.checkValidity()){ 
-      input.classList.remove("is-invalid")
-      input.classList.add("is-valid")
-      input.classList.remove("border-danger")
+function controlandoErrorMsg(parrafo) {
+  let inputsVerificar = Array.from(document.getElementsByClassName("form-control"));
+  inputsVerificar.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input.checkValidity()) {
+        input.classList.remove("is-invalid")
+        input.classList.add("is-valid")
+        input.classList.remove("border-danger")
       }
-      if((inputsVerificar.every((campo)=> campo.checkValidity()))){
-        parrafo.classList.remove("is-invalid"); 
+      if ((inputsVerificar.every((campo) => campo.checkValidity()))) {
+        parrafo.classList.remove("is-invalid");
       }
     });
   })
 }
-
 
 //Funcion que suma cada precio de producto
 function actualizarSubtotal() {
@@ -203,9 +201,9 @@ function actualizarSubtotal() {
   console.log(subtotal);
 
   //calcula costo de envío -- ahora funciona //////
-  let premium = document.getElementById("premiumradio");
-  let express = document.getElementById("expressradio");
-  let standard = document.getElementById("standardradio");
+  let premium = document.getElementById("premiumRadio");
+  let express = document.getElementById("expressRadio");
+  let standard = document.getElementById("standardRadio");
 
 
   let costoEnvio = 0;
@@ -235,9 +233,9 @@ function actualizarSubtotal() {
 }
 
 function listenerRadio() {
-  let standard = document.getElementById('standardradio');
-  let express = document.getElementById('expressradio');
-  let premium = document.getElementById('premiumradio');
+  let standard = document.getElementById('standardRadio');
+  let express = document.getElementById('expressRadio');
+  let premium = document.getElementById('premiumRadio');
 
   standard.addEventListener("click", actualizarSubtotal);
   express.addEventListener("click", actualizarSubtotal);
@@ -263,37 +261,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   let inputBank = document.getElementById("inputBank")
   let fDM = document.getElementById("fDM")
 
-  let pInvalidOValid=document.getElementById("pOpcion");
+  let pInvalidOValid = document.getElementById("pOpcion");
 
-btnRadioCredito.addEventListener("click", () => {
-  inputBank.disabled = true;
-  inputBank.value = "";
-  inputBank.classList.remove("is-invalid");
-  inputBank.classList.remove("is-valid");
-  for (input of inputsTar) {
-    input.disabled = false;
-  }
-  fDM.innerHTML = "Tarjeta de Crédito";
-  pInvalidOValid.classList.remove("is-invalid");
-})
-btnRadioBancaria.addEventListener("click", () => {
-  for (input of inputsTar) {
-    input.disabled = true;
-    input.value = "";
-    input.classList.remove("is-invalid");
-    input.classList.remove("is-valid");
-  }
-  inputBank.disabled = false;
-  fDM.innerHTML = "Transferencia Bancaria";
-  pInvalidOValid.classList.remove("is-invalid");
-})
-  
-  let btnFinalizarCompra= document.getElementById("finalizar-compra");
-  btnFinalizarCompra.addEventListener("click",()=>{
-    validar(inputsTar,inputBank,btnRadioCredito,btnRadioBancaria,pInvalidOValid);
+  btnRadioCredito.addEventListener("click", () => {
+    inputBank.disabled = true;
+    inputBank.value = "";
+    inputBank.classList.remove("is-invalid");
+    inputBank.classList.remove("is-valid");
+    for (input of inputsTar) {
+      input.disabled = false;
+    }
+    fDM.innerHTML = "Tarjeta de Crédito";
+    pInvalidOValid.classList.remove("is-invalid");
+  })
+  btnRadioBancaria.addEventListener("click", () => {
+    for (input of inputsTar) {
+      input.disabled = true;
+      input.value = "";
+      input.classList.remove("is-invalid");
+      input.classList.remove("is-valid");
+    }
+    inputBank.disabled = false;
+    fDM.innerHTML = "Transferencia Bancaria";
+    pInvalidOValid.classList.remove("is-invalid");
+  })
+
+  let btnFinalizarCompra = document.getElementById("finalizar-compra");
+  btnFinalizarCompra.addEventListener("click", () => {
+    validar(inputsTar, inputBank, btnRadioCredito, btnRadioBancaria, pInvalidOValid);
     controlandoErrorMsg(pInvalidOValid);
-    displayMsg(btnRadioCredito,btnRadioBancaria,pInvalidOValid);
-    })
+    displayMsg(btnRadioCredito, btnRadioBancaria, pInvalidOValid);
+  })
 
   // Entrega 6 Pauta 1
   actualizarSubtotal();
@@ -301,11 +299,9 @@ btnRadioBancaria.addEventListener("click", () => {
 
   let productosEnLista = document.getElementById('container');
   productosEnLista.addEventListener('click', (e) => {
-      if(e.target.classList.contains('btnBorrar')){
-          let id = e.target.id;
-          let array = borrarProducto(id);
-          document.getElementById('container').innerHTML = "";
-          displayData(array)
-      }
-    })
+    if (e.target.classList.contains('btnBorrar')) {
+      let id = e.target.id;
+      let array = borrarProducto(id);
+    }
+  })
 });
