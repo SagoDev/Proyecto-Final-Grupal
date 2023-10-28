@@ -91,7 +91,6 @@
                 <hr class="d-none d-md-block d-lg-block d-xl-block" style="height: 2px; background: #000000">
               </div>
               <div class="contenedorDatos" id="container">
-                <!-- Pauta 1 -->
               </div>
             </div>
           </div>
@@ -175,49 +174,59 @@
             </div>
           </div>
         </div>
-      </div>
-      <!--Fin Entrega6_Pauta1-->
-       <!--Inicio Entrega6_Pauta2-->
-      <hr>
-            <h2 class="h2-pago">Formas de pago</h2>
-            <br>
-            <div class="row">
-            <p class="mt-3"><spam id="fDM">No ha seleccionado</spam><a style="cursor: pointer;" class="link-offset-3 mx-3" data-bs-toggle="modal" data-bs-target="#ModalFormaDePago">Seleccionar</a></p>
-            </div>
-            <div class="modal fade" id="ModalFormaDePago" tabindex="-1" aria-labelledby="ModalFormaDePago" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="ModalFormaDePago">Forma de pago</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!--Fin Entrega6_Pauta1-->
+        <hr>
+        <!--Inicio Entrega6_Pauta2-->
+        <div>
+          <h2 class="h2-pago">Formas de pago</h2>
+          <br>
+          <div class="row">
+            <p class="mt-3">
+              <spam id="fDM">No ha seleccionado</spam><a style="cursor: pointer;" class="link-offset-3 mx-3"
+                data-bs-toggle="modal" data-bs-target="#ModalFormaDePago">Seleccionar</a>
+            </p>
+          </div>
+          <div class="modal fade" id="ModalFormaDePago" tabindex="-1" aria-labelledby="ModalFormaDePago"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModalFormaDePago">Forma de pago</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4">
+                  <div class="tarjeta" id="tarjeta">
+                    <label><input type="radio" id="Tarjeta-de-credito" name="forma-de-pago" value="Tarjeta-de-credito">
+                      Tarjeta de crédito</label>
+                    <hr>
+                    <div class="row">
+                      <label class="form-label col-sm-6" for="">Número de tarjeta<input class="form-control"
+                          type="number" disabled></label>
+                      <label class="form-label col-sm-4" for="">Código de seg.<input class="form-control" type="number"
+                          disabled></label>
+                      <label class="form-label col-sm-6" for="">Vencimiento (MM/AA)<input class="form-control mt-1"
+                          type="month" disabled></label>
+                    </div>
                   </div>
-                  <div class="modal-body px-4">
-                      <div class="tarjeta" id="tarjeta">
-                          <label><input type="radio" id="Tarjeta-de-credito" name="forma-de-pago" value="Tarjeta-de-credito"> Tarjeta de crédito</label>
-                          <hr>
-                          <div class="row">
-                          <label class="form-label col-sm-6" for="">Número de tarjeta<input class="form-control" type="number" disabled></label>
-                          <label class="form-label col-sm-4" for="">Código de seg.<input class="form-control" type="number" disabled></label>
-                          <label class="form-label col-sm-6" for="">Vencimiento (MM/AA)<input class="form-control mt-1" type="month" disabled></label>
-                          </div>
-                      </div>
-                      <div class="bancaria mt-2" id="bancaria">
-                          <label><input type="radio" id="Transferencia-bancaria" name="forma-de-pago" value="Transferencia-bancaria"> Transferencia bancaria</label>
-                          <hr>
-                          <div class="row">
-                          <label class="form-label col-sm-6" for="">Número de cuenta<input class="form-control" type="number" id="inputBank" disabled></label>
-                          </div>
-                      </div>
+                  <div class="bancaria mt-2" id="bancaria">
+                    <label><input type="radio" id="Transferencia-bancaria" name="forma-de-pago"
+                        value="Transferencia-bancaria"> Transferencia bancaria</label>
+                    <hr>
+                    <div class="row">
+                      <label class="form-label col-sm-6" for="">Número de cuenta<input class="form-control"
+                          type="number" id="inputBank" disabled></label>
+                    </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
               </div>
             </div>
           </div>
-    <!--Fin Entrega6_Pauta2-->
-    </div>
+        </div>
+        <!--Fin Entrega6_Pauta2-->
+      </div>
     </div>
   </main>
   <footer class="text-muted">

@@ -59,7 +59,7 @@ function displayData(arrayProductos) {
           <p class="fw-bolder pauta3Precio">${product.moneda} ${product.precioUnidad}</p>
         </div>
         <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-1 text-end">
-          <a  href="#!" style="color: orange;"><i id=${index} class="bi bi-trash"></i></a>
+          <a href="#!" style="color: orange;"><i id=${index} class="bi bi-trash btnBorrar"></i></a>
         </div>
         <hr>
       </div>
@@ -70,19 +70,20 @@ function displayData(arrayProductos) {
 }
 
 function borrarProducto(id){
-  
+
   let lista = Array.from(document.getElementsByClassName('productoABorrar'));
   console.log(id)
   let padre = document.getElementById('container')
   let elementoABorrar = lista[id];
-  console.log(elementoABorrar)
   padre.removeChild(elementoABorrar)
+
   actualizarSubtotal();
   let array = JSON.parse(localStorage.getItem('productos'));
   Array.from(array);
   array.splice(id, 1)
   localStorage.setItem('productos', JSON.stringify(array));
   console.log(array)
+  return array;
 
 };
 
@@ -121,73 +122,10 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
   })
 }
 
-// Corre el programa
-document.addEventListener("DOMContentLoaded", async () => {
-  let data = await getData(25801);
-  console.log(data);
-  enviarLocalStorage(data);
-  let productsCart = JSON.parse(localStorage.getItem("productos"));
-  displayData(productsCart);
-  // Pauta 3
-  addEventListenerAInputs('pauta3Inputs', productsCart);
-  addEventListenerABtn('btnAumentar', productsCart)
-  addEventListenerABtn('btnRestar', productsCart)
-  // Pauta 3 
-
-
-let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
-let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
-let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
-let inputBank = document.getElementById("inputBank")
-let fDM = document.getElementById("fDM")
-
-btnRadioCredito.addEventListener("click", () => {
-  inputBank.disabled = true;
-  inputBank.value = "";
-  for (input of inputsTar) {
-    input.disabled = false;
-  }
-  fDM.innerHTML = "Tarjeta de Crédito";
-
-})
-
-btnRadioBancaria.addEventListener("click", () => {
-  for (input of inputsTar) {
-    input.disabled = true;
-    input.value = "";
-  }
-  inputBank.disabled = false;
-  fDM.innerHTML = "Transferencia Bancaria";
-  
-})
-
-});
-
-
-  // Entrega 6 Pauta 1
-  actualizarSubtotal();
-  listenerRadio();
-
-  let productosEnLista = document.getElementById('container');
-  productosEnLista.addEventListener('click', (e) => {
-    console.dir(e.target.tagName)
-      if(e.target.tagName == 'I'){
-          let id = e.target.id;
-          console.log(id);
-          borrarProducto(id);
-      }
-    })
-});
-
-
-
-//E6P1
-
-
 //Funcion que suma cada precio de producto
 function actualizarSubtotal() {
 
-  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));  
+  let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));
   let subtotal = 0;
 
   arrayPrecios.forEach(function (precio) {
@@ -241,3 +179,57 @@ function listenerRadio() {
   premium.addEventListener("click", actualizarSubtotal);
 };
 
+// Corre el programa
+document.addEventListener("DOMContentLoaded", async () => {
+  let data = await getData(25801);
+  console.log(data);
+  enviarLocalStorage(data);
+  let productsCart = JSON.parse(localStorage.getItem("productos"));
+  displayData(productsCart);
+  // Pauta 3
+  addEventListenerAInputs('pauta3Inputs', productsCart);
+  addEventListenerABtn('btnAumentar', productsCart)
+  addEventListenerABtn('btnRestar', productsCart)
+  // Pauta 3 
+
+
+  let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
+  let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
+  let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
+  let inputBank = document.getElementById("inputBank")
+  let fDM = document.getElementById("fDM")
+
+  btnRadioCredito.addEventListener("click", () => {
+    inputBank.disabled = true;
+    inputBank.value = "";
+    for (input of inputsTar) {
+      input.disabled = false;
+    }
+    fDM.innerHTML = "Tarjeta de Crédito";
+
+  })
+
+  btnRadioBancaria.addEventListener("click", () => {
+    for (input of inputsTar) {
+      input.disabled = true;
+      input.value = "";
+    }
+    inputBank.disabled = false;
+    fDM.innerHTML = "Transferencia Bancaria";
+
+  })
+
+  // Entrega 6 Pauta 1
+  actualizarSubtotal();
+  listenerRadio();
+
+  let productosEnLista = document.getElementById('container');
+  productosEnLista.addEventListener('click', (e) => {
+      if(e.target.classList.contains('btnBorrar')){
+          let id = e.target.id;
+          let array = borrarProducto(id);
+          document.getElementById('container').innerHTML = "";
+          displayData(array)
+      }
+    })
+});
