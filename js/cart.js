@@ -33,36 +33,56 @@ function enviarLocalStorage(datos) {
 function displayData(arrayProductos) {
   const container = document.getElementById("container");
   // Es un array con todos los productos del local storage
-  arrayProductos.forEach(product => {
+  arrayProductos.forEach((product, index) => {
     container.innerHTML += `
-      <div class="col-md-2 col-lg-2 col-xl-2">
-        <img src=${product.imagenSrc} class="rounded-3 pb-3 mx-auto d-block w-50" alt="imagen del producto">
+    <div class="row justify-content-center align-items-center productoABorrar">
+        <div class="col-md-2 col-lg-2 col-xl-2">
+          <img src=${product.imagenSrc} class="rounded-3 pb-3 mx-auto d-block w-50" alt="imagen del producto">
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-3">
+          <p>${product.titulo}</p>
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
+          <p>${product.moneda} ${product.precioUnidad}</p>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
+          <button class="btn btn-link px-2 btnRestar" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+          <i class="fas fa-minus" style="color: orange";"></i>
+          </button>
+          <input id="form1" min="1" name="quantity" value=${product.cantidad} type="number"
+            class="form-control form-control-sm pauta3Inputs"/>
+          <button class="btn btn-link px-2 btnAumentar" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+            <i class="fas fa-plus" style="color: orange;"></i>
+          </button>
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
+          <p class="fw-bolder pauta3Precio">${product.moneda} ${product.precioUnidad}</p>
+        </div>
+        <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-1 text-end">
+          <a  href="#!" style="color: orange;"><i id=${index} class="bi bi-trash"></i></a>
+        </div>
+        <hr>
       </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-3">
-        <p>${product.titulo}</p>
-      </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
-        <p>${product.moneda} ${product.precioUnidad}</p>
-      </div>
-      <div class="col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
-        <button class="btn btn-link px-2 btnRestar" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-        <i class="fas fa-minus" style="color: orange";"></i>
-        </button>
-        <input id="form1" min="1" name="quantity" value=${product.cantidad} type="number"
-          class="form-control form-control-sm pauta3Inputs"/>
-        <button class="btn btn-link px-2 btnAumentar" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-          <i class="fas fa-plus" style="color: orange;"></i>
-        </button>
-      </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-2">
-        <p class="fw-bolder pauta3Precio">${product.moneda} ${product.precioUnidad}</p>
-      </div>
-      <div class="d-flex justify-content-center col-md-2 col-lg-2 col-xl-1 text-end">
-        <a href="#!" style="color: orange;"><i class="bi bi-trash"></i></a>
-      </div>
-      <hr>
+     
   `;
   });
+
+}
+
+function borrarProducto(id){
+  
+  let lista = Array.from(document.getElementsByClassName('productoABorrar'));
+  console.log(id)
+  let padre = document.getElementById('container')
+  let elementoABorrar = lista[id];
+  console.log(elementoABorrar)
+  padre.removeChild(elementoABorrar)
+  actualizarSubtotal();
+  let array = JSON.parse(localStorage.getItem('productos'));
+  Array.from(array);
+  array.splice(id, 1)
+  localStorage.setItem('productos', JSON.stringify(array));
+  console.log(array)
 
 };
 
@@ -116,6 +136,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Entrega 6 Pauta 1
   actualizarSubtotal();
   listenerRadio();
+
+  let productosEnLista = document.getElementById('container');
+  productosEnLista.addEventListener('click', (e) => {
+    console.dir(e.target.tagName)
+      if(e.target.tagName == 'I'){
+          let id = e.target.id;
+          console.log(id);
+          borrarProducto(id);
+      }
+    })
 });
 
 
@@ -125,6 +155,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 //Funcion que suma cada precio de producto
 function actualizarSubtotal() {
+
   let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'));  
   let subtotal = 0;
 
@@ -133,7 +164,7 @@ function actualizarSubtotal() {
       subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)) / 40);
     } else {
       subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)));
-    }   
+    }
   });
   console.log(subtotal);
 
@@ -169,7 +200,7 @@ function actualizarSubtotal() {
 
 }
 
-function listenerRadio(){
+function listenerRadio() {
   let standard = document.getElementById('standardradio');
   let express = document.getElementById('expressradio');
   let premium = document.getElementById('premiumradio');
