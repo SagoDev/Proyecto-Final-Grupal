@@ -117,8 +117,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CATEGORIES_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       currentCategoriesArray = resultObj.data;
-      showCategoriesList();
-      //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);////////////////////////
+      showCategoriesList();   
     }
   });
 
@@ -130,50 +129,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("sortDesc").addEventListener("click", function () {
     sortAndShowCategories(ORDER_DESC_BY_NAME);
   });
-
-  document.getElementById("sortByCount").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_BY_PROD_COUNT);
-  });
-
-
-  //  Limpia los filtros de rango
-  document
-    .getElementById("clearRangeFilter")
-    .addEventListener("click", function () {
-      document.getElementById("rangeFilterCountMin").value = "";
-      document.getElementById("rangeFilterCountMax").value = "";
-
-      minCount = undefined;
-      maxCount = undefined;
-
-      showCategoriesList();
-    });
-
-
-  //  Aplica filtro de rango usando los inputs en HTML   
-  document
-    .getElementById("rangeFilterCount")
-    .addEventListener("click", function () {
-            
-      minCount = document.getElementById("rangeFilterCountMin").value;
-      maxCount = document.getElementById("rangeFilterCountMax").value;
-
-      if (minCount != undefined && minCount != "" && parseInt(minCount) >= 0) {
-        minCount = parseInt(minCount);
-      } else {
-        minCount = undefined;
-      }
-
-      if (maxCount != undefined && maxCount != "" && parseInt(maxCount) >= 0) {
-        maxCount = parseInt(maxCount);
-      } else {
-        maxCount = undefined;
-      }
-
-      showCategoriesList();
-    });
-});
-
-
-
-//  No se que es lo comentado en la linea 121
