@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 /* Funcion universal para mostrar los datos guardados del local storage. 
-Tiene que conicidir el id input con atributo del objeto user en el local Storage. */
+Tiene que conicidir el id input con atributo del objeto user en el local Storage... */
 
 function traerDatos(campo){
     let user = JSON.parse(localStorage.getItem('user'))
