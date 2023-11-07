@@ -75,17 +75,52 @@
     </div>
   </nav>
   <main class="d-flex justify-content-center align-items-center">
-    <div class="container bg-white">
-      <div class="row">
-        <div class="col-6">
-          <label class="flex-row" for="nombre">Nombre<input type="text" id="nombre" class="form-control"></label>
+    <div class="container bg-white px-4 sombra">
+      <!-- Justify content between coloca el titulo y la foto en extremos opuestos. -->
+      <div class="d-flex justify-content-between mt-4 pt-4">
+        <div>
+          <h1>Perfil</h1>
         </div>
-        <div class="col-6">
-          <label class="flex-row" for="nombre">Segundo Nombre<input type="text" id="nombre" class="form-control"></label>
-          <label class="flex-row" for="nombre">Segundo apellido<input type="text" id="nombre" class="form-control"></label>
-          <label class="flex-row" for="nombre">Segundo Nombre<input type="text" id="nombre" class="form-control"></label>
+        <div>
+          <!-- Imagen de Ejemplo -->
+          <img class="img-fluid float-left" style="width: 100px;" src="/img/toretto.jpg" alt="">
         </div>
       </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <label class="w-100" for="nombre">Nombre<input type="text" id="nombre" class="form-control"></label>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <label class="pt-3 pt-md-0 w-100" for="segundoNombre">Segundo Nombre<input type="text" id="segundoNombre"
+              class="form-control"></label>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <label class="pt-3 w-100" for="apellido">Primer apellido<input type="text" id="apellido"
+              class="form-control"></label>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <label class="pt-3 w-100" for="segundoApellido">Segundo apellido<input type="text" id="segundoApellido"
+              class="form-control"></label>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <label class="pt-3 w-100" for="email">E-mail<input type="text" id="email" class="form-control"></label>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <!-- Aqui va el input para agregar la imagen -->
+          <label class="pt-3 w-100">Imagen de perfil</label>
+          <input type="file" id="imagen" class="form-control">
+          <!-- Aqui va el input para agregar la imagen -->
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <label class="pt-3 w-100" for="telefono">Telefono de contacto<input type="text" id="telefono"
+              class="form-control"></label>
+        </div>       
+        
+        
+      </div>
+      <hr>
+      <button type="button" class="btn btn-primary mb-3">Guardar cambios</button>
     </div>
     </div>
   </main>
