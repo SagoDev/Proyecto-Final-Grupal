@@ -80,7 +80,7 @@ function mostrarInfo(info) {
 
     let producto = {
       titulo: tituloProducto,
-      imagen: imagen,
+      imagenSrc: imagen,
       moneda: monedaProducto,
       precioUnidad: precioUn,
       cantidad: cantidad
