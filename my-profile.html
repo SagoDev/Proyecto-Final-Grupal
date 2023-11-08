@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -89,22 +89,23 @@
       <hr>
       <div class="row">
         <div class="col-sm-12 col-md-6">
-          <label class="w-100" for="nombre">Nombre<input type="text" id="nombre" class="form-control"></label>
+          <label class="w-100" for="nombre">Nombre<input type="text" id="nombre" class="form-control" required></label>
         </div>
         <div class="col-sm-12 col-md-6">
           <label class="pt-3 pt-md-0 w-100" for="segundoNombre">Segundo Nombre<input type="text" id="segundoNombre"
               class="form-control"></label>
         </div>
         <div class="col-sm-12 col-md-6">
-          <label class="pt-3 w-100" for="apellido">Primer apellido<input type="text" id="apellido"
-              class="form-control"></label>
+          <label class="pt-3 w-100" for="apellido">Primer apellido<input type="text" id="apellido" class="form-control"
+              required></label>
         </div>
         <div class="col-sm-12 col-md-6">
           <label class="pt-3 w-100" for="segundoApellido">Segundo apellido<input type="text" id="segundoApellido"
               class="form-control"></label>
         </div>
         <div class="col-sm-12 col-md-6">
-          <label class="pt-3 w-100" for="email">E-mail<input type="text" id="email" class="form-control"></label>
+          <label class="pt-3 w-100" for="email">E-mail<input type="text" id="email" class="form-control"
+             required></label>
         </div>
         <div class="col-sm-12 col-md-6">
           <!-- Aqui va el input para agregar la imagen -->
@@ -115,12 +116,12 @@
         <div class="col-sm-12 col-md-6">
           <label class="pt-3 w-100" for="telefono">Telefono de contacto<input type="text" id="telefono"
               class="form-control"></label>
-        </div>       
-        
-        
+        </div>
+
+
       </div>
       <hr>
-      <button type="button" class="btn btn-primary mb-3">Guardar cambios</button>
+      <button type="button" class="btn btn-primary mb-3" id="btnGuardar">Guardar cambios</button>
     </div>
     </div>
   </main>
@@ -136,6 +137,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

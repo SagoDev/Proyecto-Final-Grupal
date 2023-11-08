@@ -8,7 +8,7 @@ let expresiones = {
 // Guarda los datos del input en el Local storage
 function setDataStorage(email,pass){
     
-    localStorage.setItem("user", JSON.stringify({ 'email':email.value, 'pass': pass.value }));
+    localStorage.setItem("user", JSON.stringify({ 'email':email.value, 'pass': pass.value}));
     this.location.href = "./index.html";
 }
 
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             }
             addValidOrInvalidClass(input);
         }
-    });    
+    });
     
     // Escucha el click del botón de login para validar datos
     btnLogin.addEventListener('click',(e)=>{        
