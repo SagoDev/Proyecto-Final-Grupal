@@ -10,7 +10,7 @@ let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
 //  Actualiza los costos de publicación
-function updateTotalCosts(){
+function updateTotalCosts() {
     let unitProductCostHTML = document.getElementById("productCostText");
     let comissionCostHTML = document.getElementById("comissionText");
     let totalCostHTML = document.getElementById("totalCostText");
@@ -25,41 +25,39 @@ function updateTotalCosts(){
 }
 
 //  Cuando se carga la página
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function (e) {
 
     //  Escucha cambios en los input y actualiza el costo con updateTotalCosts
-    document.getElementById("productCountInput").addEventListener("change", function(){
+    document.getElementById("productCountInput").addEventListener("change", function () {
         productCount = this.value;
         updateTotalCosts();
     });
 
-    document.getElementById("productCostInput").addEventListener("change", function(){
+    document.getElementById("productCostInput").addEventListener("change", function () {
         productCost = this.value;
         updateTotalCosts();
     });
 
-    document.getElementById("goldradio").addEventListener("change", function(){
+    document.getElementById("goldradio").addEventListener("change", function () {
         comissionPercentage = 0.13;
         updateTotalCosts();
     });
-    
-    document.getElementById("premiumradio").addEventListener("change", function(){
+
+    document.getElementById("premiumradio").addEventListener("change", function () {
         comissionPercentage = 0.07;
         updateTotalCosts();
     });
 
-    document.getElementById("standardradio").addEventListener("change", function(){
+    document.getElementById("standardradio").addEventListener("change", function () {
         comissionPercentage = 0.03;
         updateTotalCosts();
     });
 
-    document.getElementById("productCurrency").addEventListener("change", function(){
-        if (this.value == DOLLAR_CURRENCY)
-        {
+    document.getElementById("productCurrency").addEventListener("change", function () {
+        if (this.value == DOLLAR_CURRENCY) {
             MONEY_SYMBOL = DOLLAR_SYMBOL;
-        } 
-        else if (this.value == PESO_CURRENCY)
-        {
+        }
+        else if (this.value == PESO_CURRENCY) {
             MONEY_SYMBOL = PESO_SYMBOL;
         }
 
@@ -69,17 +67,17 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     //Configuraciones para el elemento que sube archivos//////////////// 
     let dzoptions = {
-        url:"/",
+        url: "/",
         autoQueue: false
     };
-    let myDropzone = new Dropzone("div#file-upload", dzoptions);    
+    let myDropzone = new Dropzone("div#file-upload", dzoptions);
 
 
     //  Se obtiene el formulario de publicación de producto
     let sellForm = document.getElementById("sell-info");
 
     //  Escucha el evento 'submit' para realizar la venta
-    sellForm.addEventListener("submit", function(e){
+    sellForm.addEventListener("submit", function (e) {
 
         e.preventDefault();
         e.preventDefault();
@@ -95,45 +93,39 @@ document.addEventListener("DOMContentLoaded", function(e){
         productCost.classList.remove('is-invalid');
 
         //  Revisa si tiene todos los datos requeridos
-        if (productNameInput.value === "")
-        {
+        if (productNameInput.value === "") {
             productNameInput.classList.add('is-invalid');
             infoMissing = true;
         }
-        
-        if (productCategory.value === "")
-        {
+
+        if (productCategory.value === "") {
             productCategory.classList.add('is-invalid');
             infoMissing = true;
         }
 
-        if (productCost.value <=0)
-        {
+        if (productCost.value <= 0) {
             productCost.classList.add('is-invalid');
             infoMissing = true;
         }
-        
-        if(!infoMissing)
-        {
+
+        if (!infoMissing) {
             //  Si tiene todos los datos, entra acá
             //    Realiza la solicitud para crear la publicación
-            getJSONData(PUBLISH_PRODUCT_URL).then(function(resultObj){
+            getJSONData(PUBLISH_PRODUCT_URL).then(function (resultObj) {
                 let msgToShowHTML = document.getElementById("resultSpan");
                 let msgToShow = "";
-    
+
                 // Muestra una alerta si la publicación fue exitosa o no lo fue
                 ///////////////    FUNCIONALIDAD NO IMPLEMENTADA    ////////////////
-                if (resultObj.status === 'ok')
-                {
+                if (resultObj.status === 'ok') {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');
                 }
-                else if (resultObj.status === 'error')
-                {
+                else if (resultObj.status === 'error') {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');
                 }
-    
+
                 msgToShowHTML.innerHTML = msgToShow;
                 document.getElementById("alertResult").classList.add("show");
             });

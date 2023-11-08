@@ -1,10 +1,10 @@
 // Hace fetch a la api y retorna los datos.
-const getData = async (userId) => {
-  let response = await fetch(
-    `https://japceibal.github.io/emercado-api/user_cart/${userId}.json`
+const conseguirDatos = async (idUsuario) => {
+  let respuesta = await fetch(
+    `https://japceibal.github.io/emercado-api/user_cart/${idUsuario}.json`
   );
-  let data = await response.json();
-  return data;
+  let datos = await respuesta.json();
+  return datos;
 };
 //Variable para guardar los productos existentes del localstorage si hay,sino queda un array vacio
 let productosCarrito = JSON.parse(localStorage.getItem("productos")) || [];
@@ -19,18 +19,18 @@ function enviarLocalStorage(datos) {
     cantidad: datos.articles[0].count
   };
   //para evitar que se duplique el producto del carrito de la api,chequea si ya existe uno así 
-  let yaexiste = productosCarrito.some(product => {
+  let productoExiste = productosCarrito.some(product => {
     return product.titulo === producto.titulo;
   });
   //condicion de que si no existe un producto igual,envie el producto a la variable y luego al localstorage
-  if (!yaexiste) {
+  if (!productoExiste) {
     productosCarrito.push(producto);
     localStorage.setItem("productos", JSON.stringify(productosCarrito));
   }
 }
 
 // Esta función itera el array con los productos y los muestra en pantalla
-function displayData(arrayProductos) {
+function mostrarDatos(arrayProductos) {
   const container = document.getElementById("container");
   // Es un array con todos los productos del local storage
   arrayProductos.forEach((product, index) => {
@@ -87,7 +87,7 @@ function borrarProducto(id) {
 };
 
 // Pauta 3
-function actualizarCart(input, data, index) {
+function actualizarCarrito(input, data, index) {
   let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
   console.log(arrayPrecios)
 
@@ -95,19 +95,19 @@ function actualizarCart(input, data, index) {
   arrayPrecios[index].innerHTML = data[index].moneda + " " + (data[index].precioUnidad * input)
 }
 
-function addEventListenerAInputs(clase, data) {     //Data directamente de la variable data en linea 3 || Clases agregadas al input y al h5 del precio
+function agregarEventosInputs(clase, data) {     //Data directamente de la variable data en linea 3 || Clases agregadas al input y al h5 del precio
   let inputs = Array.from(document.getElementsByClassName(clase));
 
   inputs.forEach((Element, index) => {
     Element.addEventListener('input', (event) => {
       console.log(event.target.value)
-      actualizarCart(event.target.value, data, index)
+      actualizarCarrito(event.target.value, data, index)
       actualizarSubtotal() // Agregado, no se sabe si funciona
     })
   })
 }
 
-function addEventListenerABtn(clase, data) {     //Data directamente de la variable data en linea 3 || Clases agregadas al input y al h5 del precio
+function agregarEventosBotones(clase, data) {     //Data directamente de la variable data en linea 3 || Clases agregadas al input y al h5 del precio
   let btn = Array.from(document.getElementsByClassName(clase));
 
   btn.forEach((Element, index) => {
@@ -115,7 +115,7 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
     let inputs = Array.from(document.getElementsByClassName('pauta3Inputs'))
 
     Element.addEventListener('click', () => {
-      actualizarCart(inputs[index].value, data, index)
+      actualizarCarrito(inputs[index].value, data, index)
       actualizarSubtotal() // Agregado, no se sabe si funciona
     })
   })
@@ -127,7 +127,7 @@ function addEventListenerABtn(clase, data) {     //Data directamente de la varia
 function validar(arrayinputs, inputB, radio1, radio2, parrafo) {
   const inputIds = ["calle", "numero", "esquina"];
   let inputsCredit = Array.from(arrayinputs)
-  let errorMsg = document.getElementById("divInvalidFB");
+  let mensajeError = document.getElementById("divInvalidFB");
   if (radio1.checked) {
     inputsCredit.forEach((input) => {
       input.required = true;
@@ -143,7 +143,7 @@ function validar(arrayinputs, inputB, radio1, radio2, parrafo) {
       input.classList.add("is-invalid");
       (input.id === "calle" || input.id === "numero" || input.id === "esquina")
         ? (input.classList.remove("border-secondary"), input.classList.add("border-danger"))
-        : (parrafo.classList.add("is-invalid"), errorMsg.innerHTML = "Debe completar todos los campos");
+        : (parrafo.classList.add("is-invalid"), mensajeError.innerHTML = "Debe completar todos los campos");
     } else {
       input.classList.remove("is-invalid");
       input.classList.add("is-valid");
@@ -154,10 +154,10 @@ function validar(arrayinputs, inputB, radio1, radio2, parrafo) {
   })
 };
 
-function displayMsg(radio1, radio2, parrafo) {
-  let allInputs = Array.from(document.getElementsByClassName("form-control"));
+function mostrarMensaje(radio1, radio2, parrafo) {
+  let todosLosInputs = Array.from(document.getElementsByClassName("form-control"));
   if (radio1.checked || radio2.checked) {
-    if ((allInputs.every((campo) => campo.checkValidity()))) {
+    if ((todosLosInputs.every((campo) => campo.checkValidity()))) {
       parrafo.classList.remove("is-invalid");
       Swal.fire({
         icon: 'success',
@@ -169,7 +169,7 @@ function displayMsg(radio1, radio2, parrafo) {
     };
   };
 }
-function controlandoErrorMsg(parrafo) {
+function validarInputsModificados(parrafo) {
   let inputsVerificar = Array.from(document.getElementsByClassName("form-control"));
   inputsVerificar.forEach((input) => {
     input.addEventListener("change", () => {
@@ -198,7 +198,6 @@ function actualizarSubtotal() {
       subtotal = subtotal + (parseInt(precio.innerHTML.substring(4,)));
     }
   });
-  console.log(subtotal);
 
   //calcula costo de envío -- ahora funciona //////
   let premium = document.getElementById("premiumRadio");
@@ -232,7 +231,7 @@ function actualizarSubtotal() {
 
 }
 
-function listenerRadio() {
+function escucharRadio() {
   let standard = document.getElementById('standardRadio');
   let express = document.getElementById('expressRadio');
   let premium = document.getElementById('premiumRadio');
@@ -244,34 +243,34 @@ function listenerRadio() {
 
 // Corre el programa
 document.addEventListener("DOMContentLoaded", async () => {
-  let data = await getData(25801);
-  console.log(data);
-  enviarLocalStorage(data);
+  let datos = await conseguirDatos(25801);
+  console.log(datos);
+  enviarLocalStorage(datos);
   let productsCart = JSON.parse(localStorage.getItem("productos"));
-  displayData(productsCart);
+  mostrarDatos(productsCart);
   // Pauta 3
-  addEventListenerAInputs('pauta3Inputs', productsCart);
-  addEventListenerABtn('btnAumentar', productsCart)
- 
+  agregarEventosInputs('pauta3Inputs', productsCart);
+  agregarEventosBotones('btnAumentar', productsCart)
+
 
   let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
   let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
   let inputsTar = document.getElementById("tarjeta").getElementsByClassName("form-control")
-  let inputBank = document.getElementById("inputBank")
+  let inputTransferenciaBancaria = document.getElementById("inputBank")
   let fDM = document.getElementById("fDM")
 
-  let pInvalidOValid = document.getElementById("pOpcion");
+  let pInvalidoOValido = document.getElementById("pOpcion");
 
   btnRadioCredito.addEventListener("click", () => {
-    inputBank.disabled = true;
-    inputBank.value = "";
-    inputBank.classList.remove("is-invalid");
-    inputBank.classList.remove("is-valid");
+    inputTransferenciaBancaria.disabled = true;
+    inputTransferenciaBancaria.value = "";
+    inputTransferenciaBancaria.classList.remove("is-invalid");
+    inputTransferenciaBancaria.classList.remove("is-valid");
     for (input of inputsTar) {
       input.disabled = false;
     }
     fDM.innerHTML = "Tarjeta de Crédito";
-    pInvalidOValid.classList.remove("is-invalid");
+    pInvalidoOValido.classList.remove("is-invalid");
   })
   btnRadioBancaria.addEventListener("click", () => {
     for (input of inputsTar) {
@@ -280,21 +279,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       input.classList.remove("is-invalid");
       input.classList.remove("is-valid");
     }
-    inputBank.disabled = false;
+    inputTransferenciaBancaria.disabled = false;
     fDM.innerHTML = "Transferencia Bancaria";
-    pInvalidOValid.classList.remove("is-invalid");
+    pInvalidoOValido.classList.remove("is-invalid");
   })
 
   let btnFinalizarCompra = document.getElementById("finalizar-compra");
   btnFinalizarCompra.addEventListener("click", () => {
-    validar(inputsTar, inputBank, btnRadioCredito, btnRadioBancaria, pInvalidOValid);
-    controlandoErrorMsg(pInvalidOValid);
-    displayMsg(btnRadioCredito, btnRadioBancaria, pInvalidOValid);
+    validar(inputsTar, inputTransferenciaBancaria, btnRadioCredito, btnRadioBancaria, pInvalidoOValido);
+    validarInputsModificados(pInvalidoOValido);
+    mostrarMensaje(btnRadioCredito, btnRadioBancaria, pInvalidoOValido);
   })
 
   // Entrega 6 Pauta 1
   actualizarSubtotal();
-  listenerRadio();
+  escucharRadio();
 
   let productosEnLista = document.getElementById('container');
   productosEnLista.addEventListener('click', (e) => {
