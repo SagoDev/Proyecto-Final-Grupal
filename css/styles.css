@@ -227,7 +227,7 @@ a.custom-card:hover {
 
 /* Estilos listado de autos */
 
-.contenedor-producto {
+.contenedor_producto {
   font-family: raleway;
   color: rgba(0, 0, 0, 0.658);
   display: flex;
@@ -247,7 +247,7 @@ a.custom-card:hover {
   transform: scale(1.03);
 }
 
-.contenedor-producto{
+.contenedor_producto{
   cursor: pointer;
 }
 
