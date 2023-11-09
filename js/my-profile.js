@@ -10,6 +10,15 @@ function traerDatos(campo) {
     inputValue.value = usuarioCampo
 };
 
+function mostrarTodosLosDatos() {
+    let usuario = JSON.parse(localStorage.getItem('user'))
+    for (campo in usuario) {
+        if ( campo != 'pass') {
+            traerDatos(campo);
+        }
+    }
+}
+
 function guardarEnLocalStorage() {
     let usuario = JSON.parse(localStorage.getItem('user'))
     let listaInputs = document.getElementsByClassName('form-control');
@@ -43,17 +52,17 @@ function validarInputs(e) {
         }
     });
 
-    if(contador!= 0){
+    if (contador != 0) {
         e.preventDefault();
         e.stopPropagation();
-    }else{
+    } else {
         guardarEnLocalStorage();
         this.location.href = "./my-profile.html"
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    traerDatos("email");
+    mostrarTodosLosDatos()
     let btnGuardarDatos = document.getElementById('btnGuardar');
     btnGuardarDatos.addEventListener('click', (e) => {
         validarInputs(e);
