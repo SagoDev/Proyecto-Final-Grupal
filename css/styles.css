@@ -440,3 +440,24 @@ body.dark-mode {
   border-radius: 10px;
   backdrop-filter: blur(20px);
 }
+
+
+
+.contenedor-foto-perfil {
+  width: 100px;
+  height: 100px;
+}
+
+.contenedor-foto-nav-bar {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
+
+#foto-nav-bar {
+  object-fit: cover;
+}
+
+#foto_perfil {
+  object-fit: cover;
+}
