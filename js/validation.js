@@ -1,14 +1,13 @@
 // Parámetros para validar email y contraseña
 let expresiones = {
     email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-    contraseña: /^.{6,}$/
-
+    password: /^.{6,}$/
 };
 
 // Guarda los datos del input en el Local storage
 function guardarInfoEnLocal(email, contra) {
 
-    localStorage.setItem("user", JSON.stringify({ 'email': email.value, 'contra': contra.value }));
+    localStorage.setItem("user", JSON.stringify({ 'email': email.value, 'pass': contra.value }));
     this.location.href = "./index.html";
 }
 
@@ -53,7 +52,7 @@ function validarOInvalidar(input) {
 document.addEventListener("DOMContentLoaded", () => {
     let form = document.getElementById('logIn');
     let inputEmail = document.getElementById('email');
-    let inputContraseña = document.getElementById('contra');
+    let inputContraseña = document.getElementById('pass');
     let btnLogin = document.getElementById('login');
 
     // Escucha las teclas para darle clases para Bootstrap

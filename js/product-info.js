@@ -10,7 +10,6 @@ function traerInfo(api, funcion) {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       funcion(datos);
-      console.log(api + id + ".json");
     });
 }
 
@@ -77,7 +76,14 @@ function mostrarInfo(info) {
     let precioUn = info.cost;
     let imagen = info.images[0];
     let cantidad = 1;
-
+    let existe=false;
+    productosDelCarrito.forEach(producto =>{
+      if(producto.titulo === tituloProducto){
+        existe=true;
+        producto.cantidad +=1 ;
+      }
+    })
+    if (!existe){
     let producto = {
       titulo: tituloProducto,
       imagenSrc: imagen,
@@ -85,11 +91,11 @@ function mostrarInfo(info) {
       precioUnidad: precioUn,
       cantidad: cantidad
     };
-
     productosDelCarrito.push(producto);
+    }
     localStorage.setItem("productos", JSON.stringify(productosDelCarrito));
   });
-}
+};
 
 
 //  Comentarios
@@ -113,17 +119,17 @@ function creandoEstrellas(puntajeUsuario) {
 
 //   Genera un numero aleatorio para usar en código RGB
 function generarColorAleatorio() {
-  var componente = Math.floor(Math.random() * 256).toString(16);
+  let componente = Math.floor(Math.random() * 256).toString(16);
   // Asegurarse de que el componente tenga siempre dos dígitos
   return ("0" + componente).slice(-2);
 }
 
 //  Genera el código de color RGB completo
 function generarColorCSSAleatorio() {
-  var rojo = generarColorAleatorio();
-  var verde = generarColorAleatorio();
-  var azul = generarColorAleatorio();
-  var colorRGB = rojo + verde + azul;
+  let rojo = generarColorAleatorio();
+  let verde = generarColorAleatorio();
+  let azul = generarColorAleatorio();
+  let colorRGB = rojo + verde + azul;
   return colorRGB;
 }
 
@@ -156,7 +162,6 @@ function traerValorEstrellas() {
   let estrellas = document.getElementsByName("estrellas");
   for (let i = 0; i < estrellas.length; i++) {
     if (estrellas[i].checked) {
-      console.log(estrellas[i].value);
       return estrellas[i].value;
     }
   }
@@ -166,12 +171,13 @@ function traerValorEstrellas() {
 function generarComentario() {
   let contenedorComentarios = document.getElementById("commentList");
   let usuario = JSON.parse(localStorage.getItem("user")).email;
+  let nombreUsuario=usuario.substring(0, usuario.indexOf('@'));
   let descripcion = document.getElementById("textarea");
   let puntuacion = traerValorEstrellas();
   let comentario = {
     texto: descripcion.value,
     puntos: puntuacion,
-    usuario: usuario,
+    usuario: nombreUsuario,
     fecha: () => {
       date = new Date().toJSON();
       return date.replace("T", " ").slice(0, 19);
@@ -221,7 +227,7 @@ function setearIdProducto(id) {
 //  Amplía una imagen 
 function zoomImagen() {
   let contenedorImgActiva = Array.from(document.getElementsByClassName("active"));
-  let img = contenedorImgActiva[0].childNodes[1].src;  
+  let img = contenedorImgActiva[0].childNodes[1].src;
 
   let divTransparente = document.createElement("div");
   divTransparente.style =
@@ -249,7 +255,7 @@ function zoomImagen() {
 document.addEventListener("DOMContentLoaded", () => {
   const btnEnviarComentario = document.getElementById("enviar-comment");
   btnEnviarComentario.addEventListener("click", () => {
-  let descripcion = document.getElementById("textarea");
+    let descripcion = document.getElementById("textarea");
     if (descripcion.value) {
       generarComentario();
     }

@@ -72,7 +72,6 @@ function mostrarDatos(arrayProductos) {
 function borrarProducto(id) {
 
   let lista = Array.from(document.getElementsByClassName('productoABorrar'));
-  console.log(id)
   let padre = document.getElementById('container')
   let indexElementoABorrar = lista.findIndex(producto => producto.dataset.index === id);
   let elementoABorrar = lista[indexElementoABorrar]
@@ -83,13 +82,11 @@ function borrarProducto(id) {
   Array.from(array);
   array.splice(indexElementoABorrar, 1)
   localStorage.setItem('productos', JSON.stringify(array));
-  console.log(array)
 };
 
 // Pauta 3
 function actualizarCarrito(input, data, index) {
   let arrayPrecios = Array.from(document.getElementsByClassName('pauta3Precio'))
-  console.log(arrayPrecios)
 
 
   arrayPrecios[index].innerHTML = data[index].moneda + " " + (data[index].precioUnidad * input)
@@ -100,7 +97,6 @@ function agregarEventosInputs(clase, data) {     //Data directamente de la varia
 
   inputs.forEach((Element, index) => {
     Element.addEventListener('input', (event) => {
-      console.log(event.target.value)
       actualizarCarrito(event.target.value, data, index)
       actualizarSubtotal() // Agregado, no se sabe si funciona
     })
@@ -121,8 +117,6 @@ function agregarEventosBotones(clase, data) {     //Data directamente de la vari
   })
 }
 
-
-//entrega6 pauta 3
 
 function validar(arrayinputs, inputB, radio1, radio2, parrafo) {
   const inputIds = ["calle", "numero", "esquina"];
@@ -247,10 +241,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   enviarLocalStorage(datos);
   let productsCart = JSON.parse(localStorage.getItem("productos"));  
   mostrarDatos(productsCart);
-  // Pauta 3
-  agregarEventosInputs('pauta3Inputs', productsCart);
-  agregarEventosBotones('btnAumentar', productsCart)
 
+  agregarEventosInputs('pauta3Inputs', productsCart);
+  agregarEventosBotones('btnAumentar', productsCart);
+  agregarEventosBotones('btnRestar', productsCart);
 
   let btnRadioCredito = document.getElementById("Tarjeta-de-credito");
   let btnRadioBancaria = document.getElementById("Transferencia-bancaria");
@@ -290,7 +284,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     mostrarMensaje(btnRadioCredito, btnRadioBancaria, pInvalidoOValido);
   })
 
-  // Entrega 6 Pauta 1
+
   actualizarSubtotal();
   escucharRadio();
 
@@ -300,5 +294,5 @@ document.addEventListener("DOMContentLoaded", async () => {
       let id = e.target.id;
       borrarProducto(id);
     }
-  })
+  });
 });

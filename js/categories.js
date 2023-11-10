@@ -73,17 +73,17 @@ function mostrarListaCatergorias() {
         (maxCount != undefined && parseInt(category.productCount) <= maxCount))
     ) {
       contenidoHtmlAdjuntar += `
-            <div onclick="setearIdCategoria(${category.id})" class="sombra list-group-item list-group-item-action cursor-active">
-                <div class="row">
-                    <div class="col-3">
+            <div onclick="setearIdCategoria(${category.id})" class="shadow list-group-item list-group-item-action cursor-active">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-sm-12 col-md-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${category.name}</h4>
-                            <small class="text-muted">${category.productCount} artículos</small>
-                        </div>
-                        <p class="mb-1">${category.description}</p>
+                    <div class="row col-sm-12 col-md-7 text-sm-center text-md-start">
+                      <p class="fs-2 f-releway">${category.name}</p>
+                      <p class="fs-5 f-releway">${category.description}</p>
+                    </div>
+                    <div class="col-sm-12 col-md-2 text-center d-flex justify-content-center align-items-center">
+                          <p class="text-muted">${category.productCount} artículos</p>
                     </div>
                 </div>
             </div>
@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   //  Escucha los botones para reordenar el array de categorías
   document.getElementById("sortAsc").addEventListener("click", function () {
-   clasificarYMostrarCategorias(ORDER_ASC_BY_NAME);
+    clasificarYMostrarCategorias(ORDER_ASC_BY_NAME);
   });
 
   document.getElementById("sortDesc").addEventListener("click", function () {
-   clasificarYMostrarCategorias(ORDER_DESC_BY_NAME);
+    clasificarYMostrarCategorias(ORDER_DESC_BY_NAME);
   });
 });

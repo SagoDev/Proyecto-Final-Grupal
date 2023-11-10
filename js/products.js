@@ -54,7 +54,7 @@ function mostrarProductos(arr) {
   for (let i = 0; i < arr.length; i++) {
     let { soldCount, name, currency, cost, description, image, id } = arr[i];
     divContenido += `    
-    <div onclick="setearIdProducto(${id})" class="contenedor_producto pe-auto bg-light text-dark row"> 
+    <div data-idProducto=${id} onclick="setearIdProducto(${id})" class="contenedor_producto pe-auto bg-light text-dark row"> 
         <div class="imagen-producto mb-3 col-sm-12 col-md-4 col-lg-4">
             <img class="img-fluid" src=${image}>
         </div>
@@ -67,7 +67,7 @@ function mostrarProductos(arr) {
                     <h3 class="">${currency} ${cost}</h3>
                 </div>            
                 <div class="">
-                    <p class="">${description} </p> 
+                    <p class="fs-5">${description} </p> 
                 </div>
             </div>
             <div class="col-md-12 col-lg-2 text-center text-md-start text-lg-end text-xg-end">
@@ -84,8 +84,8 @@ function mostrarProductos(arr) {
 // Función que muestra los productos usando el filtro de precio
 function rangoDePrecioProductos() {
   let valorMin = minCount.value || 0;
-  let valorMax = maxCount.value || Math.max(...products.map((e) => e.cost));
-  let productosActualizados = products.filter(
+  let valorMax = maxCount.value || Math.max(...productos.map((e) => e.cost));
+  let productosActualizados = productos.filter(
     (e) => e.cost >= valorMin && e.cost <= valorMax
   );
   mostrarProductos(productosActualizados);
@@ -132,15 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
   obtenerInfoProducto(apiProductos);
 
   // Escucha a la barra de busqueda y filtra los productos en tiempo realt barraDeBusqueda.addEventListener("keyup", () => {
-    let arrayProducts = Array.from(
-      document.getElementsByClassName("contenedor_producto")
+  barraDeBusqueda.addEventListener("keyup", () => {
+    let arrayProductos = Array.from(document.getElementsByClassName("contenedor_producto")
     );
-    arrayProducts.forEach((el) => {
-      !el.textContent.toLowerCase().include(barraDeBusqueda.value.toLowerCase())
+    arrayProductos.forEach((el) => {
+      !el.textContent.toLowerCase().includes(barraDeBusqueda.value.toLowerCase())
         ? el.classList.add("buscando")
         : el.classList.remove("buscando");
     });
-  ;
+  });
 
   // Filtro por precio
   clasificarCosto.addEventListener("click", () => {
@@ -165,6 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
   limpiarFiltrarBtn.addEventListener("click", () => {
     minCount.value = "";
     maxCount.value = "";
-    mostrarProductos(products);
+    mostrarProductos(productos);
   });
 });
