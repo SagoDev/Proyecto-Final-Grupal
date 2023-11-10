@@ -3,13 +3,13 @@ Tiene que conicidir el id input con atributo del objeto user en el local Storage
 let usuario = JSON.parse(localStorage.getItem('user'))
 
 function traerDatos(campo) {
-
+  
     let usuarioCampo = usuario[campo];
     let inputValue = document.getElementById(campo)
     inputValue.value = usuarioCampo;
 };
 
-function mostrarTodosLosDatos() {
+function mostrarTodosLosDatos() {    
     for (campo in usuario) {
         if (campo != 'pass') {
             traerDatos(campo);

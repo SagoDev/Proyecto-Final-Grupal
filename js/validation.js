@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
             validarOInvalidar(input);
         }
     });
-
     // Escucha el click del botón de login para validar datos
     btnLogin.addEventListener('click', (e) => {
         validarInfo(inputEmail, inputContraseña, e);
