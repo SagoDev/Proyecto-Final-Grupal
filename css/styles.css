@@ -5,21 +5,38 @@
   font-family: 'Verdana', serif !important;
 }
 
+/*  */
+
+:root {
+  --primary-color: #ededed;
+  --secondary-color: #f5f5f5;
+  --font-color: black;
+}
+
+.dark-theme {
+  --primary-color: #ededed;
+  --secondary-color: #f5f5f5;
+  --font-color: #F5F5F5
+}
+
 #divLogin, #contInfoProd {
-  background-color: #ffff;
+  background-color: #fff;
 }
 
 body {
-  
+  background-color: var(--primary-color);
+}
+
+#fondo_login {
   background-image: url(img/fondo.png);
   
   background-repeat: repeat;
 
-  background-size: 400px;
-  
-  background-color: rgb(248, 249, 250);
+  background-size: 600px;
+
   transition: all 1.5s ease;
 }
+
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -49,10 +66,6 @@ nav a {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}
-
-#cover {
-  width: 35%;
 }
 
 .sombra {
@@ -364,13 +377,13 @@ input:checked ~ label  .bi-star::before {
 
 /* Estilos para el modo oscuro */
 body.dark-mode {
-  background-color: #090717f2;
+  background-color: #222;
   color: #fff;
   transition: all 1.5s ease;
 }
 .dark-mode-button-active {
   background: #ffffff;
-  color: #090717f2;
+  color: #222;
   transition: .9s ease;
 }
 .dark-mode-button-active:hover {
