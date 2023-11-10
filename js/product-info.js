@@ -1,5 +1,5 @@
-const apiProducts = "https://japceibal.github.io/emercado-api/products/";
-const apiComments = "https://japceibal.github.io/emercado-api/products_comments/";
+const apiProductos = "https://japceibal.github.io/emercado-api/products/";
+const apiComentarios = "https://japceibal.github.io/emercado-api/products_comments/";
 
 let id = localStorage.getItem("ProductID");
 
@@ -7,10 +7,9 @@ let id = localStorage.getItem("ProductID");
 //  Trae información de la API
 function traerInfo(api, funcion) {
   fetch(api + id + ".json")
-    .then((Response) => Response.json())
-    .then((data) => {
-      funcion(data);
-      console.log(api + id + ".json");
+    .then((respuesta) => respuesta.json())
+    .then((datos) => {
+      funcion(datos);
     });
 }
 
@@ -18,9 +17,9 @@ function traerInfo(api, funcion) {
 //  Muestra la información del producto en la página
 //  Da funcionalidad al botón de comprar
 function mostrarInfo(info) {
-  let contenedor = document.getElementById("contenedor-producto");
+  let contenedor = document.getElementById("contenedor_producto");
   let contenedorCarrusel = document.getElementById("carousel-inner");
-  let titulo = document.getElementById("contenedorTitulo");
+  let titulo = document.getElementById("contenedor_titulo");
 
   //  Texto del producto
   titulo.innerHTML = `
@@ -72,24 +71,31 @@ function mostrarInfo(info) {
   //    Crea un objeto del producto y lo guarda en el local storage como string
   //    interactua con la línea 68
   comprarBtn.addEventListener("click", function () {
-    let tituloProduct = info.name;
+    let tituloProducto = info.name;
     let monedaProducto = info.currency;
     let precioUn = info.cost;
-    let imagenSrc = info.images[0];
+    let imagen = info.images[0];
     let cantidad = 1;
-
+    let existe=false;
+    productosDelCarrito.forEach(producto =>{
+      if(producto.titulo === tituloProducto){
+        existe=true;
+        producto.cantidad +=1 ;
+      }
+    })
+    if (!existe){
     let producto = {
-      titulo: tituloProduct,
-      imagenSrc: imagenSrc,
+      titulo: tituloProducto,
+      imagenSrc: imagen,
       moneda: monedaProducto,
       precioUnidad: precioUn,
       cantidad: cantidad
     };
-
     productosDelCarrito.push(producto);
+    }
     localStorage.setItem("productos", JSON.stringify(productosDelCarrito));
   });
-}
+};
 
 
 //  Comentarios
@@ -98,37 +104,37 @@ function mostrarInfo(info) {
 let puntajeEstrellas = "";
 
 //  Crea las estrellas de puntuación
-function creandoEstrellas(puntajeUser) {
-  let allStars = "";
+function creandoEstrellas(puntajeUsuario) {
+  let estrellas = "";
   for (let i = 0; i < 5; i++) {
-    if (i < puntajeUser) {
-      allStars += '<i class="bi bi-star-fill estrellita"></i>'; //  Estrellas pintadas
+    if (i < puntajeUsuario) {
+      estrellas += '<i class="bi bi-star-fill estrellita"></i>'; //  Estrellas pintadas
     } else {
-      allStars += '<i class="bi bi-star estrellita"></i>'; //  Estrellas vacías
+      estrellas += '<i class="bi bi-star estrellita"></i>'; //  Estrellas vacías
     }
   }
-  puntajeEstrellas = allStars;
+  puntajeEstrellas = estrellas;
 }
 
 
 //   Genera un numero aleatorio para usar en código RGB
 function generarColorAleatorio() {
-  var componente = Math.floor(Math.random() * 256).toString(16);
+  let componente = Math.floor(Math.random() * 256).toString(16);
   // Asegurarse de que el componente tenga siempre dos dígitos
   return ("0" + componente).slice(-2);
 }
 
 //  Genera el código de color RGB completo
 function generarColorCSSAleatorio() {
-  var rojo = generarColorAleatorio();
-  var verde = generarColorAleatorio();
-  var azul = generarColorAleatorio();
-  var colorRGB = rojo + verde + azul;
+  let rojo = generarColorAleatorio();
+  let verde = generarColorAleatorio();
+  let azul = generarColorAleatorio();
+  let colorRGB = rojo + verde + azul;
   return colorRGB;
 }
 
 //  Muestra los comentarios en la página
-function mostrarComments(comentarios) {
+function mostrarComentarios(comentarios) {
   let contenedorComentarios = document.getElementById("commentList");
   for (let comment of comentarios) {
     creandoEstrellas(comment.score);
@@ -156,22 +162,22 @@ function traerValorEstrellas() {
   let estrellas = document.getElementsByName("estrellas");
   for (let i = 0; i < estrellas.length; i++) {
     if (estrellas[i].checked) {
-      console.log(estrellas[i].value);
       return estrellas[i].value;
     }
   }
 }
 
 //  Crea un comentario nuevo
-function generarComment() {
+function generarComentario() {
   let contenedorComentarios = document.getElementById("commentList");
   let usuario = JSON.parse(localStorage.getItem("user")).email;
+  let nombreUsuario=usuario.substring(0, usuario.indexOf('@'));
   let descripcion = document.getElementById("textarea");
   let puntuacion = traerValorEstrellas();
   let comentario = {
     texto: descripcion.value,
     puntos: puntuacion,
-    usuario: usuario,
+    usuario: nombreUsuario,
     fecha: () => {
       date = new Date().toJSON();
       return date.replace("T", " ").slice(0, 19);
@@ -200,7 +206,7 @@ function mostrarRelacionados(info) {
   let contenedor = document.getElementById("contenedor-relacionados");
   for (let i of info.relatedProducts) {
     contenedor.innerHTML += `
-    <div onclick="setProductID(${i.id})" class="col-4">
+    <div onclick="setearIdProducto(${i.id})" class="col-4 productos-relacionados">
         <div class="tarjetas-relacionadas card" style="width: auto;">
           <img src="${i.image}" class="card-img-top" alt="...">
           <div class="card-body">
@@ -212,36 +218,33 @@ function mostrarRelacionados(info) {
 }
 
 // Redirige a la página de un producto relacionado
-function setProductID(id) {
+function setearIdProducto(id) {
   localStorage.setItem("ProductID", id);
   window.location = "product-info.html";
 }
 
 
 //  Amplía una imagen 
-function imageZoom() {
-  let contImgActive = Array.from(document.getElementsByClassName("active"));
-  let img = contImgActive[0].childNodes[1].src;
-  console.log(contImgActive);
-  console.log(img);
-  let body = document.getElementsByTagName("body")[0];
+function zoomImagen() {
+  let contenedorImgActiva = Array.from(document.getElementsByClassName("active"));
+  let img = contenedorImgActiva[0].childNodes[1].src;
 
   let divTransparente = document.createElement("div");
   divTransparente.style =
     "background-color: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; z-index: 5000; position: fixed; top: 0px; left: 0; display: flex; justify-content: center; align-items: center;";
 
-  let contImg = document.createElement("div");
-  contImg.style =
+  let contenedorImg = document.createElement("div");
+  contenedorImg.style =
     "background-color: aliceblue; box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74); border-radius: 10px;";
 
-  contImg.innerHTML = `<img src="${img}" style="height: auto;">`;
+  contenedorImg.innerHTML = `<img src="${img}" style="height: auto;">`;
 
-  body.appendChild(divTransparente);
-  divTransparente.appendChild(contImg);
+  document.body.appendChild(divTransparente);
+  divTransparente.appendChild(contenedorImg);
 
   divTransparente.addEventListener("click", () => {
-    divTransparente.removeChild(contImg);
-    body.removeChild(divTransparente);
+    divTransparente.removeChild(contenedorImg);
+    document.body.removeChild(divTransparente);
   });
 }
 
@@ -250,17 +253,17 @@ function imageZoom() {
 //    Muestra: *el producto *sus fotos *sus comentarios *sus productos relacionados
 //    Escucha un click para hacer zoom a la imágen
 document.addEventListener("DOMContentLoaded", () => {
-  const enviarComment = document.getElementById("enviar-comment");
-  enviarComment.addEventListener("click", () => {
+  const btnEnviarComentario = document.getElementById("enviar-comment");
+  btnEnviarComentario.addEventListener("click", () => {
     let descripcion = document.getElementById("textarea");
     if (descripcion.value) {
-      generarComment();
+      generarComentario();
     }
   });
-  traerInfo(apiProducts, mostrarInfo);
-  traerInfo(apiComments, mostrarComments);
-  traerInfo(apiProducts, mostrarRelacionados);
+  traerInfo(apiProductos, mostrarInfo);
+  traerInfo(apiComentarios, mostrarComentarios);
+  traerInfo(apiProductos, mostrarRelacionados);
 
   let imgCarousel = document.getElementById("carousel-inner");
-  imgCarousel.addEventListener("click", imageZoom);
+  imgCarousel.addEventListener("click", zoomImagen);
 });

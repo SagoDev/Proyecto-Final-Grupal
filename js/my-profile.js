@@ -1,17 +1,15 @@
 /* Funcion universal para mostrar los datos guardados del local storage. 
 Tiene que conicidir el id input con atributo del objeto user en el local Storage... */
+let usuario = JSON.parse(localStorage.getItem('user'))
 
 function traerDatos(campo) {
-    let usuario = JSON.parse(localStorage.getItem('user'))
-    let usuarioCampo = usuario[campo]
-
-
+  
+    let usuarioCampo = usuario[campo];
     let inputValue = document.getElementById(campo)
-    inputValue.value = usuarioCampo
+    inputValue.value = usuarioCampo;
 };
 
-function mostrarTodosLosDatos() {
-    let usuario = JSON.parse(localStorage.getItem('user'))
+function mostrarTodosLosDatos() {    
     for (campo in usuario) {
         if (campo != 'pass') {
             traerDatos(campo);
@@ -20,7 +18,6 @@ function mostrarTodosLosDatos() {
 }
 
 function guardarEnLocalStorage() {
-    let usuario = JSON.parse(localStorage.getItem('user'))
     let listaInputs = document.getElementsByClassName('form-control');
 
     for (const input of listaInputs) {
