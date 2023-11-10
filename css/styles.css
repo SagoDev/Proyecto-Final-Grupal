@@ -386,7 +386,7 @@ body.dark-mode {
   cursor: pointer;
   color: #000000;
 }
-#contenedorIndex, #contInfoProd, #carrito, #titulo_perfil {
+#contenedorIndex, #contInfoProd, #carrito {
   color: #000000;
 }
 /* Fin de Estilos para el modo oscuro */
@@ -439,27 +439,4 @@ body.dark-mode {
   border: 1px solid rgba(255, 255, 255, .5);
   border-radius: 10px;
   backdrop-filter: blur(20px);
-}
-
-
-
-.contenedor-foto-perfil {
-  width: 100px;
-  height: 100px;
-}
-
-.contenedor-foto-nav-bar {
-  width: 25px;
-  height: 25px;
-  display: inline-block;
-}
-
-#foto_nav_bar {
-  object-fit: cover;
-  border-radius: 50px;
-  border: 2px solid orange;
-}
-
-#foto_perfil {
-  object-fit: cover;
 }
