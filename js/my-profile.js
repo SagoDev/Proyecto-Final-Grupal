@@ -60,8 +60,8 @@ function validarInputs(e) {
 
 function establecerSrcImagen(idElemento) {
   const contenedorImagen = document.getElementById(idElemento);
-  if (localStorage.getItem("foto-perfil") != undefined) {
-    contenedorImagen.src = localStorage.getItem("foto-perfil");
+  if (localStorage.getItem("fotoPerfil") != undefined) {
+    contenedorImagen.src = localStorage.getItem("fotoPerfil");
   }
 }
 
@@ -74,7 +74,7 @@ function cargarImagen() {
     lectorArchivo.readAsDataURL(e.target.files[0]);
 
     lectorArchivo.addEventListener("load", () => {
-      localStorage.setItem("foto-perfil", lectorArchivo.result);
+      localStorage.setItem("fotoPerfil", lectorArchivo.result);
 
       establecerSrcImagen("foto_nav_bar");
       establecerSrcImagen("foto_perfil");

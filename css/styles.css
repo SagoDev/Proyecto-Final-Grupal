@@ -386,7 +386,7 @@ body.dark-mode {
   cursor: pointer;
   color: #000000;
 }
-#contenedorIndex, #contInfoProd, #carrito {
+#contenedorIndex, #contInfoProd, #carrito, #titulo_perfil {
   color: #000000;
 }
 /* Fin de Estilos para el modo oscuro */
@@ -449,13 +449,15 @@ body.dark-mode {
 }
 
 .contenedor-foto-nav-bar {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: inline-block;
 }
 
-#foto-nav-bar {
+#foto_nav_bar {
   object-fit: cover;
+  border-radius: 50px;
+  border: 2px solid orange;
 }
 
 #foto_perfil {
