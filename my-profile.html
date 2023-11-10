@@ -48,6 +48,9 @@
           </li>
           <li class="nav-item">
             <div class="dropdown">
+              <div class="contenedor-foto-nav-bar">
+                <img class="foto-nav-bar w-100 h-100 mt-2 mb-1" id="foto_nav_bar" src="./img/profile_pic.jpg" alt="">
+              </div>
               <button class="btn dropdown-toggle" type="button" id="user" data-bs-toggle="dropdown"
                 aria-expanded="false"></button>
               <ul class="dropdown-menu" aria-labelledby="user">
@@ -67,22 +70,23 @@
                 </li>
                 <li><a class="dropdown-item" id="bye" href=""><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
                     sesión</a></li>
-              </ul>
+              </ul>  
             </div>
           </li>
+          
         </ul>
       </div>
     </div>
   </nav>
   <main class="d-flex justify-content-center align-items-center mt-5 pt-4">
-    <div class="container bg-white px-4 sombra">
+    <div class="container bg-white px-4 sombra" id="titulo_perfil">
       <div class="d-flex justify-content-between mt-4 pt-4">
         <div>
-          <h1>Perfil</h1>
+          <h1 class="mt-4">Perfil</h1>
         </div>
-        <div>
+        <div class="contenedor-foto-perfil mx-4 mb-3">
           <!-- Imagen de Ejemplo -->
-          <img class="img-fluid float-left" style="width: 100px;" src="/img/toretto.jpg" alt="">
+          <img class="rounded-circle w-100 h-100" id="foto_perfil" src="./img/profile_pic.jpg" alt="Foto de perfil">
         </div>
       </div>
       <hr>
