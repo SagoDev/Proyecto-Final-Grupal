@@ -345,7 +345,7 @@ body.dark-mode {
   cursor: pointer;
   color: #000000;
 }
-#contenedorIndex, #contInfoProd, #carrito {
+#contenedorIndex, #contInfoProd, #carrito, #perfil, #textoVender {
   color: #000000;
 }
 /* Fin de Estilos para el modo oscuro */
