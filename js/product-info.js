@@ -163,7 +163,7 @@ function traerValorEstrellas() {
 }
 
 //  Crea un comentario nuevo
-function generarComment() {
+function generarComentario() {
   let contenedorComentarios = document.getElementById("commentList");
   let usuario = JSON.parse(localStorage.getItem("user")).email;
   let descripcion = document.getElementById("textarea");
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnEnviarComentario.addEventListener("click", () => {
   let descripcion = document.getElementById("textarea");
     if (descripcion.value) {
-      generarComment();
+      generarComentario();
     }
   });
   traerInfo(apiProductos, mostrarInfo);

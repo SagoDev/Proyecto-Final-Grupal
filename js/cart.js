@@ -245,9 +245,7 @@ function escucharRadio() {
 document.addEventListener("DOMContentLoaded", async () => {
   let datos = await conseguirDatos(25801);
   enviarLocalStorage(datos);
-  let productsCart = JSON.parse(localStorage.getItem("productos"));
-  console.log(datos);
-  console.log(productsCart)
+  let productsCart = JSON.parse(localStorage.getItem("productos"));  
   mostrarDatos(productsCart);
   // Pauta 3
   agregarEventosInputs('pauta3Inputs', productsCart);
