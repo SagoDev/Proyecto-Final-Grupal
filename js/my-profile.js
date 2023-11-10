@@ -13,7 +13,7 @@ function traerDatos(campo) {
 function mostrarTodosLosDatos() {
     let usuario = JSON.parse(localStorage.getItem('user'))
     for (campo in usuario) {
-        if ( campo != 'pass') {
+        if (campo != 'pass') {
             traerDatos(campo);
         }
     }
@@ -43,22 +43,21 @@ function validarInputs(e) {
             input.classList.remove("is-invalid");
             input.classList.add("is-valid");
         }
-    });
 
-    inputIds.forEach((id) => {
-        const input = document.getElementById(id);
         if (input.classList.contains('is-invalid')) {
             contador += 1;
         }
+
+        if (contador != 0) {
+            e.preventDefault();
+            e.stopPropagation();
+        } else {
+            guardarEnLocalStorage();
+            this.location.href = "./my-profile.html"
+        }
+
     });
 
-    if (contador != 0) {
-        e.preventDefault();
-        e.stopPropagation();
-    } else {
-        guardarEnLocalStorage();
-        this.location.href = "./my-profile.html"
-    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
