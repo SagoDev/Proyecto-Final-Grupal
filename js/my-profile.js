@@ -33,7 +33,8 @@ function guardarEnLocalStorage() {
 function validarInputs(e) {
     const inputIds = ["nombre", "apellido", "email"];
     let contador = 0;
-    inputIds.forEach((id) => {
+
+    for (const id of inputIds) {
         const input = document.getElementById(id);
 
         if (!input.checkValidity()) {
@@ -47,16 +48,15 @@ function validarInputs(e) {
         if (input.classList.contains('is-invalid')) {
             contador += 1;
         }
+    }
 
-        if (contador != 0) {
-            e.preventDefault();
-            e.stopPropagation();
-        } else {
-            guardarEnLocalStorage();
-            this.location.href = "./my-profile.html"
-        }
-
-    });
+    if (contador != 0) {
+        e.preventDefault();
+        e.stopPropagation();
+    } else {
+        guardarEnLocalStorage();
+        this.location.href = "./my-profile.html"
+    }
 
 };
 
