@@ -344,7 +344,6 @@ input:checked ~ label  .bi-star::before {
 
 /*Estilo menú desplegable*/
 .dropdown-menu {
-  background-color: #000000;
   overflow: hidden; 
 }
 .dropdown-item{

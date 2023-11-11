@@ -134,8 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Escucha a la barra de busqueda y filtra los productos en tiempo realt barraDeBusqueda.addEventListener("keyup", () => {
   barraDeBusqueda.addEventListener("keyup", () => {
-    let arrayProductos = Array.from(document.getElementsByClassName("contenedor_producto")
-    );
+    let arrayProductos = Array.from(document.getElementsByClassName("contenedor_producto"));
+    console.log(arrayProductos);
     arrayProductos.forEach((el) => {
       !el.textContent.toLowerCase().includes(barraDeBusqueda.value.toLowerCase())
         ? el.classList.add("buscando")

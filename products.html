@@ -114,81 +114,8 @@
             </ul>
           </div>
         </div>
-      </nav>
-      <div class="container mt-5 pt-3">
-        <div class="productsTitle text-center catt">
-          <div class="cat p-3">
-            <h1>Productos</h1>
-            <h4>
-              Verás aquí todos los productos de la categoría
-              <b id="nombreCategoria">Autos</b>
-            </h4>
-          </div>
-        </div>
-        <div class="row m-2">
-          <div
-            class="orderBtns gap-3 d-flex justify-content-center align-items-center col-md-4"
-          >
-            <input
-              class="btn-check"
-              type="radio"
-              name="opciones"
-              id="precio"
-              checked
-            />
-            <label class="btn bg-body-secondary border border-1" for="precio">
-              <i id="sortPrecio" class="fas fa-sort-numeric-down mr-1"></i>
-            </label>
-            <input
-              class="btn-check"
-              type="radio"
-              name="opciones"
-              id="relevancia"
-              checked
-            />
-            <label
-              class="btn btn-light border border-1 border-dark"
-              for="relevancia"
-            >
-              <i id="sortRelevancia" class="fas fa-sort-amount-down mr-1"></i>
-            </label>
-          </div>
-          <div
-            class="searchBar d-flex justify-content-center align-items-center col-md-4 mt-3"
-          >
-            <input
-              type="search"
-              placeholder="Buscar..."
-              id="buscar"
-              name="búsqueda"
-              class="products-filter border border-dark rounded align-self-center"
-            />
-          </div>
-          <div
-            class="filterBtns d-flex justify-content-end align-items-center col-md-4"
-          >
-            <div class="boxes mx-2">
-              <div class="filterBoxMin my-2">
-                <input
-                  class="form-control border border-dark"
-                  type="number"
-                  placeholder="min."
-                  id="rangeFilterCountMin"
-                />
-              </div>
-              <div class="filterBoxMax my-2">
-                <input
-                  class="form-control border border-dark"
-                  type="number"
-                  placeholder="máx."
-                  id="rangeFilterCountMax"
-                />
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <button type="button" id="toggle_theme">theme</button>
+      </nav>      
     <div class="container mt-5 pt-3">
       <div class="productsTitle text-center catt">
         <div class="cat p-3">
@@ -217,21 +144,22 @@
               <input class="form-control border border-dark" type="number" placeholder="min."
                 id="rangeFilterCountMin" />
             </div>
-            <div class="Btns mx-2">
-              <div class="btnFilter my-2">
-                <button class="btn btn-primary" id="rangeFilterCount">
-                  Filtrar
-                </button>
-              </div>
-              <div class="btnClear my-2">
-                <button class="btn btn-primary" id="clearRangeFilter">
-                  Limpiar
-                </button>
-              </div>
+            <div class="filterBoxMax my-2">
+              <input class="form-control border border-dark" type="number" placeholder="máx."
+                id="rangeFilterCountMax" />
+            </div>
+          </div>
+          <div class="Btns mx-2">
+            <div class="btnFilter my-2">
+              <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
+            </div>
+            <div class="btnClear my-2">
+              <button class="btn btn-primary" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
         </div>
-        <div class="listProducts sombra" id="lista-productos"></div>
+      </div>
+        <div class="listProducts shadow" id="lista_productos"></div>
       </div>
     </main>
   <footer class="text-muted">
