@@ -17,6 +17,12 @@
    var(--bs-tertiary-bg) 
 } */
 
+#toggle_theme {
+  background: none;
+  border: none;
+ 
+}
+
 #fondo_login {
   background-image: url(img/fondo.png);
   
@@ -236,10 +242,6 @@ a.custom-card:hover {
   outline: none;
 }
 
-.buscando{
-  display: none;
-}
-
 .img-thumbnail:hover {
   transform: scale(1.03);
 }
@@ -347,7 +349,6 @@ input:checked ~ label  .bi-star::before {
   overflow: hidden; 
 }
 .dropdown-item{
-  color: orange;
   transition: .5s, color .8s;
       -webkit-transition: .5s, color .8s;
       -moz-transition: .5s, color .8s;    

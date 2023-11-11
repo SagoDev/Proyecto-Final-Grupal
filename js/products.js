@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(arrayProductos);
     arrayProductos.forEach((el) => {
       !el.textContent.toLowerCase().includes(barraDeBusqueda.value.toLowerCase())
-        ? el.classList.add("buscando")
-        : el.classList.remove("buscando");
+      ? el.classList.add("d-none")
+      : el.classList.remove("d-none");        
     });
   });
 

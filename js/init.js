@@ -17,6 +17,8 @@ let esconderCarrusel = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 };
 
+const btnCambiarTema = document.getElementById("toggle_theme");
+
 // Función general para obtener datos JSON
 let getJSONData = function (url) {
   let resultado = {};
@@ -82,9 +84,13 @@ const toggleTema = () => {
   if (document.body.getAttribute("data-bs-theme") === "dark") {
     document.body.setAttribute("data-bs-theme", "light");
     localStorage.setItem("theme", "light");
+    btnCambiarTema.classList.add("bi-moon");
+    btnCambiarTema.classList.remove("bi-sun");
   } else {
     document.body.setAttribute("data-bs-theme", "dark");
     localStorage.setItem("theme", "dark");
+    btnCambiarTema.classList.add("bi-sun");
+    btnCambiarTema.classList.remove("bi-moon");
   }
 };
 
@@ -92,8 +98,12 @@ const aplicarTemaAlCargar = () => {
   if (localStorage.getItem("theme")) {
     if (localStorage.getItem("theme") === "dark") {
       document.body.setAttribute("data-bs-theme", "dark");
+      btnCambiarTema.classList.add("bi-sun");
+      btnCambiarTema.classList.remove("bi-moon");
     } else {
       document.body.setAttribute("data-bs-theme", "light");
+      btnCambiarTema.classList.add("bi-moon");
+      btnCambiarTema.classList.remove("bi-sun");
     }
   }
 };
