@@ -391,3 +391,24 @@ input:checked ~ label  .bi-star::before {
   border-radius: 10px;
   backdrop-filter: blur(20px);
 }
+
+.contenedor-foto-perfil {
+  width: 100px;
+  height: 100px;
+}
+
+.contenedor-foto-nav-bar {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+#foto_nav_bar {
+  object-fit: cover;
+  border-radius: 50px;
+  border: 2px solid orange;
+}
+
+#foto_perfil {
+  object-fit: cover;
+}
