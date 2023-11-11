@@ -10,6 +10,12 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -29,7 +35,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark p-1">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,9 +83,10 @@
         </ul>
       </div>
     </div>
+    <button type="button" id="toggle_theme">theme</button>
   </nav>
   <main class="d-flex justify-content-center align-items-center mt-5 pt-4">
-    <div class="container bg-white px-4 sombra" id="titulo_perfil">
+    <div class="container px-4 sombra" id="titulo_perfil">
       <div class="d-flex justify-content-between mt-4 pt-4">
         <div>
           <h1 class="mt-4">Perfil</h1>
@@ -128,7 +135,7 @@
     </div>
     </div>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted bg-body-tertiary">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>

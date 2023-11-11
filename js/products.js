@@ -35,7 +35,6 @@ function getProductsData(api) {
 //   Crea un nuevo array de productos
 //   Vacía el contenedor de la lista
 function sortProducts(arr, bool, property) {
-
   let currentProducts = arr;
   contenedorLista.innerHTML = "";
   if (bool) {
@@ -52,9 +51,9 @@ function sortProducts(arr, bool, property) {
 function displayProducts(arr) {
   let divContent = "";
   for (let i = 0; i < arr.length; i++) {
-    let { soldCount, name, currency, cost, description, image, id} = arr[i];
+    let { soldCount, name, currency, cost, description, image, id } = arr[i];
     divContent += `    
-    <div onclick="setProductID(${id})" class="contenedor-producto pe-auto bg-light text-dark row"> 
+    <div onclick="setProductID(${id})" class="contenedor-producto pe-auto row"> 
         <div class="imagen-producto mb-3 col-sm-12 col-md-4 col-lg-4">
             <img class="img-fluid" src=${image}>
         </div>
@@ -92,7 +91,7 @@ function showProductsInPriceRange() {
   return currentProducts;
 }
 
-// Función que cambia la clase Bootstrap para cambiar la imagen de los botones de ordenar productos 
+// Función que cambia la clase Bootstrap para cambiar la imagen de los botones de ordenar productos
 function changeButtonImage(bool, element, className) {
   if (bool) {
     element.classList.remove(`${className}-down`);
