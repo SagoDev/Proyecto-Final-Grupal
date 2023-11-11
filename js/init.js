@@ -76,77 +76,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('user').innerHTML = nombreDeUsuario.substring(0, nombreDeUsuario.indexOf('@'));
   }
+});
 
+const toggleTema = () => {
+  if (document.body.getAttribute("data-bs-theme") === "dark") {
+    document.body.setAttribute("data-bs-theme", "light");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.setAttribute("data-bs-theme", "dark");
+    localStorage.setItem("theme", "dark");
+  }
+};
 
-  //  Cambia entre el modo claro y modo oscuro
-  function activarModoOscuro() {
-
-    const btnFilrar = document.getElementById('rangeFilterCount');
-    const btnLimpiar = document.getElementById('clearRangeFilter');
-
-    //  Alterna la clase 'dark-mode' en el elemento 'body'
-    document.body.classList.toggle('dark-mode');
-
-    //  Comprueba si la clase 'dark-mode' está en 'body' y guarda el estado en localStorage
-    //    Si está activo el modo oscuro le agrega una clase
-    //    si está desactivado, le quita la clase
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('modoOscuro', 'activado');
-      btnFilrar.classList.add('dark-mode-button-active');
-      btnLimpiar.classList.add('dark-mode-button-active');
+const aplicarTemaAlCargar = () => {
+  if (localStorage.getItem("theme")) {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.setAttribute("data-bs-theme", "dark");
     } else {
-      localStorage.setItem('modoOscuro', 'desactivado');
-      btnFilrar.classList.remove('dark-mode-button-active');
-      btnLimpiar.classList.remove('dark-mode-button-active');
+      document.body.setAttribute("data-bs-theme", "light");
     }
   }
+};
 
-  //  Cuando la página se cargó completamente
-  //    
-  window.addEventListener('load', () => {
 
-    const modoOscuroGuardado = localStorage.getItem('modoOscuro');
+aplicarTemaAlCargar();
 
-    //  Si el modo oscuro está guardado como 'activado', lo activa y verifica en 'modoOscuroToggle'
-    //    Si está activo el modo oscuro le agrega una clase
-    if (modoOscuroGuardado === 'activado') {
-      document.body.classList.add('dark-mode');
-      document.getElementById('modoOscuroToggle').checked = true;
-      document.getElementById('rangeFilterCount').classList.add('dark-mode-button-active');
-      document.getElementById('clearRangeFilter').classList.add('dark-mode-button-active');
-    }
-  });
+document.getElementById("toggle_theme").addEventListener("click", toggleTema);
 
-  // Evento de cambio a la casilla de verificación del Modo Oscuro
-  const modoOscuroCheckbox = document.getElementById('modoOscuroToggle');
-  modoOscuroCheckbox.addEventListener('change', activarModoOscuro);
-
-  //  Cuando la página se cargó completamente
-  //
-  window.addEventListener("load", () => {
-    const modoOscuroGuardado = localStorage.getItem("modoOscuro");
-    const body = document.body;
-
-    //  Si el modo oscuro está guardado como 'activado', lo activa y verifica en 'modoOscuroToggle'
-    //    Si está activo el modo oscuro le agrega una clase
-    if (modoOscuroGuardado === "activado") {
-      body.classList.add("dark-mode");
-      document.getElementById("modoOscuroToggle").checked = true;
-      document
-        .getElementById("rangeFilterCount")
-        .classList.add("dark-mode-button-active");
-      document
-        .getElementById("clearRangeFilter")
-        .classList.add("dark-mode-button-active");
-    }
-  });
-
-  // Evento de cambio a la casilla de verificación del Modo Oscuro
-  const modoOscuroCheckbox = document.getElementById("modoOscuroToggle");
-  modoOscuroCheckbox.addEventListener("change", toggleModoOscuro);
-
-  //  Evento de cerrar sesión
-
+window.addEventListener("load", () => {
+  
   document.getElementById("bye").addEventListener("click", function () {
     localStorage.removeItem("user");
     location.href = "login.html";

@@ -1,60 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link rel="shortcut icon" href="img/ico.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link rel="shortcut icon" href="img/ico.ico" />
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-  <link href="css/styles.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-</head>
-
-<body>
-  <main>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-            <li class="nav-item">
-              <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="user" data-bs-toggle="dropdown"
-                  aria-expanded="false"></button>
-                <ul class="dropdown-menu" aria-labelledby="user">
-                  <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person-square iconoMenu"></i> Mi
-                      perfil</a></li>
-                  <li>
-                  <li><a class="dropdown-item" href="cart.html"><i class="bi bi-cart3 iconoMenu"></i> Mi carrito </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item">
-                      <label class="" for="modoOscuroToggle" id="dark-label"><svg xmlns="http://www.w3.org/2000/svg"
-                          width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
-                          <path
-                            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
-                        </svg>Mago oscuro</label>
-                      <input type="checkbox" id="modoOscuroToggle">
-                    </a>
-                  </li>
-                  <li><a class="dropdown-item" id="bye" href=""><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
-                      sesión</a></li>
-                </ul>
+  <body>
+    <main>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 justify-content-between">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="categories.html">Categorías</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sell.html">Vender</a>
+              </li>
+              <li class="nav-item">
+                <div class="dropdown">
+                  <div class="contenedor-foto-nav-bar">
+                    <img
+                      class="foto-nav-bar w-100 h-100 mt-2 mb-1"
+                      id="foto_nav_bar"
+                      src="./img/profile_pic.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    id="user"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <ul class="dropdown-menu" aria-labelledby="user">
+                    <li>
+                      <a class="dropdown-item" href="my-profile.html"
+                        ><i class="bi bi-person-square iconoMenu"></i> Mi
+                        perfil</a
+                      >
+                    </li>
+                    <li></li>
+                    <li>
+                      <a class="dropdown-item" href="cart.html"
+                        ><i class="bi bi-cart3 iconoMenu"></i> Mi carrito
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item">
+                        <label class="" for="modoOscuroToggle" id="dark-label"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-moon-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+                            /></svg
+                          >Mago oscuro</label
+                        >
+                        <input type="checkbox" id="modoOscuroToggle" />
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" id="bye" href=""
+                        ><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
+                        sesión</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container mt-5 pt-3">
+        <div class="productsTitle text-center catt">
+          <div class="cat p-3">
+            <h1>Productos</h1>
+            <h4>
+              Verás aquí todos los productos de la categoría
+              <b id="nombreCategoria">Autos</b>
+            </h4>
+          </div>
+        </div>
+        <div class="row m-2">
+          <div
+            class="orderBtns gap-3 d-flex justify-content-center align-items-center col-md-4"
+          >
+            <input
+              class="btn-check"
+              type="radio"
+              name="opciones"
+              id="precio"
+              checked
+            />
+            <label class="btn bg-body-secondary border border-1" for="precio">
+              <i id="sortPrecio" class="fas fa-sort-numeric-down mr-1"></i>
+            </label>
+            <input
+              class="btn-check"
+              type="radio"
+              name="opciones"
+              id="relevancia"
+              checked
+            />
+            <label
+              class="btn btn-light border border-1 border-dark"
+              for="relevancia"
+            >
+              <i id="sortRelevancia" class="fas fa-sort-amount-down mr-1"></i>
+            </label>
+          </div>
+          <div
+            class="searchBar d-flex justify-content-center align-items-center col-md-4 mt-3"
+          >
+            <input
+              type="search"
+              placeholder="Buscar..."
+              id="buscar"
+              name="búsqueda"
+              class="products-filter border border-dark rounded align-self-center"
+            />
+          </div>
+          <div
+            class="filterBtns d-flex justify-content-end align-items-center col-md-4"
+          >
+            <div class="boxes mx-2">
+              <div class="filterBoxMin my-2">
+                <input
+                  class="form-control border border-dark"
+                  type="number"
+                  placeholder="min."
+                  id="rangeFilterCountMin"
+                />
+              </div>
+              <div class="filterBoxMax my-2">
+                <input
+                  class="form-control border border-dark"
+                  type="number"
+                  placeholder="máx."
+                  id="rangeFilterCountMax"
+                />
               </div>
             </li>
           </ul>
@@ -89,25 +217,23 @@
               <input class="form-control border border-dark" type="number" placeholder="min."
                 id="rangeFilterCountMin" />
             </div>
-            <div class="filterBoxMax my-2">
-              <input class="form-control border border-dark" type="number" placeholder="máx."
-                id="rangeFilterCountMax" />
-            </div>
-          </div>
-          <div class="Btns mx-2">
-            <div class="btnFilter my-2">
-              <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
-            </div>
-            <div class="btnClear my-2">
-              <button class="btn btn-primary" id="clearRangeFilter">Limpiar</button>
+            <div class="Btns mx-2">
+              <div class="btnFilter my-2">
+                <button class="btn btn-primary" id="rangeFilterCount">
+                  Filtrar
+                </button>
+              </div>
+              <div class="btnClear my-2">
+                <button class="btn btn-primary" id="clearRangeFilter">
+                  Limpiar
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        <div class="listProducts sombra" id="lista-productos"></div>
       </div>
-      <div class="listProducts shadow" id="lista_productos">
-      </div>
-    </div>
-  </main>
+    </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

@@ -34,6 +34,7 @@ function obtenerInfoProducto(api) {
 // Función que ordena los productos de forma ascendente o descendente
 //   Crea un nuevo array de productos
 //   Vacía el contenedor de la lista
+
 function clasificarProductos(arr, bool, propiedad) {
 
   let productosActualizados = arr;

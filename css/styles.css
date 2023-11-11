@@ -4,27 +4,18 @@
   font-family: 'Verdana', serif !important;
 }
 
-/*  */
-
-:root {
+/* :root {
   --primary-color: #ededed;
   --secondary-color: #f5f5f5;
   --font-color: black;
-}
+} */
 
-.dark-theme {
-  --primary-color: #ededed;
-  --secondary-color: #f5f5f5;
-  --font-color: #F5F5F5
-}
-
-#divLogin, #contInfoProd {
-  background-color: #fff;
-}
-
-body {
-  background-color: var(--primary-color);
-}
+/* .dark-theme {
+  --primary-color: #666;
+  --secondary-color: #333;
+  --font-color: #f5f5f5;
+   var(--bs-tertiary-bg) 
+} */
 
 #fondo_login {
   background-image: url(img/fondo.png);
@@ -34,18 +25,6 @@ body {
   background-size: 600px;
 
   transition: all 1.5s ease;
-}
-
-nav a {
-  text-decoration: none;
-}
-.navbar {
-  background-color: #000000;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  z-index: 4990;
 }
 
 .bd-placeholder-img {
@@ -198,7 +177,6 @@ a.custom-card:hover {
 
 .contenedor_producto {
   font-family: raleway;
-  color: rgba(0, 0, 0, 0.658);
   display: flex;
   padding: 1em;
   border: 1px solid grey;
@@ -311,6 +289,7 @@ a.custom-card:hover {
   float: left;
   gap: 5px;
 }
+
 .estrellas>input{
   display:none; /*con esto escondo los inputs de tipo radio de las estrellas*/
 }
@@ -336,11 +315,12 @@ input:checked ~ label  .bi-star::before {
 }
 
 /* Estilos para el modo oscuro */
-body.dark-mode {
+/* body.dark-mode {
   background-color: #222;
   color: #fff;
   transition: all 1.5s ease;
-}
+} */
+
 .dark-mode-button-active {
   background: #ffffff;
   color: #222;
@@ -359,9 +339,7 @@ body.dark-mode {
   cursor: pointer;
   color: #000000;
 }
-#contenedorIndex, #contInfoProd, #carrito {
-  color: #000000;
-}
+
 /* Fin de Estilos para el modo oscuro */
 
 /*Estilo menú desplegable*/

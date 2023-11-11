@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,7 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
   <link rel="shortcut icon" href="img/ico.ico">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,8 +15,8 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark p-1">
+<body class="d-flex flex-column gap-5">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,14 +61,15 @@
       </div>
     </div>
   </nav>
-  <main class="mt-5 pt-3">
-    <div class="container">
+  <main >
+    <div class="container d-flex flex-column gap-3">
       <div class="catt pb-3">
         <div class="cat p-1 pb-2">
           <h2 class="mt-2 text-center ">Carrito de compras</h2>
         </div>
       </div>
-      <div class="row bg-white shadow rounded-3" id="carrito">
+
+      <div class="row rounded-3 bg-body" id="carrito">
         <div class="pt-3">
           <h5>Artículos a comprar</h5>
         </div>
@@ -256,7 +257,7 @@
     </div>
     <!--Fin Entrega6_Pauta2-->
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted bg-body-tertiary">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
