@@ -26,74 +26,83 @@
     />
   </head>
   <body class="d-flex flex-column gap-5">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-            <li class="nav-item">
-              <div class="dropdown">
-                <div class="contenedor-foto-nav-bar">
-                  <img
-                    class="foto-nav-bar w-100 h-100 mt-2 mb-1"
-                    id="foto_nav_bar"
-                    src="./img/profile_pic.jpg"
-                    alt=""
-                  />
-                </div>
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  id="user"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></button>
-                <ul class="dropdown-menu" aria-labelledby="user">
-                  <li>
-                    <a class="dropdown-item" href="my-profile.html"
-                      ><i class="bi bi-person-square iconoMenu"></i> Mi
-                      perfil</a
-                    >
-                  </li>
-                  <li></li>
-                  <li>
-                    <a class="dropdown-item" href="cart.html"
-                      ><i class="bi bi-cart3 iconoMenu"></i> Mi carrito
-                    </a>
-                  </li>                  
-                  <li>
-                    <a class="dropdown-item" id="bye" href=""
-                      ><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
-                      sesión</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <button type="button" style="font-size: 26px" class="bi bi-moon mx-5" id="toggle_theme"></button>
-    </nav>
+    <header class="d-flex flex-row">
+      <nav class="w-100 navbar navbar-expand-lg bg-body-tertiary">
+             <div class="container">
+         <button
+                 class="navbar-toggler"
+                 type="button"
+                 data-bs-toggle="collapse"
+                 data-bs-target="#navbarNav"
+                 aria-controls="navbarNav"
+                 aria-expanded="false"
+                 aria-label="Toggle navigation"
+               >
+                 <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav w-100 justify-content-between">
+                   <li class="nav-item">
+                     <a class="nav-link active" href="index.html">Inicio</a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link" href="categories.html">Categorías</a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link" href="sell.html">Vender</a>
+                   </li>
+                   <li class="nav-item">
+                     <div class="dropdown">
+                       <div class="contenedor-foto-nav-bar">
+                         <img
+                           class="foto-nav-bar w-100 h-100 mt-2 mb-1"
+                           id="foto_nav_bar"
+                           src="./img/profile_pic.jpg"
+                           alt=""
+                         />
+                       </div>
+                       <button
+                         class="btn dropdown-toggle"
+                         type="button"
+                         id="user"
+                         data-bs-toggle="dropdown"
+                         aria-expanded="false"
+                       ></button>
+                       <ul class="dropdown-menu" aria-labelledby="user">
+                         <li>
+                           <a class="dropdown-item" href="my-profile.html"
+                             ><i class="bi bi-person-square iconoMenu"></i> Mi
+                             perfil</a
+                           >
+                         </li>
+                         <li></li>
+                         <li>
+                           <a class="dropdown-item" href="cart.html"
+                             ><i class="bi bi-cart3 iconoMenu"></i> Mi carrito
+                           </a>
+                         </li>
+                         <li>
+                           <a class="dropdown-item" id="bye" href=""
+                             ><i class="bi bi-box-arrow-left iconoMenu"></i> Cerrar
+                             sesión</a
+                           >
+                         </li>
+                       </ul>
+                     </div>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </nav>
+           <div class="bg-body-tertiary p-3">
+             <button
+               type="button"
+               style="font-size: 26px"
+               class="bi bi-moon mx-5"
+               id="toggle_theme"
+             ></button>
+           </div>
+         </header>
     <main>
       <div class="d-flex flex-column align-items-center gap-3">
         <div
