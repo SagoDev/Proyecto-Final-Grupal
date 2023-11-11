@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location = "products.html";
   });
 
+  // Cambia la imágen de fondo dependiendo de si body tiene el atributo del tema claro u oscuro 
   function cambiarTemaFondo() {
     let temaActual = document.body.getAttribute("data-bs-theme");
     if (temaActual === "light") {
@@ -25,8 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
       imgFondo.src = "./img/cover_back_dark.png";
     }
   }
-
+  
+  
   const toggleFondo = document.getElementById("toggle_theme");
   toggleFondo.addEventListener("click", cambiarTemaFondo);
+  
   cambiarTemaFondo();
 });

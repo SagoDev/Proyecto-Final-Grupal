@@ -28,7 +28,7 @@
   </head>
 
   <body class="vh-100">
-    <nav class="navbar navbar-expand-lg navbar-dark p-1">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
         <button
           class="navbar-toggler"
@@ -155,6 +155,16 @@
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
           <div
             id="contenedor-producto"
@@ -204,36 +214,39 @@
                 Enviar
               </button>
             </div>
+            <br />
+            <button type="submit" id="enviar-comment" class="btn btn-primary">
+              Enviar
+            </button>
           </div>
         </div>
-        <div id="contenedor-relacionados" class="row col-sm-12 col-lg-6 pb-3">
-          <h3 class="pt-5 pb-3">Productos relacionados</h3>
-        </div>
       </div>
-    </main>
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
-          Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a
-          >
-        </p>
-      </div>
-    </footer>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div id="contenedor-relacionados" class="row col-sm-12 col-lg-6 pb-3">
+        <h3 class="pt-5 pb-3">Productos relacionados</h3>
       </div>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/product-info.js"></script>
-  </body>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>
+        Este sitio forma parte de
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+</body>
 </html>
