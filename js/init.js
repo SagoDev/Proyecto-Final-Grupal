@@ -42,12 +42,19 @@ let getJSONData = function(url){
     });
 }
 
+function establecerSrcImagen(idElemento) {
+  const contenedorImagen = document.getElementById(idElemento);
+  if (localStorage.getItem("fotoPerfil") != undefined) {
+    contenedorImagen.src = localStorage.getItem("fotoPerfil");
+  }
+}
+
 // Cuando se carga la página
 //   Busca la información del usuario en Local storage
 //   Si encuentra la información, pone el nombre de usuario en el navbar
 //   Si no encuentra la información, te redirige a la página de Login
 document.addEventListener("DOMContentLoaded", function() {
-  
+  establecerSrcImagen("foto_nav_bar");
   let usuario = localStorage.getItem('user');
 
   let usuarioParse = JSON.parse(usuario);
