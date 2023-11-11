@@ -68,12 +68,12 @@
         <p class="lead">Ingresa los datos del artículo a vender.</p>
       </div>
     </div>
-    <div class="container bg-white sombra rounded mt-2 pt-2" id="textoVender">
+    <div class="container bg-white sombra rounded mt-2 pt-2">
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-          <h4 class="mb-3">Información del producto</h4>
+          <h4 class="mb-3 align-content-center text-center">Información del producto</h4>
           <form class="needs-validation" id="sell-info">
-            <div class="row">
+            <div class="row d-flex justify-content-center align-content-center text-center">
               <div class="col-md-6 mb-3">
                 <label for="productName">Nombre</label>
                 <input type="text" class="form-control border border-secondary" id="productName" value=""
@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row d-flex justify-content-center text-center">
               <div class="col-md-8 order-md-1">
                 <label>Imágenes</label>
                 <div class="needsclick dz-clickable border border-secondary" id="file-upload">
@@ -93,14 +93,14 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row d-flex justify-content-center text-center">
               <div class="col-md-12 mb-3">
                 <label for="productDescription">Descripción</label>
                 <textarea name="productDescription" class="form-control border border-secondary"
                   id="productDescription"></textarea>
               </div>
             </div>
-            <div class="row">
+            <div class="row d-flex justify-content-center text-center">
               <div class="col-md-3 mb-3">
                 <label for="productCostInput">Costo</label>
                 <input type="number" name="productCostInput" class="form-control border border-secondary"
@@ -122,7 +122,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row d-flex justify-content-center text-center">
               <div class="col-md-7 mb-3">
                 <label for="productCategory">Categoría</label>
                 <select name="productCategory" class="custom-select form-select d-block w-100 border border-secondary"
@@ -140,7 +140,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row d-flex justify-content-center text-center">
               <div class="col-md-3 mb-3">
                 <label for="productCountInput">Cantidad en stock</label>
                 <input type="number" name="productCountInput" class="form-control border border-secondary"
@@ -151,11 +151,10 @@
               </div>
             </div>
             <hr class="mb-4">
-            <h5 class="mb-3">Tipo de publicación</h5>
-            <div class="d-block my-3">
+            <h5 class="mb-3 d-flex justify-content-center text-center">Tipo de publicación</h5>
+            <div class="d-block my-3 justify-content-center text-center">
               <div class="custom-control custom-radio">
-                <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
-                  required="">
+                <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" required="">
                 <label class="custom-control-label" for="goldradio">Gold (13%)</label>
               </div>
               <div class="custom-control custom-radio">
@@ -172,7 +171,7 @@
               </div>
             </div>
             <hr class="mb-4">
-            <h4 class="mb-3">Costos</h4>
+            <h4 class="mb-3 d-flex justify-content-center text-center">Costos</h4>
             <ul class="list-group mb-3">
               <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
@@ -194,11 +193,13 @@
               </li>
             </ul>
         </div>
+        <hr class="mb-4">
+        <div class="d-grid p-3 col-10 mx-auto">
+          <button class="btn btn-primary btn-md mb-3"
+            type="submit">Vender</button>
+          </form>
+        </div>
       </div>
-      <hr class="mb-4">
-      <button class="btn btn-primary btn-lg mb-3 pb-2" type="submit">Vender</button>
-      </form>
-    </div>
     </div>
     </div>
   </main>

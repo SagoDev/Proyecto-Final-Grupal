@@ -23,9 +23,9 @@ function mostrarInfo(info) {
 
   //  Texto del producto
   titulo.innerHTML = `
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
   <h1 class='pt-2'>${info.name}</h1>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <a href=""><button class="btn btn-primary" type="button" id="comprar">Comprar</button></a>
+  <a href="./products.html"><button class="btn" type="button" style="background-color: orange;">Volver</button></a>
   </div>
   <hr>
   `;
@@ -43,7 +43,10 @@ function mostrarInfo(info) {
         <div>
             <p> <b> Cantidad de vendidos: </b> <br> ${info.soldCount}</p>
         </div>
-      `;
+        <div>
+        <a href=""><button class="btn btn-primary" type="button" id="comprar">Comprar</button></a>
+        </div>
+        `;
 
   //  Fotos del producto    
   contenedorCarrusel.innerHTML += `
