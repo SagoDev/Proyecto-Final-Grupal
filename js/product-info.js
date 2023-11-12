@@ -227,7 +227,7 @@ function setearIdProducto(id) {
 //  Amplía una imagen 
 function zoomImagen() {
   let contenedorImgActiva = Array.from(document.getElementsByClassName("active"));
-  let img = contenedorImgActiva[0].childNodes[1].src;
+  let img = contenedorImgActiva[1].childNodes[1].src;
 
   let divTransparente = document.createElement("div");
   divTransparente.style =
