@@ -52,13 +52,6 @@ function establecerSrcImagen(idElemento) {
   }
 }
 
-function establecerSrcImagen(idElemento) {
-  const contenedorImagen = document.getElementById(idElemento);
-  if (localStorage.getItem("fotoPerfil") != undefined) {
-    contenedorImagen.src = localStorage.getItem("fotoPerfil");
-  }
-}
-
 // Cuando se carga la página
 //   Busca la información del usuario en Local storage
 //   Si encuentra la información, pone el nombre de usuario en el navbar
