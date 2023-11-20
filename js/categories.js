@@ -57,11 +57,13 @@ function setearIdCategoria(id) {
 }
 
 
+
 // Muestra la lista de categorías
 //    Crea el array con la lista de categorías
 //    Lo agrega en el container en HTML
 function mostrarListaCatergorias() {
   let contenidoHtmlAdjuntar = "";
+  console.log(arrayCategoriasActual)
   for (let i = 0; i < arrayCategoriasActual.length; i++) {
     let category = arrayCategoriasActual[i];
 
@@ -120,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
       mostrarListaCatergorias();
     }
   });
+
+  rompiendoCosas()
 
   //  Escucha los botones para reordenar el array de categorías
   document.getElementById("sortAsc").addEventListener("click", function () {

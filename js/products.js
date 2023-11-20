@@ -1,7 +1,7 @@
 // Constante con el endpoint incompleto
 // Variable para que pueda usar cualquier id de categoría
 // Constante y variable con la terminación para que quede la URL completa
-const api = "https://japceibal.github.io/emercado-api/cats_products/";
+const api = PRODUCTS_URL;
 let catId = localStorage.getItem("catID");
 let apiProductos = api + catId + ".json";
 

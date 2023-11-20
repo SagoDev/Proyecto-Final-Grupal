@@ -1,4 +1,4 @@
-const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
+const CATEGORIES_URL = "http://localhost:3000/categorias";
 const PUBLISH_PRODUCT_URL =
   "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
@@ -18,6 +18,10 @@ let esconderCarrusel = function () {
 };
 
 const btnCambiarTema = document.getElementById("toggle_theme");
+
+function rompiendoCosas(){
+  console.log("Se comunican!!!!")
+}
 
 // Función general para obtener datos JSON
 let getJSONData = function (url) {
