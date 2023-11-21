@@ -1,5 +1,4 @@
-const apiProductos = "https://japceibal.github.io/emercado-api/products/";
-const apiComentarios = "https://japceibal.github.io/emercado-api/products_comments/";
+const apiProductos = PRODUCT_INFO_URL;
 
 let id = localStorage.getItem("ProductID");
 
@@ -261,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   traerInfo(apiProductos, mostrarInfo);
-  traerInfo(apiComentarios, mostrarComentarios);
+  traerInfo(PRODUCT_INFO_COMMENTS_URL, mostrarComentarios);
   traerInfo(apiProductos, mostrarRelacionados);
 
   let imgCarousel = document.getElementById("carousel-inner");

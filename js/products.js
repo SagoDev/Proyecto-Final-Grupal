@@ -1,9 +1,8 @@
 // Constante con el endpoint incompleto
 // Variable para que pueda usar cualquier id de categoría
 // Constante y variable con la terminación para que quede la URL completa
-const api = PRODUCTS_URL;
 let catId = localStorage.getItem("catID");
-let apiProductos = api + catId + ".json";
+let apiProductos = PRODUCTS_URL + catId + ".json";
 
 // Variable que contendrá el array de productos
 let productos = [];

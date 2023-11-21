@@ -1,7 +1,7 @@
 // Hace fetch a la api y retorna los datos.
 const conseguirDatos = async (idUsuario) => {
   let respuesta = await fetch(
-    `https://japceibal.github.io/emercado-api/user_cart/${idUsuario}.json`
+    CART_INFO_URL + idUsuario + EXT_TYPE
   );
   let datos = await respuesta.json();
   return datos;
