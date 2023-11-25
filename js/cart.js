@@ -1,9 +1,7 @@
-// Hace fetch a la api y retorna los datos.
 const token = llave();
 
-// Configuración de la solicitud, incluyendo el encabezado
 const opciones = {
-  method: 'GET', // o 'POST', 'PUT', etc.
+  method: 'GET', 
   headers: {
     'Content-Type': 'application/json', 
     'access-token':  token, 
