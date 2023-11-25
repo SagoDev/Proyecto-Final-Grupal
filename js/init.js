@@ -4,8 +4,9 @@ const PUBLISH_PRODUCT_URL =
 const PRODUCTS_URL = "http://localhost:3000/categoria_productos/";
 const PRODUCT_INFO_URL = "http://localhost:3000/producto/";
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/comentarios/";
-const CART_INFO_URL = "http://localhost:3000/usuario_carrito/";
+const CART_INFO_URL = "http://localhost:3000/cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
+
 const EXT_TYPE = ".json";
 
 // Funcionalidad del carrusel de imágenes 

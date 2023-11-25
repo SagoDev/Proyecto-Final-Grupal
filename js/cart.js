@@ -1,13 +1,23 @@
 // Hace fetch a la api y retorna los datos.
+const token = llave();
+
+// Configuración de la solicitud, incluyendo el encabezado
+const opciones = {
+  method: 'GET', // o 'POST', 'PUT', etc.
+  headers: {
+    'Content-Type': 'application/json', 
+    'access-token':  token, 
+  },
+
+};
+
+let productosCarrito = JSON.parse(localStorage.getItem("productos")) || [];
+
 const conseguirDatos = async (idUsuario) => {
-  let respuesta = await fetch(
-    CART_INFO_URL + idUsuario + EXT_TYPE
-  );
+  let respuesta = await fetch(CART_INFO_URL + idUsuario + EXT_TYPE, opciones);
   let datos = await respuesta.json();
   return datos;
 };
-//Variable para guardar los productos existentes del localstorage si hay,sino queda un array vacio
-let productosCarrito = JSON.parse(localStorage.getItem("productos")) || [];
 
 //Funcion para enviar el producto del carrito de la api al localstorage
 function enviarLocalStorage(datos) {
@@ -177,6 +187,12 @@ function validarInputsModificados(parrafo) {
       }
     });
   })
+}
+
+function llave(){
+  let token = localStorage.getItem("token");
+  console.log(token)
+  return token
 }
 
 //Funcion que suma cada precio de producto

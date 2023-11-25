@@ -1,3 +1,5 @@
+const LOGIN_URL = "http://localhost:3000/login/";
+
 // Parámetros para validar email y contraseña
 let expresiones = {
     email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
@@ -47,9 +49,39 @@ function validarOInvalidar(input) {
     }
 }
 
+
+async function login() {
+    const email = document.getElementById("email").value;
+    const pass = document.getElementById("pass").value;
+    try {
+        const response = await fetch(LOGIN_URL, {
+            method: "POST",
+            headers:
+                { "Content-Type": "application/json", },
+            body: JSON.stringify({ email, pass }),
+        });
+        if (!response.ok) {
+            alert("Usuario y/o contraseña incorrectos");
+            return false;
+        }
+        const data = await response.json();
+        const token = data.token;
+        console.log(token)
+        console.log(data)
+        localStorage.setItem("token", token);
+    } catch (error) { alert("Error logeando")
+    console.log(error)        
+}
+}
+
+
+
+
+
+
 // Cuando se carga la página
 //   Lee y manipula los input
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     let form = document.getElementById('logIn');
     let inputEmail = document.getElementById('email');
     let inputContraseña = document.getElementById('pass');
@@ -67,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     // Escucha el click del botón de login para validar datos
-    btnLogin.addEventListener('click', (e) => {
+    btnLogin.addEventListener('click', async (e) => {
+        await login()
         validarInfo(inputEmail, inputContraseña, e);
     });
 });
